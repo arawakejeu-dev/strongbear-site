@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { headers } from "next/headers";
+import Link from "next/link";
 import {
   Activity,
   BookOpenCheck,
@@ -19,6 +20,7 @@ import {
   UsersRound,
 } from "lucide-react";
 import { ButtonLink, Container, FAQ, FightyCTA, FightyJourney, FloatingCTA, Footer, Header, Icon, PricingCard, ScheduleCard, SectionTitle } from "../components";
+import { kidsFAQ } from "../data/faqs";
 import "./kids.css";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -69,19 +71,6 @@ const ageGroups = [
   { age: "11–14 ans", label: "Progression", copy: "Approfondir les fondamentaux, mieux comprendre les situations et progresser avec responsabilité.", focus: ["Maîtrise", "Stratégie", "Collectif"] },
 ];
 
-const faqItems = [
-  { question: "Mon enfant peut-il commencer sans aucune expérience ?", answer: "Oui. Le programme est conçu pour accueillir les débutants. Le coach explique les règles, les positions et les exercices progressivement." },
-  { question: "Quel équipement faut-il pour le premier cours ?", answer: "Une tenue de sport confortable et une gourde suffisent pour l’essai. L’équipe vous indiquera ensuite l’équipement adapté au groupe de votre enfant." },
-  { question: "Les enfants timides peuvent-ils participer ?", answer: "Oui. Ils peuvent d’abord observer, avancer à leur rythme et être associés à un partenaire rassurant. La participation n’est jamais forcée." },
-  { question: "Les filles peuvent-elles pratiquer ?", answer: "Bien sûr. Le programme accueille les filles et les garçons dans le même cadre de respect, de progression et de sécurité." },
-  { question: "Combien de fois par semaine faut-il venir ?", answer: "La régularité compte davantage que la fréquence. Un cours hebdomadaire permet déjà de construire de bons repères ; Fighty présente les créneaux disponibles." },
-  { question: "Comment la sécurité est-elle assurée ?", answer: "Les exercices sont adaptés à l’âge, les contacts sont contrôlés et le coach supervise les binômes. Aucune intimidation ni recherche de puissance n’est encouragée." },
-  { question: "Comment choisissez-vous les groupes d’âge ?", answer: "L’âge sert de premier repère. Le coach tient aussi compte de la maturité, de l’aisance et des besoins de chaque enfant." },
-  { question: "Puis-je assister au premier cours ?", answer: "Les modalités d’observation dépendent de l’organisation du créneau. Indiquez votre besoin lors de la réservation afin que l’équipe prépare le meilleur accueil." },
-  { question: "La compétition est-elle obligatoire ?", answer: "Non. La priorité est l’apprentissage, la confiance et le plaisir de progresser. La compétition reste une possibilité, jamais une obligation." },
-  { question: "Comment réserver et inscrire mon enfant ?", answer: "Le site informe uniquement. L’essai, les disponibilités et toute inscription sont gérés sur Fighty. Strongbear accueille ensuite votre enfant au club." },
-];
-
 const kidsFightySteps = [
   { icon: CalendarCheck, title: "Réservez", copy: "Choisissez le créneau d’essai adapté sur Fighty." },
   { icon: DoorOpen, title: "Venez", copy: "Arrivez quelques minutes avant le cours avec une tenue confortable." },
@@ -90,7 +79,7 @@ const kidsFightySteps = [
 ];
 
 export default function KidsPage() {
-  const faqSchema = faqItems.map((item) => ({ "@type": "Question", name: item.question, acceptedAnswer: { "@type": "Answer", text: item.answer } }));
+  const faqSchema = kidsFAQ.map((item) => ({ "@type": "Question", name: item.question, acceptedAnswer: { "@type": "Answer", text: item.answer } }));
   const structuredData = [
     { "@context": "https://schema.org", "@type": "Service", name: "Strongbear Kids — Jiu-Jitsu et Grappling enfants", serviceType: "Cours d’arts martiaux pour enfants", areaServed: { "@type": "AdministrativeArea", name: "Vexin, Val-d’Oise" }, provider: { "@type": "SportsActivityLocation", name: "Strongbear BJJ & Grappling", address: { "@type": "PostalAddress", addressLocality: "Marines", addressRegion: "Val-d’Oise", addressCountry: "FR" } }, audience: { "@type": "PeopleAudience", suggestedMinAge: 4, suggestedMaxAge: 14 } },
     { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faqSchema },
@@ -103,7 +92,7 @@ export default function KidsPage() {
       <section className="kids-hero-page" aria-labelledby="kids-title">
         <Container className="kids-hero-grid">
           <div className="kids-hero-copy">
-            <nav className="kids-breadcrumb" aria-label="Fil d’Ariane"><a href="/">Accueil</a><span aria-hidden="true">/</span><span>Kids</span></nav>
+            <nav className="kids-breadcrumb" aria-label="Fil d’Ariane"><Link href="/">Accueil</Link><span aria-hidden="true">/</span><span>Kids</span></nav>
             <p className="eyebrow">Strongbear Kids · Marines</p>
             <h1 id="kids-title">Aider les enfants à grandir avec confiance.</h1>
             <p>Le Jiu-Jitsu Brésilien transmet respect, confiance, discipline et coordination dans un environnement sûr, positif et adapté à chaque âge.</p>
@@ -128,7 +117,7 @@ export default function KidsPage() {
 
       <section className="kids-page-section kids-pricing" id="tarifs"><Container><SectionTitle inverse={false} eyebrow="Tarifs" title="Commencer sans pression." intro="L’offre Kids est indépendante de l’abonnement adulte. Le premier cours est offert ; les conditions à jour sont présentées sur Fighty." /><div className="kids-pricing-grid"><PricingCard name="Cours d’essai" price="0 €" period="sans engagement" description="Une vraie séance pour permettre à votre enfant de découvrir le groupe et la pédagogie." features={["Cours adapté à son âge", "Accueil par l’équipe", "Échange avec le parent", "Aucune expérience requise"]} featured ctaLabel="Réserver l’essai gratuit" /><PricingCard name="Adhésion Kids" price="Kids" period="offre dédiée" description="Une formule séparée, pensée uniquement pour le programme enfants et sa progression." features={["Parcours adapté par âge", "Encadrement technique", "Progression régulière", "Modalités à jour sur Fighty"]} ctaLabel="Voir l’offre Kids sur Fighty" /></div></Container></section>
 
-      <section className="kids-page-section kids-faq" id="faq"><Container className="kids-faq-layout"><SectionTitle inverse={false} eyebrow="Questions fréquentes" title="Tout ce qu’un parent veut savoir." intro="Si une question concerne spécifiquement votre enfant, indiquez-la lors de la réservation : l’équipe vous répondra avant la séance." /><FAQ items={faqItems} /></Container></section>
+      <section className="kids-page-section kids-faq" id="faq"><Container className="kids-faq-layout"><SectionTitle inverse={false} eyebrow="Questions fréquentes" title="Tout ce qu’un parent veut savoir." intro="Si une question concerne spécifiquement votre enfant, indiquez-la lors de la réservation : l’équipe vous répondra avant la séance." /><FAQ items={kidsFAQ} /></Container></section>
 
       <section className="kids-fighty"><Container><FightyJourney title="Son premier cours. Simplement." ctaLabel="Réserver l’essai de mon enfant" steps={kidsFightySteps} /></Container></section>
     </main>

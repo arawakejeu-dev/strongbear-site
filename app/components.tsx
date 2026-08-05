@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import type { LucideIcon } from "lucide-react";
+import Link from "next/link";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -39,8 +40,8 @@ export function FightyCTA({ label = "Réserver mon essai", className = "", varia
   return <a className={`button button-${variant} ${className}`} href={FIGHTY_URL} rel="external">{label}<Icon icon={ArrowUpRight} size="sm" /><span className="sr-only"> — réservation sur Fighty</span></a>;
 }
 
-export function SectionTitle({ eyebrow, title, intro, inverse = true }: { eyebrow: string; title: string; intro?: string; inverse?: boolean }) {
-  return <header className={`section-title reveal ${inverse ? "section-title-inverse" : ""}`}><p className="eyebrow">{eyebrow}</p><h2>{title}</h2>{intro && <p className="section-intro">{intro}</p>}</header>;
+export function SectionTitle({ eyebrow, title, intro, inverse = true, titleId }: { eyebrow: string; title: string; intro?: string; inverse?: boolean; titleId?: string }) {
+  return <header className={`section-title reveal ${inverse ? "section-title-inverse" : ""}`}><p className="eyebrow">{eyebrow}</p><h2 id={titleId}>{title}</h2>{intro && <p className="section-intro">{intro}</p>}</header>;
 }
 
 const navigationItems = [
@@ -68,7 +69,7 @@ export function Header({ variant = "default" }: { variant?: "default" | "kids" }
   const isKids = variant === "kids";
   const items = isKids ? kidsNavigationItems : navigationItems;
   return <header className={`site-header ${isKids ? "site-header-kids" : ""}`}><a className="skip-link" href="#contenu">Aller au contenu</a><Container className="header-inner">
-    <a className="brand" href="/" aria-label="Strongbear — Accueil"><strong>STRONGBEAR</strong><span>{isKids ? "KIDS · JIU-JITSU · GRAPPLING" : "BJJ · GRAPPLING · MMA"}</span></a>
+    <Link className="brand" href="/" aria-label="Strongbear — Accueil"><strong>STRONGBEAR</strong><span>{isKids ? "KIDS · JIU-JITSU · GRAPPLING" : "BJJ · GRAPPLING · MMA"}</span></Link>
     <Navigation className="nav-desktop" items={items} />
     <div className="header-actions"><FightyCTA label="Essai gratuit" /><details className="mobile-menu"><summary aria-label="Ouvrir la navigation"><Icon icon={Menu} /><span className="sr-only">Menu</span></summary><div className="mobile-panel"><Navigation items={items} /><FightyCTA label="Réserver un essai" /></div></details></div>
   </Container></header>;
@@ -98,8 +99,9 @@ export function ScheduleCard({ day, time, discipline, level = "Tous niveaux", hr
   return <article className="schedule-card reveal"><div className="schedule-card-day"><Icon icon={CalendarCheck} size="sm" /><span>{day}</span></div><div><strong>{discipline}</strong><p>{level}</p></div><a href={href} rel="external" aria-label={`Réserver le cours de ${discipline}, ${day} à ${time}`}><span>{time}</span><Icon icon={ArrowUpRight} size="sm" /></a></article>;
 }
 
-export function TestimonialCard({ quote, name, profile, rating = 5, source = "Google", sourceUrl }: { quote: string; name: string; profile: string; rating?: number; source?: string; sourceUrl?: string }) {
-  return <figure className="review-card reveal"><Icon icon={Quote} size="lg" className="review-mark" /><div className="review-rating" aria-label={`${rating} étoiles`}>{Array.from({ length: rating }, (_, index) => <Icon icon={Star} size="sm" key={index} />)}<span>{source}</span></div><blockquote>“{quote}”</blockquote><figcaption><div><strong>{name}</strong><small>{profile}</small></div>{sourceUrl && <a href={sourceUrl} rel="external" aria-label={`Voir l’avis de ${name}`}><Icon icon={ArrowUpRight} size="sm" /></a>}</figcaption></figure>;
+export function TestimonialCard({ quote, name, profile, rating = 5, source, sourceUrl, verified = false }: { quote: string; name: string; profile: string; rating?: number; source?: string; sourceUrl?: string; verified?: boolean }) {
+  const canVerify = Boolean(verified && sourceUrl);
+  return <figure className="review-card reveal"><Icon icon={Quote} size="lg" className="review-mark" /><div className="review-rating" aria-label={`${rating} étoiles`}>{Array.from({ length: rating }, (_, index) => <Icon icon={Star} size="sm" key={index} />)}{source && <span>{source}</span>}{canVerify && <span className="review-verified"><Check aria-hidden="true" />Vérifié</span>}</div><blockquote>“{quote}”</blockquote><figcaption><div><strong>{name}</strong><small>{profile}</small></div>{sourceUrl && <a href={sourceUrl} rel="external" aria-label={`Voir la source de l’avis de ${name}`}><Icon icon={ArrowUpRight} size="sm" /></a>}</figcaption></figure>;
 }
 
 export function FAQ({ items }: { items: Array<{ question: string; answer: ReactNode }> }) {
@@ -135,5 +137,5 @@ export function FloatingCTA({ label = "Réserver mon essai" }: { label?: string 
 
 export function Footer({ variant = "default" }: { variant?: "default" | "kids" }) {
   const isKids = variant === "kids";
-  return <footer className={`footer ${isKids ? "footer-kids" : ""}`} id="contact"><Container><div className="footer-top"><div><a className="brand" href="/"><strong>STRONGBEAR</strong><span>{isKids ? "KIDS · JIU-JITSU · GRAPPLING" : "BJJ · GRAPPLING · MMA"}</span></a><p>{isKids ? "Un espace sûr pour apprendre, grandir et prendre confiance." : "L’académie d’arts martiaux du Vexin."}</p><span className="footer-location"><Icon icon={MapPin} size="sm" />Marines · Val-d’Oise</span></div><div className="footer-cta"><span>{isKids ? "Prêt pour une première découverte ?" : "Prêt à progresser ?"}</span><FightyCTA label={isKids ? "Réserver l’essai de mon enfant" : "Réserver mon essai"} /></div></div><div className="footer-grid">{isKids ? <><nav aria-label="Programme Kids"><strong>Programme Kids</strong><a href="#benefices">Bénéfices</a><a href="#pedagogie">Pédagogie</a><a href="#ages">Groupes d’âge</a></nav><nav aria-label="Informations parents"><strong>Parents</strong><a href="#planning">Planning</a><a href="#tarifs">Tarifs</a><a href="#faq">Questions fréquentes</a></nav></> : <><nav aria-label="Disciplines"><strong>Disciplines</strong><a href="/jiu-jitsu-bresilien">Jiu-Jitsu Brésilien</a><a href="/grappling">Grappling</a><a href="/mma">MMA</a></nav><nav aria-label="Découvrir"><strong>Découvrir</strong><a href="/kids">Kids</a><a href="/academy">Academy</a><a href="/a-propos">À propos</a><a href="/contact">Contact</a></nav></>}<nav aria-label="Informations"><strong>Informations</strong><a href="/confidentialite">Confidentialité</a><a href="/mentions-legales">Mentions légales</a></nav></div><div className="footer-bottom"><span>© 2026 Strongbear BJJ & Grappling</span><span>{isKids ? "Confiance · Respect · Plaisir" : "Technique · Respect · Progression"}</span></div></Container></footer>;
+  return <footer className={`footer ${isKids ? "footer-kids" : ""}`} id="contact"><Container><div className="footer-top"><div><Link className="brand" href="/"><strong>STRONGBEAR</strong><span>{isKids ? "KIDS · JIU-JITSU · GRAPPLING" : "BJJ · GRAPPLING · MMA"}</span></Link><p>{isKids ? "Un espace sûr pour apprendre, grandir et prendre confiance." : "L’académie d’arts martiaux du Vexin."}</p><span className="footer-location"><Icon icon={MapPin} size="sm" />Marines · Val-d’Oise</span></div><div className="footer-cta"><span>{isKids ? "Prêt pour une première découverte ?" : "Prêt à progresser ?"}</span><FightyCTA label={isKids ? "Réserver l’essai de mon enfant" : "Réserver mon essai"} /></div></div><div className="footer-grid">{isKids ? <><nav aria-label="Programme Kids"><strong>Programme Kids</strong><a href="#benefices">Bénéfices</a><a href="#pedagogie">Pédagogie</a><a href="#ages">Groupes d’âge</a></nav><nav aria-label="Informations parents"><strong>Parents</strong><a href="#planning">Planning</a><a href="#tarifs">Tarifs</a><a href="#faq">Questions fréquentes</a></nav></> : <><nav aria-label="Disciplines"><strong>Disciplines</strong><a href="/jiu-jitsu-bresilien">Jiu-Jitsu Brésilien</a><a href="/grappling">Grappling</a><a href="/mma">MMA</a></nav><nav aria-label="Découvrir"><strong>Découvrir</strong><a href="/kids">Kids</a><a href="/academy">Academy</a><a href="/a-propos">À propos</a><a href="/contact">Contact</a></nav></>}<nav aria-label="Informations"><strong>Informations</strong><a href="/confidentialite">Confidentialité</a><a href="/mentions-legales">Mentions légales</a></nav></div><div className="footer-bottom"><span>© 2026 Strongbear BJJ & Grappling</span><span>{isKids ? "Confiance · Respect · Plaisir" : "Technique · Respect · Progression"}</span></div></Container></footer>;
 }

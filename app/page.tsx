@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { headers } from "next/headers";
-import { AcademyCard, ButtonLink, Container, DisciplineCard, FightyCTA, FloatingCTA, Footer, Header, SectionTitle, TestimonialCard } from "./components";
+import { AcademyCard, ButtonLink, Container, DisciplineCard, FightyCTA, FloatingCTA, Footer, Header, SectionTitle } from "./components";
+import { FightyTrustJourney, TrustIndicators, WhyStrongbear } from "./trust-components";
 
 export async function generateMetadata(): Promise<Metadata> {
   const requestHeaders = await headers();
@@ -39,12 +40,21 @@ export default function Home() {
         </Container>
       </section>
 
+      <TrustIndicators items={[
+        { value: "3", label: "disciplines adultes", detail: "JJB · Grappling · MMA" },
+        { value: "1", label: "abonnement adulte", detail: "Un parcours sans cloison" },
+        { value: "Marines", label: "au cœur du Vexin", detail: "Val-d’Oise" },
+        { value: "0 €", label: "premier essai", detail: "Réservation sur Fighty" },
+      ]} />
+
       <section className="section about-section" id="strongbear">
         <Container className="about-grid">
           <div className="about-visual"><img src="/bjj-class.jpg" alt="Cours technique de jiu-jitsu brésilien chez Strongbear" width="1800" height="1200" loading="lazy" /><span>Marines · Vexin</span><div className="image-caption"><strong>Technique</strong><small>Avant l’intensité</small></div></div>
           <div className="about-copy"><SectionTitle eyebrow="Notre académie" title="L’exigence technique. Sans l’ego." intro="Un enseignement précis, un collectif bienveillant et des repères clairs pour progresser durablement — quel que soit votre point de départ." /><blockquote>“La progression naît d’un cadre exigeant où chacun se sent à sa place.”</blockquote><ul><li>Débutants réellement accompagnés</li><li>Enseignement structuré par niveaux</li><li>Ambiance responsable et soudée</li><li>Objectifs loisir ou compétition</li></ul><FightyCTA label="Rencontrer l’équipe" /></div>
         </Container>
       </section>
+
+      <WhyStrongbear compact />
 
       <section className="section disciplines-section" id="disciplines">
         <Container><div className="section-heading-row"><SectionTitle eyebrow="Les disciplines" title="Un parcours complet." intro="Trois manières de comprendre le combat. Une seule équipe pour vous accompagner." /><span className="section-index">01 — 03</span></div><div className="disciplines-grid">
@@ -58,9 +68,9 @@ export default function Home() {
 
       <section className="schedule-section" id="planning"><Container className="schedule-grid"><div><p className="eyebrow eyebrow-inverse">Planning & accès</p><h2>Entraînez-vous.<br/><span>Sans limites.</span></h2></div><div className="schedule-copy"><p>Un seul abonnement adulte. Un accès illimité au Jiu-Jitsu Brésilien, au Grappling et au MMA.</p><small>Les créneaux à jour et les réservations sont disponibles sur Fighty.</small><FightyCTA label="Voir le planning sur Fighty" /></div></Container></section>
 
-      <section className="section reviews-section"><Container><div className="section-heading-row"><SectionTitle eyebrow="Témoignages" title="Le tatami parle." intro="Une expérience construite séance après séance, par les membres de l’équipe." /></div><div className="reviews-grid"><TestimonialCard quote="On est accompagné dès le premier cours. L’ambiance est sérieuse sans jamais être intimidante." name="Alexandre M." profile="Débutant · JJB" /><TestimonialCard quote="La pédagogie fait vraiment la différence. Chaque séance donne une direction claire pour progresser." name="Sonia L." profile="Grappling · Loisir" /><TestimonialCard quote="Une vraie équipe : exigeante à l’entraînement, bienveillante en dehors." name="Thomas R." profile="MMA · Compétition" /></div></Container></section>
-
       <section className="section academy-section" id="academy"><Container><div className="academy-heading"><SectionTitle eyebrow="Strongbear Academy" title="Comprendre. Puis pratiquer." intro="Des contenus éditoriaux utiles pour les débutants, les parents et les pratiquants curieux." /><ButtonLink href="/academy" variant="text">Explorer l’Academy</ButtonLink></div><div className="academy-grid">{academy.map((article,index)=><AcademyCard key={article.title} index={`0${index+1}`} {...article}/>)}</div></Container></section>
+
+      <FightyTrustJourney />
 
       <section className="final-cta"><Container><p className="eyebrow eyebrow-inverse">Votre premier pas</p><h2>Entrez dans<br/>l’équipe.</h2><p>Votre essai se réserve en quelques instants sur Fighty. Nous nous occupons de votre accueil sur le tatami.</p><FightyCTA label="Réserver mon essai gratuit" /></Container></section>
     </main>
