@@ -1,6 +1,6 @@
+/* eslint-disable @next/next/no-html-link-for-pages */
 import type { Metadata } from "next";
 import { headers } from "next/headers";
-import Link from "next/link";
 import {
   Activity,
   BookOpenCheck,
@@ -92,7 +92,7 @@ export default function KidsPage() {
       <section className="kids-hero-page" aria-labelledby="kids-title">
         <Container className="kids-hero-grid">
           <div className="kids-hero-copy">
-            <nav className="kids-breadcrumb" aria-label="Fil d’Ariane"><Link href="/">Accueil</Link><span aria-hidden="true">/</span><span>Kids</span></nav>
+            <nav className="kids-breadcrumb" aria-label="Fil d’Ariane"><a href="/">Accueil</a><span aria-hidden="true">/</span><span>Kids</span></nav>
             <p className="eyebrow">Strongbear Kids · Marines</p>
             <h1 id="kids-title">Aider les enfants à grandir avec confiance.</h1>
             <p>Le Jiu-Jitsu Brésilien transmet respect, confiance, discipline et coordination dans un environnement sûr, positif et adapté à chaque âge.</p>

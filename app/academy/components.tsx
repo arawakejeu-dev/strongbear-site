@@ -1,4 +1,4 @@
-import Link from "next/link";
+/* eslint-disable @next/next/no-html-link-for-pages */
 import {
   ArrowDown,
   ArrowRight,
@@ -19,11 +19,11 @@ import {
 } from "../data/academy";
 
 export function AcademyBreadcrumb({ items }: { items: Array<{ label: string; href?: string }> }) {
-  return <nav className="academy-breadcrumb" aria-label="Fil d’Ariane"><ol>{items.map((item, index) => <li key={`${item.label}-${index}`}>{item.href ? <Link href={item.href}>{item.label}</Link> : <span aria-current="page">{item.label}</span>}</li>)}</ol></nav>;
+  return <nav className="academy-breadcrumb" aria-label="Fil d’Ariane"><ol>{items.map((item, index) => <li key={`${item.label}-${index}`}>{item.href ? <a href={item.href}>{item.label}</a> : <span aria-current="page">{item.label}</span>}</li>)}</ol></nav>;
 }
 
 export function AcademyCategoryNav({ active }: { active?: string }) {
-  return <nav className="academy-category-nav" aria-label="Catégories de l’Academy"><Container><Link className={!active ? "is-active" : ""} href="/academy">Tous les sujets</Link>{academyCategories.map((category) => <Link className={active === category.slug ? "is-active" : ""} href={`/academy/${category.slug}`} key={category.slug}>{category.shortName}</Link>)}</Container></nav>;
+  return <nav className="academy-category-nav" aria-label="Catégories de l’Academy"><Container><a className={!active ? "is-active" : ""} href="/academy">Tous les sujets</a>{academyCategories.map((category) => <a className={active === category.slug ? "is-active" : ""} href={`/academy/${category.slug}`} key={category.slug}>{category.shortName}</a>)}</Container></nav>;
 }
 
 export function AcademyMasthead() {
@@ -39,12 +39,12 @@ export function AcademyMasthead() {
 
 export function AcademyCategoryCard({ category, articleCount }: { category: AcademyCategory; articleCount: number }) {
   return <article className="academy-category-card reveal">
-    <Link href={`/academy/${category.slug}`} aria-label={`Explorer ${category.name}`}>
+    <a href={`/academy/${category.slug}`} aria-label={`Explorer ${category.name}`}>
       <div className="academy-category-card-top"><span>{category.number}</span><Icon icon={ArrowUpRight} /></div>
       <h2>{category.name}</h2>
       <p>{category.description}</p>
       <div className="academy-category-card-bottom"><span>{articleCount} sujets structurés</span><small>{category.promise}</small></div>
-    </Link>
+    </a>
   </article>;
 }
 
@@ -57,7 +57,7 @@ export function AcademyArticleCard({ article, index, featured = false }: { artic
     <div className="academy-article-card-status">{article.status === "published" ? <><span>Lire le guide</span><Icon icon={ArrowRight} size="sm" /></> : <><span>En préparation</span><Clock3 aria-hidden="true" /></>}</div>
   </>;
 
-  return <article className={`academy-article-card reveal ${featured ? "academy-article-card-featured" : ""} ${article.status === "planned" ? "is-planned" : ""}`}>{article.status === "published" ? <Link href={academyArticleHref(article)}>{content}</Link> : <div>{content}</div>}</article>;
+  return <article className={`academy-article-card reveal ${featured ? "academy-article-card-featured" : ""} ${article.status === "planned" ? "is-planned" : ""}`}>{article.status === "published" ? <a href={academyArticleHref(article)}>{content}</a> : <div>{content}</div>}</article>;
 }
 
 export function AcademyCategoryHero({ category, articleCount }: { category: AcademyCategory; articleCount: number }) {
