@@ -1,0 +1,56 @@
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { Container, FloatingCTA, Footer, Header } from "../../components";
+import { academyCategories, getAcademyArticlesByCategory, getAcademyCategory } from "../../data/academy";
+import { getRequestOrigin } from "../../lib/site";
+import { AcademyArticleCard, AcademyCategoryHero, AcademyCategoryNav, AcademyFightyCTA, AcademyNewsletterCTA } from "../components";
+
+type CategoryPageProps = { params: Promise<{ category: string }> };
+
+export function generateStaticParams() {
+  return academyCategories.map((category) => ({ category: category.slug }));
+}
+
+export async function generateMetadata({ params }: CategoryPageProps): Promise<Metadata> {
+  const { category: slug } = await params;
+  const category = getAcademyCategory(slug);
+  if (!category) return {};
+  const origin = await getRequestOrigin();
+  const url = `${origin}/academy/${category.slug}`;
+  const title = `${category.name} — Strongbear Academy`;
+  return {
+    title,
+    description: category.description,
+    alternates: { canonical: url },
+    openGraph: { title, description: category.promise, url, type: "website", locale: "fr_FR", images: [{ url: `${origin}/og.png`, width: 1536, height: 864, alt: category.name }] },
+    twitter: { card: "summary_large_image", title, description: category.promise, images: [`${origin}/og.png`] },
+  };
+}
+
+export default async function AcademyCategoryPage({ params }: CategoryPageProps) {
+  const { category: slug } = await params;
+  const category = getAcademyCategory(slug);
+  if (!category) notFound();
+  const articles = getAcademyArticlesByCategory(slug);
+  const origin = await getRequestOrigin();
+  const structuredData = [
+    { "@context": "https://schema.org", "@type": "CollectionPage", name: category.name, description: category.description, url: `${origin}/academy/${category.slug}`, isPartOf: { "@type": "CollectionPage", name: "Strongbear Academy", url: `${origin}/academy` } },
+    { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Accueil", item: origin }, { "@type": "ListItem", position: 2, name: "Academy", item: `${origin}/academy` }, { "@type": "ListItem", position: 3, name: category.name, item: `${origin}/academy/${category.slug}` }] },
+  ];
+
+  return <>
+    <Header />
+    <main className="academy-page" id="contenu">
+      <AcademyCategoryHero category={category} articleCount={articles.length} />
+      <AcademyCategoryNav active={category.slug} />
+      <section className="academy-category-list"><Container>
+        <div className="academy-category-list-heading"><p className="eyebrow">Collection {category.number}</p><h2>{category.promise}</h2><p>Les guides marqués « En préparation » définissent la feuille de route. Ils ne deviennent accessibles qu’après rédaction, validation experte et contrôle SEO.</p></div>
+        <div className="academy-articles-grid">{articles.map((article, index) => <AcademyArticleCard article={article} index={index} featured={article.status === "published"} key={article.slug} />)}</div>
+      </Container></section>
+      <section className="academy-conversion-section"><Container><AcademyFightyCTA /><AcademyNewsletterCTA /></Container></section>
+    </main>
+    <FloatingCTA label="Essai gratuit" />
+    <Footer />
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
+  </>;
+}

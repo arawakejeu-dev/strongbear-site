@@ -39,3 +39,46 @@ test("renders the centralized Kids FAQ and keeps MMA out of the offer", async ()
   assert.match(html, /FAQPage/);
   assert.doesNotMatch(html, /Cours de MMA|MMA pour enfants|MMA Kids/i);
 });
+
+test("renders the Academy hub with six editorial collections", async () => {
+  const response = await render("/academy");
+  assert.equal(response.status, 200);
+
+  const html = await response.text();
+  assert.match(html, /Comprendre/);
+  assert.match(html, /Bien débuter/);
+  assert.match(html, /Jiu-Jitsu Brésilien/);
+  assert.match(html, /Enfants &amp; Parents/);
+  assert.match(html, /Vie Strongbear/);
+  assert.match(html, /sujets structurés/);
+});
+
+test("renders a category and the complete SEO article template", async () => {
+  const categoryResponse = await render("/academy/bien-debuter");
+  assert.equal(categoryResponse.status, 200);
+  const categoryHtml = await categoryResponse.text();
+  assert.match(categoryHtml, /Collection évolutive/);
+  assert.match(categoryHtml, /Votre premier cours de JJB/);
+
+  const articleResponse = await render("/academy/bien-debuter/premier-cours-jiu-jitsu-bresilien");
+  assert.equal(articleResponse.status, 200);
+  const articleHtml = await articleResponse.text();
+  assert.match(articleHtml, /Dans ce guide/);
+  assert.match(articleHtml, /Avant de venir/);
+  assert.match(articleHtml, /Questions fréquentes/);
+  assert.match(articleHtml, /La théorie vous prépare/);
+  assert.match(articleHtml, /BreadcrumbList/);
+  assert.match(articleHtml, /FAQPage/);
+  assert.match(articleHtml, /"@type":"Article"/);
+  assert.match(articleHtml, /rel="canonical"/);
+});
+
+test("publishes Academy routes in the sitemap", async () => {
+  const response = await render("/sitemap.xml");
+  assert.equal(response.status, 200);
+  const xml = await response.text();
+  assert.match(xml, /\/academy<\/loc>/);
+  assert.match(xml, /\/academy\/bien-debuter<\/loc>/);
+  assert.match(xml, /premier-cours-jiu-jitsu-bresilien<\/loc>/);
+  assert.doesNotMatch(xml, /equipement-premier-cours<\/loc>/);
+});
