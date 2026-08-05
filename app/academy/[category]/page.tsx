@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { Container, FloatingCTA, Footer, Header } from "../../components";
 import { academyCategories, getAcademyArticlesByCategory, getAcademyCategory } from "../../data/academy";
 import { getRequestOrigin } from "../../lib/site";
+import { buildBreadcrumbSchema } from "../../seo/schema";
 import { AcademyArticleCard, AcademyCategoryHero, AcademyCategoryNav, AcademyFightyCTA, AcademyNewsletterCTA } from "../components";
 
 type CategoryPageProps = { params: Promise<{ category: string }> };
@@ -35,7 +36,7 @@ export default async function AcademyCategoryPage({ params }: CategoryPageProps)
   const origin = await getRequestOrigin();
   const structuredData = [
     { "@context": "https://schema.org", "@type": "CollectionPage", name: category.name, description: category.description, url: `${origin}/academy/${category.slug}`, isPartOf: { "@type": "CollectionPage", name: "Strongbear Academy", url: `${origin}/academy` } },
-    { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Accueil", item: origin }, { "@type": "ListItem", position: 2, name: "Academy", item: `${origin}/academy` }, { "@type": "ListItem", position: 3, name: category.name, item: `${origin}/academy/${category.slug}` }] },
+    buildBreadcrumbSchema([{ name: "Accueil", url: origin }, { name: "Academy", url: `${origin}/academy` }, { name: category.name, url: `${origin}/academy/${category.slug}` }]),
   ];
 
   return <>

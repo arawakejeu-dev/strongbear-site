@@ -18,6 +18,7 @@ import {
 } from "lucide-react";
 import { Container, FightyCTA, Icon, SectionTitle } from "./components";
 import type { Comparison } from "./data/comparisons";
+import { OptimizedImage } from "./seo/optimized-image";
 
 export type TestimonialAudience = "adult" | "parent" | "competitor";
 
@@ -89,7 +90,7 @@ export type CoachCredential = {
 
 export function CoachStory({ name, role, image, alt, story, teachingPhilosophy, whyStrongbear, credentials = [] }: { name: string; role: string; image: string; alt: string; story: string; teachingPhilosophy: string; whyStrongbear: string; credentials?: CoachCredential[] }) {
   return <article className="coach-story reveal">
-    <div className="coach-story-media"><img src={image} alt={alt} width="1400" height="1750" loading="lazy" /></div>
+    <div className="coach-story-media"><OptimizedImage source={image} alt={alt} sizes="(min-width: 64rem) 45vw, 100vw" width={1400} height={1750} /></div>
     <div className="coach-story-copy">
       <p className="eyebrow">Transmission</p>
       <h2>{name}</h2>

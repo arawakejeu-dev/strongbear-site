@@ -25,8 +25,13 @@ test("renders the trust-ready home without unsupported reviews", async () => {
   assert.match(html, /Quatre étapes/);
   assert.match(html, /Réservation externe sécurisée sur Fighty/);
   assert.match(html, /disciplines adultes/);
+  assert.match(html, /SportsActivityLocation/);
+  assert.match(html, /LocalBusiness/);
+  assert.match(html, /srcset="[^"]+\.webp 640w/i);
+  assert.match(html, /data-caption=/);
   assert.doesNotMatch(html, /Alexandre M\.|Sonia L\.|Thomas R\./);
   assert.doesNotMatch(html, /Avis vérifié/);
+  assert.doesNotMatch(html, /"@type":"Review"|"@type":"Event"|"@type":"VideoObject"/);
 });
 
 test("renders the centralized Kids FAQ and keeps MMA out of the offer", async () => {
@@ -37,6 +42,8 @@ test("renders the centralized Kids FAQ and keeps MMA out of the offer", async ()
   assert.match(html, /Mon enfant peut-il commencer sans aucune expérience/);
   assert.match(html, /Les filles peuvent-elles pratiquer/);
   assert.match(html, /FAQPage/);
+  assert.match(html, /data-image-authenticity="provisional-generated"/);
+  assert.match(html, /property="og:image" content="https?:\/\/[^\"]+\/og.png"/);
   assert.doesNotMatch(html, /Cours de MMA|MMA pour enfants|MMA Kids/i);
 });
 
@@ -70,6 +77,8 @@ test("renders a category and the complete SEO article template", async () => {
   assert.match(articleHtml, /BreadcrumbList/);
   assert.match(articleHtml, /FAQPage/);
   assert.match(articleHtml, /"@type":"Article"/);
+  assert.doesNotMatch(articleHtml, /"@type":"Article"[^<]+"image":/);
+  assert.match(articleHtml, /property="og:image" content="https?:\/\/[^\"]+\/og.png"/);
   assert.match(articleHtml, /rel="canonical"/);
 });
 

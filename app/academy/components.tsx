@@ -10,6 +10,7 @@ import {
   ShieldCheck,
 } from "lucide-react";
 import { ButtonLink, Container, FAQ, FightyCTA, Icon } from "../components";
+import { OptimizedImage } from "../seo/optimized-image";
 import {
   academyArticleHref,
   academyCategories,
@@ -50,7 +51,7 @@ export function AcademyCategoryCard({ category, articleCount }: { category: Acad
 
 export function AcademyArticleCard({ article, index, featured = false }: { article: AcademyArticle; index: number; featured?: boolean }) {
   const content = <>
-    {article.image && featured && <div className="academy-article-card-media"><img src={article.image} alt={article.imageAlt ?? ""} width="1600" height="1067" loading="lazy" /></div>}
+    {article.image && featured && <div className="academy-article-card-media"><OptimizedImage source={article.image} alt={article.imageAlt} sizes="(min-width: 64rem) 66vw, 100vw" width={1600} height={1067} /></div>}
     <div className="academy-article-card-meta"><span>{String(index + 1).padStart(2, "0")}</span><span><Icon icon={Clock3} size="sm" />{article.readingTime}</span></div>
     <h3>{article.cardTitle}</h3>
     <p>{article.description}</p>
@@ -71,7 +72,7 @@ export function ArticleHero({ article, category }: { article: AcademyArticle; ca
   return <header className="academy-article-hero"><Container>
     <AcademyBreadcrumb items={[{ label: "Accueil", href: "/" }, { label: "Academy", href: "/academy" }, { label: category.name, href: `/academy/${category.slug}` }, { label: article.cardTitle }]} />
     <div className="academy-article-hero-copy"><p className="eyebrow">{category.name} · Guide</p><h1>{article.title}</h1><p>{article.description}</p><div className="academy-article-byline"><span><Icon icon={Clock3} size="sm" />{article.readingTime} de lecture</span>{article.updatedAt && <span>Mis à jour le <time dateTime={article.updatedAt}>{new Intl.DateTimeFormat("fr-FR", { day: "numeric", month: "long", year: "numeric" }).format(new Date(`${article.updatedAt}T12:00:00Z`))}</time></span>}<span>Par l’équipe pédagogique Strongbear</span></div></div>
-    {article.image && <div className="academy-article-hero-media"><img src={article.image} alt={article.imageAlt ?? ""} width="2000" height="1333" fetchPriority="high" /><span>Technique · Progression · Respect</span></div>}
+    {article.image && <div className="academy-article-hero-media"><OptimizedImage source={article.image} alt={article.imageAlt} loading="eager" fetchPriority="high" sizes="100vw" width={2000} height={1333} /><span>Technique · Progression · Respect</span></div>}
   </Container></header>;
 }
 

@@ -1,6 +1,5 @@
 /* eslint-disable @next/next/no-html-link-for-pages */
 import type { Metadata } from "next";
-import { headers } from "next/headers";
 import {
   Activity,
   BookOpenCheck,
@@ -21,15 +20,15 @@ import {
 } from "lucide-react";
 import { ButtonLink, Container, FAQ, FightyCTA, FightyJourney, FloatingCTA, Footer, Header, Icon, PricingCard, ScheduleCard, SectionTitle } from "../components";
 import { kidsFAQ } from "../data/faqs";
+import { getRequestOrigin } from "../lib/site";
+import { OptimizedImage } from "../seo/optimized-image";
+import { buildBreadcrumbSchema, buildFaqSchema } from "../seo/schema";
 import "./kids.css";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const requestHeaders = await headers();
-  const host = requestHeaders.get("x-forwarded-host") ?? requestHeaders.get("host") ?? "localhost:3000";
-  const protocol = requestHeaders.get("x-forwarded-proto") ?? (host.startsWith("localhost") ? "http" : "https");
-  const origin = `${protocol}://${host}`;
+  const origin = await getRequestOrigin();
   const url = `${origin}/kids`;
-  const image = `${origin}/kids-hero.webp`;
+  const image = `${origin}/og.png`;
   return {
     title: "Arts martiaux enfants à Marines | Strongbear Kids",
     description: "Jiu-Jitsu Brésilien et Grappling pour enfants à Marines, dans le Vexin. Confiance, respect, coordination et progression dans un cadre sûr. Essai gratuit.",
@@ -78,13 +77,13 @@ const kidsFightySteps = [
   { icon: HeartHandshake, title: "Rejoignez", copy: "Échangez avec l’équipe avant de choisir la suite sur Fighty." },
 ];
 
-export default function KidsPage() {
-  const faqSchema = kidsFAQ.map((item) => ({ "@type": "Question", name: item.question, acceptedAnswer: { "@type": "Answer", text: item.answer } }));
+export default async function KidsPage() {
+  const origin = await getRequestOrigin();
   const structuredData = [
-    { "@context": "https://schema.org", "@type": "Service", name: "Strongbear Kids — Jiu-Jitsu et Grappling enfants", serviceType: "Cours d’arts martiaux pour enfants", areaServed: { "@type": "AdministrativeArea", name: "Vexin, Val-d’Oise" }, provider: { "@type": "SportsActivityLocation", name: "Strongbear BJJ & Grappling", address: { "@type": "PostalAddress", addressLocality: "Marines", addressRegion: "Val-d’Oise", addressCountry: "FR" } }, audience: { "@type": "PeopleAudience", suggestedMinAge: 4, suggestedMaxAge: 14 } },
-    { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faqSchema },
-    { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Accueil", item: "/" }, { "@type": "ListItem", position: 2, name: "Kids", item: "/kids" }] },
-  ];
+    { "@context": "https://schema.org", "@type": "Service", name: "Strongbear Kids — Jiu-Jitsu et Grappling enfants", serviceType: "Cours d’arts martiaux pour enfants", areaServed: { "@type": "AdministrativeArea", name: "Vexin, Val-d’Oise" }, provider: { "@id": `${origin}/#academy` }, audience: { "@type": "PeopleAudience", suggestedMinAge: 4, suggestedMaxAge: 14 } },
+    buildFaqSchema(kidsFAQ),
+    buildBreadcrumbSchema([{ name: "Accueil", url: origin }, { name: "Kids", url: `${origin}/kids` }]),
+  ].filter(Boolean);
 
   return <>
     <Header variant="kids" />
@@ -99,7 +98,7 @@ export default function KidsPage() {
             <div className="kids-hero-actions"><FightyCTA label="Réserver un essai gratuit" /><ButtonLink href="#pedagogie" variant="text">Découvrir notre pédagogie</ButtonLink></div>
             <div className="kids-trust-line"><span><Icon icon={ShieldCheck} size="sm" />Cadre sécurisé</span><span><Icon icon={HeartHandshake} size="sm" />Encouragement positif</span></div>
           </div>
-          <div className="kids-hero-media"><img src="/kids-hero.webp" alt="Un coach accompagne avec le sourire des enfants pendant un exercice de Jiu-Jitsu" width="1536" height="1024" fetchPriority="high" /><div className="kids-photo-note"><strong>Apprendre.</strong><span>À son rythme.</span></div></div>
+          <div className="kids-hero-media"><OptimizedImage source="/kids-hero.webp" alt="Illustration provisoire d’un coach accompagnant un groupe d’enfants" loading="eager" fetchPriority="high" sizes="(min-width: 64rem) 50vw, 100vw" /><div className="kids-photo-note"><strong>Apprendre.</strong><span>À son rythme.</span></div></div>
         </Container>
       </section>
 

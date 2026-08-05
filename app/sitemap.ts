@@ -1,8 +1,10 @@
 import type { MetadataRoute } from "next";
 import { academyArticleHref, academyCategories, publishedAcademyArticles } from "./data/academy";
 import { productionSiteUrl } from "./lib/site";
+import { assertSeoAuthoritySystem } from "./seo/validate";
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  assertSeoAuthoritySystem();
   const now = new Date();
   return [
     { url: productionSiteUrl, lastModified: now, changeFrequency: "weekly", priority: 1 },

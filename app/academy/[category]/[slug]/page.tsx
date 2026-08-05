@@ -4,6 +4,8 @@ import { ArrowRight, BookOpenCheck, CircleHelp, Swords } from "lucide-react";
 import { Container, FloatingCTA, Footer, Header, Icon } from "../../../components";
 import { academyArticleHref, getAcademyArticle, getAcademyArticleBySlug, getAcademyCategory, publishedAcademyArticles } from "../../../data/academy";
 import { getRequestOrigin } from "../../../lib/site";
+import { getImageSeoRecord } from "../../../seo/images";
+import { buildArticleSchema, buildBreadcrumbSchema, buildFaqSchema, buildImageObject } from "../../../seo/schema";
 import { AcademyCategoryNav, AcademyFightyCTA, AcademyNewsletterCTA, ArticleAuthorityLinks, ArticleBody, ArticleFAQ, ArticleHero, ArticleTableOfContents, RelatedArticles } from "../../components";
 
 type ArticlePageProps = { params: Promise<{ category: string; slug: string }> };
@@ -18,7 +20,8 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
   if (!article) return {};
   const origin = await getRequestOrigin();
   const url = `${origin}${academyArticleHref(article)}`;
-  const image = article.image ? `${origin}${article.image}` : `${origin}/og.png`;
+  const imageRecord = article.image ? getImageSeoRecord(article.image) : undefined;
+  const image = imageRecord?.structuredDataEligible ? `${origin}${imageRecord.source}` : `${origin}/og.png`;
   return {
     title: article.title,
     description: article.metaDescription,
@@ -33,15 +36,17 @@ export default async function AcademyArticlePage({ params }: ArticlePageProps) {
   const { category: categorySlug, slug } = await params;
   const article = getAcademyArticle(categorySlug, slug);
   const category = getAcademyCategory(categorySlug);
-  if (!article || !category || !article.sections || !article.faq) notFound();
+  if (!article || !category || !article.sections || !article.faq || !article.publishedAt || !article.updatedAt) notFound();
   const origin = await getRequestOrigin();
   const url = `${origin}${academyArticleHref(article)}`;
   const related = (article.related ?? []).map(getAcademyArticleBySlug).filter((item): item is NonNullable<typeof item> => Boolean(item));
+  const imageRecord = article.image ? getImageSeoRecord(article.image) : undefined;
+  const imageObject = imageRecord ? buildImageObject(origin, imageRecord) : null;
   const schemas = [
-    { "@context": "https://schema.org", "@type": "Article", headline: article.title, description: article.metaDescription, image: article.image ? [`${origin}${article.image}`] : undefined, datePublished: article.publishedAt, dateModified: article.updatedAt, author: { "@type": "Organization", name: "Strongbear BJJ & Grappling", url: origin }, publisher: { "@type": "Organization", name: "Strongbear BJJ & Grappling", url: origin }, mainEntityOfPage: { "@type": "WebPage", "@id": url }, articleSection: category.name, keywords: article.keywords.join(", "), inLanguage: "fr-FR" },
-    { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: article.faq.map((item) => ({ "@type": "Question", name: item.question, acceptedAnswer: { "@type": "Answer", text: item.answer } })) },
-    { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Accueil", item: origin }, { "@type": "ListItem", position: 2, name: "Academy", item: `${origin}/academy` }, { "@type": "ListItem", position: 3, name: category.name, item: `${origin}/academy/${category.slug}` }, { "@type": "ListItem", position: 4, name: article.cardTitle, item: url }] },
-  ];
+    buildArticleSchema({ origin, url, title: article.title, description: article.metaDescription, publishedAt: article.publishedAt, updatedAt: article.updatedAt, section: category.name, keywords: article.keywords, image: imageObject }),
+    buildFaqSchema(article.faq),
+    buildBreadcrumbSchema([{ name: "Accueil", url: origin }, { name: "Academy", url: `${origin}/academy` }, { name: category.name, url: `${origin}/academy/${category.slug}` }, { name: article.cardTitle, url }]),
+  ].filter(Boolean);
 
   return <>
     <Header />
