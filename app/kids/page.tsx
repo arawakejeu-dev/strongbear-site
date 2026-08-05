@@ -1,0 +1,139 @@
+import type { Metadata } from "next";
+import { headers } from "next/headers";
+import {
+  Activity,
+  BookOpenCheck,
+  Brain,
+  CalendarCheck,
+  CheckCircle2,
+  DoorOpen,
+  Eye,
+  Gamepad2,
+  HandHeart,
+  HeartHandshake,
+  Repeat2,
+  ShieldCheck,
+  Smile,
+  Sparkles,
+  Target,
+  UsersRound,
+} from "lucide-react";
+import { ButtonLink, Container, FAQ, FightyCTA, FightyJourney, FloatingCTA, Footer, Header, Icon, PricingCard, ScheduleCard, SectionTitle } from "../components";
+import "./kids.css";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const requestHeaders = await headers();
+  const host = requestHeaders.get("x-forwarded-host") ?? requestHeaders.get("host") ?? "localhost:3000";
+  const protocol = requestHeaders.get("x-forwarded-proto") ?? (host.startsWith("localhost") ? "http" : "https");
+  const origin = `${protocol}://${host}`;
+  const url = `${origin}/kids`;
+  const image = `${origin}/kids-hero.webp`;
+  return {
+    title: "Arts martiaux enfants à Marines | Strongbear Kids",
+    description: "Jiu-Jitsu Brésilien et Grappling pour enfants à Marines, dans le Vexin. Confiance, respect, coordination et progression dans un cadre sûr. Essai gratuit.",
+    keywords: ["Kids martial arts Marines", "Brazilian Jiu-Jitsu kids Marines", "arts martiaux enfants Marines", "arts martiaux pour enfants Vexin", "JJB enfants Val-d'Oise"],
+    alternates: { canonical: url },
+    openGraph: { title: "Strongbear Kids — Grandir avec confiance", description: "Jiu-Jitsu et Grappling adaptés aux enfants à Marines. Un cadre sûr, positif et progressif.", url, type: "website", locale: "fr_FR", images: [{ url: image, width: 1536, height: 1024, alt: "Un coach accompagne des enfants pendant un cours de Jiu-Jitsu" }] },
+    twitter: { card: "summary_large_image", title: "Strongbear Kids — Grandir avec confiance", description: "Jiu-Jitsu et Grappling adaptés aux enfants à Marines.", images: [image] },
+  };
+}
+
+const childBenefits = [
+  { icon: Sparkles, title: "Confiance", copy: "Oser essayer, progresser et être fier de ses efforts." },
+  { icon: HandHeart, title: "Respect", copy: "Écouter, coopérer et prendre soin de ses partenaires." },
+  { icon: Target, title: "Discipline", copy: "Apprendre à se concentrer et à suivre des repères simples." },
+  { icon: Activity, title: "Coordination", copy: "Développer équilibre, mobilité et conscience du corps." },
+  { icon: UsersRound, title: "Amitié", copy: "Trouver sa place dans un groupe encourageant et inclusif." },
+  { icon: Brain, title: "Maîtrise de soi", copy: "Canaliser son énergie et réagir avec davantage de calme." },
+];
+
+const parentBenefits = [
+  { icon: ShieldCheck, title: "Un cadre sécurisé", copy: "Des règles claires, des exercices adaptés et une attention constante portée au bien-être de chaque enfant." },
+  { icon: BookOpenCheck, title: "Une progression lisible", copy: "Votre enfant construit des bases techniques étape par étape, sans pression ni comparaison inutile." },
+  { icon: HeartHandshake, title: "Un dialogue avec les parents", copy: "L’équipe reste disponible pour comprendre les besoins de votre enfant et accompagner son intégration." },
+];
+
+const classSteps = [
+  { icon: HandHeart, title: "Accueil", copy: "Le coach accueille chaque enfant et rappelle le cadre de la séance." },
+  { icon: Smile, title: "Jeux", copy: "Des jeux simples créent du lien et donnent envie de bouger." },
+  { icon: Activity, title: "Échauffement", copy: "Mobilité, équilibre et coordination préparent le corps en douceur." },
+  { icon: BookOpenCheck, title: "Technique", copy: "Une notion de Jiu-Jitsu est expliquée avec des mots adaptés." },
+  { icon: Repeat2, title: "Exercices", copy: "Les enfants répètent à deux, toujours sous la supervision du coach." },
+  { icon: Gamepad2, title: "Défis ludiques", copy: "De petits challenges permettent d’appliquer sans intimidation." },
+  { icon: CheckCircle2, title: "Retour au calme", copy: "La séance se termine par un bilan positif et un rituel collectif." },
+];
+
+const ageGroups = [
+  { age: "4–6 ans", label: "Éveil", copy: "Bouger, écouter et découvrir le contact à travers des jeux courts, rassurants et très encadrés.", focus: ["Motricité", "Repères", "Plaisir"] },
+  { age: "7–10 ans", label: "Fondamentaux", copy: "Construire les premières bases du Jiu-Jitsu, apprendre à coopérer et gagner en autonomie.", focus: ["Coordination", "Technique", "Confiance"] },
+  { age: "11–14 ans", label: "Progression", copy: "Approfondir les fondamentaux, mieux comprendre les situations et progresser avec responsabilité.", focus: ["Maîtrise", "Stratégie", "Collectif"] },
+];
+
+const faqItems = [
+  { question: "Mon enfant peut-il commencer sans aucune expérience ?", answer: "Oui. Le programme est conçu pour accueillir les débutants. Le coach explique les règles, les positions et les exercices progressivement." },
+  { question: "Quel équipement faut-il pour le premier cours ?", answer: "Une tenue de sport confortable et une gourde suffisent pour l’essai. L’équipe vous indiquera ensuite l’équipement adapté au groupe de votre enfant." },
+  { question: "Les enfants timides peuvent-ils participer ?", answer: "Oui. Ils peuvent d’abord observer, avancer à leur rythme et être associés à un partenaire rassurant. La participation n’est jamais forcée." },
+  { question: "Les filles peuvent-elles pratiquer ?", answer: "Bien sûr. Le programme accueille les filles et les garçons dans le même cadre de respect, de progression et de sécurité." },
+  { question: "Combien de fois par semaine faut-il venir ?", answer: "La régularité compte davantage que la fréquence. Un cours hebdomadaire permet déjà de construire de bons repères ; Fighty présente les créneaux disponibles." },
+  { question: "Comment la sécurité est-elle assurée ?", answer: "Les exercices sont adaptés à l’âge, les contacts sont contrôlés et le coach supervise les binômes. Aucune intimidation ni recherche de puissance n’est encouragée." },
+  { question: "Comment choisissez-vous les groupes d’âge ?", answer: "L’âge sert de premier repère. Le coach tient aussi compte de la maturité, de l’aisance et des besoins de chaque enfant." },
+  { question: "Puis-je assister au premier cours ?", answer: "Les modalités d’observation dépendent de l’organisation du créneau. Indiquez votre besoin lors de la réservation afin que l’équipe prépare le meilleur accueil." },
+  { question: "La compétition est-elle obligatoire ?", answer: "Non. La priorité est l’apprentissage, la confiance et le plaisir de progresser. La compétition reste une possibilité, jamais une obligation." },
+  { question: "Comment réserver et inscrire mon enfant ?", answer: "Le site informe uniquement. L’essai, les disponibilités et toute inscription sont gérés sur Fighty. Strongbear accueille ensuite votre enfant au club." },
+];
+
+const kidsFightySteps = [
+  { icon: CalendarCheck, title: "Réservez", copy: "Choisissez le créneau d’essai adapté sur Fighty." },
+  { icon: DoorOpen, title: "Venez", copy: "Arrivez quelques minutes avant le cours avec une tenue confortable." },
+  { icon: Eye, title: "Découvrez", copy: "Votre enfant participe à une séance encadrée, sans pression." },
+  { icon: HeartHandshake, title: "Rejoignez", copy: "Échangez avec l’équipe avant de choisir la suite sur Fighty." },
+];
+
+export default function KidsPage() {
+  const faqSchema = faqItems.map((item) => ({ "@type": "Question", name: item.question, acceptedAnswer: { "@type": "Answer", text: item.answer } }));
+  const structuredData = [
+    { "@context": "https://schema.org", "@type": "Service", name: "Strongbear Kids — Jiu-Jitsu et Grappling enfants", serviceType: "Cours d’arts martiaux pour enfants", areaServed: { "@type": "AdministrativeArea", name: "Vexin, Val-d’Oise" }, provider: { "@type": "SportsActivityLocation", name: "Strongbear BJJ & Grappling", address: { "@type": "PostalAddress", addressLocality: "Marines", addressRegion: "Val-d’Oise", addressCountry: "FR" } }, audience: { "@type": "PeopleAudience", suggestedMinAge: 4, suggestedMaxAge: 14 } },
+    { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faqSchema },
+    { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Accueil", item: "/" }, { "@type": "ListItem", position: 2, name: "Kids", item: "/kids" }] },
+  ];
+
+  return <>
+    <Header variant="kids" />
+    <main className="kids-page" id="contenu">
+      <section className="kids-hero-page" aria-labelledby="kids-title">
+        <Container className="kids-hero-grid">
+          <div className="kids-hero-copy">
+            <nav className="kids-breadcrumb" aria-label="Fil d’Ariane"><a href="/">Accueil</a><span aria-hidden="true">/</span><span>Kids</span></nav>
+            <p className="eyebrow">Strongbear Kids · Marines</p>
+            <h1 id="kids-title">Aider les enfants à grandir avec confiance.</h1>
+            <p>Le Jiu-Jitsu Brésilien transmet respect, confiance, discipline et coordination dans un environnement sûr, positif et adapté à chaque âge.</p>
+            <div className="kids-hero-actions"><FightyCTA label="Réserver un essai gratuit" /><ButtonLink href="#pedagogie" variant="text">Découvrir notre pédagogie</ButtonLink></div>
+            <div className="kids-trust-line"><span><Icon icon={ShieldCheck} size="sm" />Cadre sécurisé</span><span><Icon icon={HeartHandshake} size="sm" />Encouragement positif</span></div>
+          </div>
+          <div className="kids-hero-media"><img src="/kids-hero.webp" alt="Un coach accompagne avec le sourire des enfants pendant un exercice de Jiu-Jitsu" width="1536" height="1024" fetchPriority="high" /><div className="kids-photo-note"><strong>Apprendre.</strong><span>À son rythme.</span></div></div>
+        </Container>
+      </section>
+
+      <section className="kids-page-section kids-benefits" id="benefices"><Container><SectionTitle inverse={false} eyebrow="Pour votre enfant" title="Des qualités qui grandissent avec lui." intro="Sur le tatami, chaque exercice devient une occasion d’apprendre à bouger, écouter, coopérer et persévérer." /><div className="kids-benefit-grid">{childBenefits.map((benefit, index) => <article className="kids-benefit-card reveal" key={benefit.title}><div><span>0{index + 1}</span><Icon icon={benefit.icon} /></div><h3>{benefit.title}</h3><p>{benefit.copy}</p></article>)}</div></Container></section>
+
+      <section className="kids-parent-section"><Container className="kids-parent-grid"><div><p className="eyebrow eyebrow-inverse">Pour les parents</p><h2>Vous confiez plus qu’un emploi du temps.</h2><p>Vous devez savoir où votre enfant va, comment il est accompagné et ce que l’on attend de lui. Notre rôle est de rendre ce cadre clair dès le premier échange.</p></div><div className="kids-parent-points">{parentBenefits.map((benefit) => <article key={benefit.title}><Icon icon={benefit.icon} /><div><h3>{benefit.title}</h3><p>{benefit.copy}</p></div></article>)}</div></Container></section>
+
+      <section className="kids-page-section kids-philosophy" id="pedagogie"><Container className="kids-philosophy-grid"><div className="kids-philosophy-heading"><SectionTitle inverse={false} eyebrow="Notre pédagogie" title="Apprendre sérieusement. Sans se prendre trop au sérieux." intro="Le jeu ouvre la porte. La technique donne des repères. L’encouragement donne envie de continuer." /></div><div className="kids-philosophy-principles"><article><span>01</span><h3>Apprendre par le jeu</h3><p>Des situations ludiques rendent les mouvements compréhensibles et mémorables.</p></article><article><span>02</span><h3>Encourager les efforts</h3><p>Nous valorisons l’écoute, la persévérance et les petites victoires du quotidien.</p></article><article><span>03</span><h3>Progresser techniquement</h3><p>Chaque groupe suit un parcours adapté, avec des objectifs simples et progressifs.</p></article><article><span>04</span><h3>Protéger le cadre</h3><p>Pas d’intimidation. Les règles de sécurité et de respect ne sont jamais négociables.</p></article></div></Container></section>
+
+      <section className="kids-page-section kids-class-flow"><Container><SectionTitle inverse={false} eyebrow="Une séance Kids" title="Des repères du début à la fin." intro="Un cours suit un rythme prévisible. Cette structure aide les enfants à se sentir en confiance et disponibles pour apprendre." /><ol className="kids-timeline">{classSteps.map((step, index) => <li className="reveal" key={step.title}><span>0{index + 1}</span><Icon icon={step.icon} /><div><h3>{step.title}</h3><p>{step.copy}</p></div></li>)}</ol></Container></section>
+
+      <section className="kids-page-section kids-ages" id="ages"><Container><SectionTitle inverse={false} eyebrow="Groupes d’âge" title="Grandir avec les bons objectifs." intro="Les contenus évoluent avec la motricité, la concentration et l’autonomie. L’équipe vous aide à choisir le groupe le plus adapté." /><div className="kids-age-grid">{ageGroups.map((group, index) => <article className="kids-age-card reveal" key={group.age}><div className="kids-age-number"><span>0{index + 1}</span><small>{group.label}</small></div><h3>{group.age}</h3><p>{group.copy}</p><ul>{group.focus.map((item) => <li key={item}><CheckCircle2 aria-hidden="true" />{item}</li>)}</ul></article>)}</div></Container></section>
+
+      <section className="kids-page-section kids-schedule" id="planning"><Container className="kids-schedule-layout"><SectionTitle inverse={false} eyebrow="Planning" title="Un rythme adapté à chaque âge." intro="Les créneaux exacts et les places disponibles sont mis à jour directement sur Fighty." /><div className="kids-schedule-list"><ScheduleCard day="Groupe Kids" time="Voir les créneaux" discipline="4–6 ans · Éveil" level="Découverte, jeux et motricité" /><ScheduleCard day="Groupe Kids" time="Voir les créneaux" discipline="7–10 ans · Fondamentaux" level="Coordination et premières techniques" /><ScheduleCard day="Groupe Kids" time="Voir les créneaux" discipline="11–14 ans · Progression" level="Technique, autonomie et collectif" /></div></Container></section>
+
+      <section className="kids-page-section kids-pricing" id="tarifs"><Container><SectionTitle inverse={false} eyebrow="Tarifs" title="Commencer sans pression." intro="L’offre Kids est indépendante de l’abonnement adulte. Le premier cours est offert ; les conditions à jour sont présentées sur Fighty." /><div className="kids-pricing-grid"><PricingCard name="Cours d’essai" price="0 €" period="sans engagement" description="Une vraie séance pour permettre à votre enfant de découvrir le groupe et la pédagogie." features={["Cours adapté à son âge", "Accueil par l’équipe", "Échange avec le parent", "Aucune expérience requise"]} featured ctaLabel="Réserver l’essai gratuit" /><PricingCard name="Adhésion Kids" price="Kids" period="offre dédiée" description="Une formule séparée, pensée uniquement pour le programme enfants et sa progression." features={["Parcours adapté par âge", "Encadrement technique", "Progression régulière", "Modalités à jour sur Fighty"]} ctaLabel="Voir l’offre Kids sur Fighty" /></div></Container></section>
+
+      <section className="kids-page-section kids-faq" id="faq"><Container className="kids-faq-layout"><SectionTitle inverse={false} eyebrow="Questions fréquentes" title="Tout ce qu’un parent veut savoir." intro="Si une question concerne spécifiquement votre enfant, indiquez-la lors de la réservation : l’équipe vous répondra avant la séance." /><FAQ items={faqItems} /></Container></section>
+
+      <section className="kids-fighty"><Container><FightyJourney title="Son premier cours. Simplement." ctaLabel="Réserver l’essai de mon enfant" steps={kidsFightySteps} /></Container></section>
+    </main>
+    <FloatingCTA label="Essai Kids" />
+    <Footer variant="kids" />
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
+  </>;
+}
