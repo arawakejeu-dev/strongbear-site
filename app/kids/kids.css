@@ -26,19 +26,19 @@
 .kids-page .eyebrow-inverse{color:#b7d2ce}
 .kids-page .section-title h2{color:var(--kids-ink);font-size:clamp(2.8rem,5.5vw,5.4rem);line-height:.95}
 .kids-page .section-intro{color:var(--kids-muted)}
-.kids-page-section{padding-block:clamp(5.5rem,10vw,9rem)}
+.kids-page-section{padding-block:clamp(4.75rem,8.5vw,7.5rem)}
 
-.kids-hero-page{padding:clamp(7.25rem,11vw,9rem) 0 clamp(3.5rem,7vw,6rem);background:var(--kids-cream);min-height:100svh;display:flex;align-items:center}
+.kids-hero-page{padding:clamp(7.25rem,11vw,9rem) 0 clamp(3rem,5vw,4.5rem);background:var(--kids-cream);min-height:100svh;display:flex;align-items:center}
 .kids-hero-grid{display:grid;gap:clamp(2.5rem,6vw,6rem);align-items:center}
 .kids-hero-copy{padding-top:1rem}
-.kids-breadcrumb{display:flex;align-items:center;gap:.55rem;margin-bottom:clamp(2.5rem,5vw,5rem);color:#7e8985;font-size:.68rem;text-transform:uppercase;letter-spacing:.13em}
+.kids-breadcrumb{display:flex;align-items:center;gap:.55rem;margin-bottom:clamp(2rem,3.5vw,3.5rem);color:#7e8985;font-size:.68rem;text-transform:uppercase;letter-spacing:.13em}
 .kids-breadcrumb a:hover{color:var(--kids-ink)}
 .kids-hero-copy h1{max-width:10ch;margin:0;font-family:var(--display);font-size:clamp(3.75rem,7vw,7.25rem);font-weight:800;line-height:.9;letter-spacing:0;text-transform:uppercase}
 .kids-hero-copy>p:not(.eyebrow){max-width:38rem;margin:2rem 0;color:var(--kids-muted);font-size:clamp(1rem,1.7vw,1.18rem);line-height:1.7}
 .kids-hero-actions{display:flex;align-items:center;flex-wrap:wrap;gap:1.25rem}
 .kids-hero-actions .button-primary{background:var(--kids-ink);color:var(--kids-paper)}
 .kids-hero-actions .text-link{font-size:.78rem}
-.kids-trust-line{display:flex;flex-wrap:wrap;gap:1.5rem;margin-top:2.5rem;padding-top:1.25rem;border-top:1px solid var(--kids-line);color:var(--kids-muted);font-size:.72rem}
+.kids-trust-line{display:flex;flex-wrap:wrap;gap:1.5rem;margin-top:2rem;padding-top:1.25rem;border-top:1px solid var(--kids-line);color:var(--kids-muted);font-size:.72rem}
 .kids-trust-line span{display:flex;align-items:center;gap:.45rem}
 .kids-hero-media{position:relative;min-height:30rem;overflow:hidden;border-radius:.65rem;background:var(--kids-blue)}
 .kids-hero-media:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgb(12 42 39/.26),transparent 46%)}
@@ -48,17 +48,17 @@
 .kids-photo-note span{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase}
 
 .kids-benefits{background:var(--kids-paper)}
-.kids-benefits .section-title{margin-bottom:clamp(3rem,6vw,5.5rem)}
+.kids-benefits .section-title{margin-bottom:clamp(2.5rem,5vw,4.5rem)}
 .kids-benefit-grid{display:grid;gap:1rem}
-.kids-benefit-card{min-height:16rem;padding:1.5rem;background:white;border:1px solid var(--kids-line);border-radius:.45rem;transition:transform var(--duration-base) var(--ease),box-shadow var(--duration-base) var(--ease),border-color var(--duration-fast) var(--ease)}
+.kids-benefit-card{min-height:14rem;padding:1.5rem;background:white;border:1px solid var(--kids-line);border-radius:.45rem;transition:transform var(--duration-base) var(--ease),box-shadow var(--duration-base) var(--ease),border-color var(--duration-fast) var(--ease)}
 .kids-benefit-card:hover{transform:translateY(-4px);border-color:rgb(23 51 49/.28);box-shadow:0 24px 55px rgb(27 60 57/.08)}
 .kids-benefit-card>div{display:flex;align-items:center;justify-content:space-between;color:var(--kids-gold)}
 .kids-benefit-card>div>span{font-family:var(--display);font-size:.65rem;letter-spacing:.12em}
-.kids-benefit-card h3{margin:3.5rem 0 .7rem;font-family:var(--display);font-size:1.65rem;text-transform:uppercase}
+.kids-benefit-card h3{margin:2.5rem 0 .7rem;font-family:var(--display);font-size:1.65rem;text-transform:uppercase}
 .kids-benefit-card p{margin:0;color:var(--kids-muted);font-size:.87rem;line-height:1.65}
 
-.kids-parent-section{padding-block:clamp(5.5rem,10vw,9rem);background:var(--kids-green-deep);color:white}
-.kids-parent-grid{display:grid;gap:clamp(3.5rem,8vw,8rem)}
+.kids-parent-section{padding-block:clamp(4.75rem,8.5vw,7.5rem);background:var(--kids-green-deep);color:white}
+.kids-parent-grid{display:grid;gap:clamp(3rem,6vw,6rem)}
 .kids-parent-grid>div:first-child h2{max-width:11ch;margin:0;font-family:var(--display);font-size:clamp(3rem,6vw,5.75rem);line-height:.94;text-transform:uppercase}
 .kids-parent-grid>div:first-child>p:not(.eyebrow){max-width:35rem;color:#b7cbc8;line-height:1.75;margin:2rem 0 0}
 .kids-parent-grid>div:first-child>.button{margin-top:2rem}
@@ -69,7 +69,7 @@
 .kids-parent-points p{margin:0;color:#a9bfbb;font-size:.86rem;line-height:1.65}
 
 .kids-philosophy{background:var(--kids-sky)}
-.kids-philosophy-grid{display:grid;gap:clamp(3.5rem,8vw,8rem)}
+.kids-philosophy-grid{display:grid;gap:clamp(3rem,6vw,6rem)}
 .kids-philosophy-heading{align-self:start}
 .kids-philosophy-principles{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--kids-line)}
 .kids-philosophy-principles article{padding:1.75rem 0;border-bottom:1px solid var(--kids-line)}
@@ -80,7 +80,7 @@
 .kids-philosophy-principles p{margin:0;color:var(--kids-muted);font-size:.84rem;line-height:1.65}
 
 .kids-class-flow{background:var(--kids-paper)}
-.kids-class-flow .section-title{margin-bottom:clamp(3.5rem,7vw,6rem)}
+.kids-class-flow .section-title{margin-bottom:clamp(2.75rem,5.5vw,4.75rem)}
 .kids-timeline{list-style:none;margin:0;padding:0;display:grid}
 .kids-timeline li{position:relative;display:grid;grid-template-columns:2rem 1.5rem 1fr;gap:1rem;padding:1.4rem 0;border-top:1px solid var(--kids-line)}
 .kids-timeline li>span{color:var(--kids-gold);font-family:var(--display);font-size:.62rem}
@@ -89,19 +89,19 @@
 .kids-timeline p{margin:.4rem 0 0;color:var(--kids-muted);font-size:.82rem;line-height:1.6}
 
 .kids-ages{background:var(--kids-cream)}
-.kids-ages .section-title{margin-bottom:clamp(3rem,6vw,5.5rem)}
+.kids-ages .section-title{margin-bottom:clamp(2.5rem,5vw,4.5rem)}
 .kids-age-grid{display:grid;gap:1rem}
 .kids-age-card{padding:clamp(1.5rem,3vw,2.25rem);background:var(--kids-paper);border-radius:.45rem}
 .kids-age-card:nth-child(2){background:var(--kids-blue)}
 .kids-age-number{display:flex;align-items:center;justify-content:space-between;color:var(--kids-gold);font-family:var(--display);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase}
-.kids-age-card h3{margin:clamp(3.5rem,6vw,6rem) 0 1rem;font-family:var(--display);font-size:clamp(2.75rem,5vw,4.5rem);line-height:.9;text-transform:uppercase}
+.kids-age-card h3{margin:clamp(2.5rem,4.5vw,4rem) 0 1rem;font-family:var(--display);font-size:clamp(2.75rem,5vw,4.5rem);line-height:.9;text-transform:uppercase}
 .kids-age-card>p{min-height:5rem;margin:0 0 2rem;color:var(--kids-muted);font-size:.86rem;line-height:1.65}
 .kids-age-card ul{list-style:none;margin:0;padding:1.2rem 0 0;border-top:1px solid var(--kids-line)}
 .kids-age-card li{display:flex;align-items:center;gap:.5rem;margin:.55rem 0;font-size:.75rem}
 .kids-age-card li svg{width:1rem;height:1rem;color:var(--kids-green)}
 
 .kids-schedule{background:var(--kids-blue)}
-.kids-schedule-layout{display:grid;gap:clamp(3.5rem,8vw,8rem);align-items:start}.kids-schedule-layout>*{min-width:0}
+.kids-schedule-layout{display:grid;gap:clamp(3rem,6vw,6rem);align-items:start}.kids-schedule-layout>*{min-width:0}
 .kids-schedule-list{border-bottom:1px solid var(--kids-line)}
 .kids-schedule .schedule-card{border-color:var(--kids-line);min-width:0}.kids-schedule .schedule-card>*{min-width:0}
 .kids-schedule .schedule-card:hover{border-color:rgb(23 51 49/.4)}
@@ -109,7 +109,7 @@
 .kids-schedule .schedule-card>a{color:var(--kids-green-deep)}
 
 .kids-pricing{background:var(--kids-paper)}
-.kids-pricing .section-title{margin-bottom:clamp(3rem,6vw,5.5rem)}
+.kids-pricing .section-title{margin-bottom:clamp(2.5rem,5vw,4.5rem)}
 .kids-pricing-grid{display:grid;gap:1rem;max-width:66rem}
 .kids-pricing .pricing-card{background:var(--kids-cream);color:var(--kids-ink);border-color:var(--kids-line);box-shadow:none}
 .kids-pricing .pricing-card-featured{background:var(--kids-green-deep);color:white;border-color:var(--kids-green-deep)}
@@ -119,13 +119,13 @@
 .kids-pricing .pricing-card:not(.pricing-card-featured) .button-secondary{border-color:var(--kids-ink);color:var(--kids-ink)}
 
 .kids-faq{background:var(--kids-sky)}
-.kids-faq-layout{display:grid;gap:clamp(3.5rem,8vw,8rem);align-items:start}
+.kids-faq-layout{display:grid;gap:clamp(3rem,6vw,6rem);align-items:start}
 .kids-faq .faq-list{border-color:var(--kids-line)}
 .kids-faq .faq-item{border-color:var(--kids-line)}
 .kids-faq .faq-item summary{color:var(--kids-ink);font-size:clamp(1.05rem,1.6vw,1.35rem)}
 .kids-faq .faq-item summary .icon,.kids-faq .faq-answer{color:var(--kids-muted)}
 
-.kids-fighty{padding-block:clamp(4rem,8vw,7rem);background:var(--kids-paper)}
+.kids-fighty{padding-block:clamp(3.5rem,6vw,5.5rem);background:var(--kids-paper)}
 .kids-fighty .fighty-journey{background:var(--kids-green-deep);color:white;border-radius:.6rem}
 .kids-fighty .fighty-journey-heading>span{color:#b7d2ce}
 .kids-fighty .fighty-journey li{border-color:rgb(255 255 255/.18)}
@@ -145,14 +145,14 @@
 
 @media(min-width:64rem){
   .kids-hero-grid{grid-template-columns:.9fr 1.1fr}
-  .kids-hero-media{min-height:clamp(36rem,58vw,49rem)}
+  .kids-hero-media{min-height:clamp(34rem,52vw,44rem)}
   .kids-benefit-grid{grid-template-columns:repeat(3,1fr)}
   .kids-parent-grid,.kids-philosophy-grid,.kids-schedule-layout,.kids-faq-layout{grid-template-columns:.9fr 1.1fr}
   .kids-parent-grid>div:first-child,.kids-philosophy-heading,.kids-schedule .section-title,.kids-faq .section-title{position:sticky;top:8rem}
   .kids-timeline{grid-template-columns:repeat(7,1fr);border-top:1px solid var(--kids-line)}
   .kids-timeline li{display:block;padding:1.5rem 1rem 0;border-top:0;border-left:1px solid var(--kids-line)}
   .kids-timeline li:first-child{border-left:0;padding-left:0}
-  .kids-timeline li>.icon{display:block;margin:3rem 0 1.2rem}
+  .kids-timeline li>.icon{display:block;margin:2rem 0 1.2rem}
   .kids-timeline p{font-size:.75rem}
   .kids-age-grid{grid-template-columns:repeat(3,1fr)}
   .kids-age-grid .kids-age-card:last-child{grid-column:auto}
@@ -161,7 +161,7 @@
   .kids-fighty .fighty-journey ol{grid-template-columns:repeat(4,1fr);border-bottom:1px solid rgb(255 255 255/.18)}
   .kids-fighty .fighty-journey li{display:block;padding:1.5rem;border-left:1px solid rgb(255 255 255/.18);border-bottom:0}
   .kids-fighty .fighty-journey li:first-child{border-left:0;padding-left:0}
-  .kids-fighty .fighty-journey li>.icon{margin:3rem 0 1.25rem}
+  .kids-fighty .fighty-journey li>.icon{margin:2rem 0 1.25rem}
 }
 
 @media(prefers-reduced-motion:reduce){

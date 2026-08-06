@@ -4,7 +4,7 @@
   --white:#f7f7f3;--muted:#8b8b8f;--line:rgb(255 255 255/.13);--line-dark:rgb(0 0 0/.16);
   --gold:#c6a56a;--font:"Geist",-apple-system,BlinkMacSystemFont,"Segoe UI",ui-sans-serif,system-ui,sans-serif;
   --display:"Arial Narrow","Roboto Condensed",Impact,sans-serif;
-  --gutter:clamp(1.1rem,3vw,2.25rem);--section:clamp(6rem,12vw,11rem);--ease:cubic-bezier(.2,.8,.2,1);
+  --gutter:clamp(1.1rem,3vw,2.25rem);--section:clamp(5rem,10vw,9rem);--section-heading-gap:clamp(2.75rem,5.5vw,4.75rem);--ease:cubic-bezier(.2,.8,.2,1);
   --space-1:.25rem;--space-2:.5rem;--space-3:.75rem;--space-4:1rem;--space-6:1.5rem;--space-8:2rem;--space-12:3rem;--space-16:4rem;
   --radius-sm:.2rem;--radius-md:.45rem;--radius-pill:999px;
   --shadow-card:0 24px 70px rgb(0 0 0/.24);--duration-fast:180ms;--duration-base:320ms;--duration-slow:700ms
@@ -112,6 +112,16 @@ button,summary{font:inherit}
 .fighty-trust{background:var(--black)}.fighty-trust-heading{display:grid;gap:1.5rem;margin-bottom:clamp(3rem,7vw,6rem)}.fighty-trust-heading .eyebrow{margin:0}.fighty-trust-heading h2{max-width:14ch;margin:0;font-family:var(--display);font-size:clamp(3rem,6vw,5.75rem);line-height:.92;text-transform:uppercase}.fighty-trust-heading>p:last-child{max-width:34rem;margin:0;color:var(--muted);line-height:1.75}.fighty-trust-steps{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}.fighty-trust-steps li{position:relative;display:grid;grid-template-columns:4.5rem 1fr;gap:1rem;padding:1.75rem 0;border-bottom:1px solid var(--line)}.fighty-trust-number{display:flex;flex-direction:column;gap:.75rem;color:var(--gold)}.fighty-trust-number span{color:var(--muted);font-family:var(--display);font-size:.65rem}.fighty-trust-steps h3{margin:0;font-family:var(--display);font-size:clamp(1.6rem,3vw,2.4rem);text-transform:uppercase}.fighty-trust-steps p{max-width:31rem;margin:.5rem 0 0;color:var(--muted);font-size:.9rem;line-height:1.7}.fighty-trust-arrow{display:none}.fighty-trust-action{display:flex;flex-direction:column;align-items:flex-start;gap:1rem;margin-top:2.5rem}.fighty-trust-action>span{display:flex;align-items:center;gap:.45rem;color:var(--muted);font-size:.7rem}
 
 .trust-loading{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}.trust-loading>span{height:14rem;background:linear-gradient(90deg,var(--black-soft),var(--graphite),var(--black-soft));background-size:200% 100%;animation:trust-shimmer 1.4s ease-in-out infinite}@keyframes trust-shimmer{to{background-position:-200% 0}}
+
+/* Slightly denser editorial rhythm across every public page. */
+.section-heading-row,.academy-heading,.trust-testimonials .section-title,.academy-story .section-title,.comparison-section .section-title{margin-bottom:var(--section-heading-gap)}
+.why-strongbear-heading,.fighty-trust-heading{margin-bottom:var(--section-heading-gap)}
+.schedule-grid{gap:3rem}
+.coach-story-copy{padding:clamp(2rem,4vw,4rem)}
+.coach-story-role{margin-bottom:2rem}.coach-story dl{margin-top:2rem}
+.fighty-trust-steps h3{margin-top:3rem}
+.final-cta{padding-block:clamp(6.5rem,12vw,10.5rem)}
+.footer{padding:4rem 0 1.75rem}.footer-top{gap:2.5rem;padding-bottom:3rem}.footer-grid{padding:2.5rem 0}
 
 @supports (animation-timeline:view()){
   .reveal{animation:brand-reveal linear both;animation-timeline:view();animation-range:entry 5% cover 28%}
