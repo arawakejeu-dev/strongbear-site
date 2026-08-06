@@ -75,7 +75,7 @@ export function Header({ variant = "default" }: { variant?: "default" | "kids" }
   return <header className={`site-header ${isKids ? "site-header-kids" : ""}`}><a className="skip-link" href="#contenu">Aller au contenu</a><Container className="header-inner">
     <a className="brand" href="/" aria-label="Strongbear — Accueil"><strong>STRONGBEAR</strong><span>{isKids ? "KIDS · JIU-JITSU · GRAPPLING" : "BJJ · GRAPPLING · MMA"}</span></a>
     <Navigation className="nav-desktop" items={items} />
-    <div className="header-actions"><FightyCTA label="Essai gratuit" /><details className="mobile-menu"><summary aria-label="Ouvrir la navigation"><Icon icon={Menu} /><span className="sr-only">Menu</span></summary><div className="mobile-panel"><Navigation items={items} /><FightyCTA label="Réserver un essai" /></div></details></div>
+    <div className="header-actions"><FightyCTA label="Essai septembre" /><details className="mobile-menu"><summary aria-label="Ouvrir la navigation"><Icon icon={Menu} /><span className="sr-only">Menu</span></summary><div className="mobile-panel"><Navigation items={items} /><FightyCTA label="Essai gratuit en septembre" /></div></details></div>
   </Container></header>;
 }
 
@@ -131,7 +131,7 @@ const fightySteps = [
   { icon: UsersRound, title: "Rejoignez l’équipe", copy: "Continuez avec l’offre adaptée à votre pratique." },
 ];
 
-export function FightyJourney({ title = "Votre premier cours. Simplement.", ctaLabel = "Réserver mon essai gratuit", steps = fightySteps }: { title?: string; ctaLabel?: string; steps?: Array<{ icon: LucideIcon; title: string; copy: string }> }) {
+export function FightyJourney({ title = "Votre premier cours. Simplement.", ctaLabel = "Réserver mon essai de septembre", steps = fightySteps }: { title?: string; ctaLabel?: string; steps?: Array<{ icon: LucideIcon; title: string; copy: string }> }) {
   return <section className="fighty-journey"><div className="fighty-journey-heading"><span>Fighty</span><h2>{title}</h2></div><ol>{steps.map((step, index) => <li key={step.title}><span>0{index + 1}</span><Icon icon={step.icon} /><div><h3>{step.title}</h3><p>{step.copy}</p></div></li>)}</ol><FightyCTA label={ctaLabel} /></section>;
 }
 

@@ -31,11 +31,11 @@ export async function generateMetadata(): Promise<Metadata> {
   const image = `${origin}/og.jpg`;
   return {
     title: "Arts martiaux enfants à Marines | Strongbear Kids",
-    description: "Jiu-Jitsu Brésilien et Grappling pour enfants à Marines, dans le Vexin. Confiance, respect, coordination et progression dans un cadre sûr. Essai gratuit.",
+    description: "Jiu-Jitsu Brésilien et Grappling à partir de 6 ans à Marines, dans le Vexin. Le cours d’essai est gratuit en septembre.",
     keywords: ["Kids martial arts Marines", "Brazilian Jiu-Jitsu kids Marines", "arts martiaux enfants Marines", "arts martiaux pour enfants Vexin", "JJB enfants Val-d'Oise"],
     alternates: { canonical: url },
-    openGraph: { title: "Strongbear Kids — Grandir avec confiance", description: "Jiu-Jitsu et Grappling adaptés aux enfants à Marines. Un cadre sûr, positif et progressif.", url, type: "website", locale: "fr_FR", images: [{ url: image, width: 1729, height: 910, alt: "Strongbear BJJ & Grappling à Marines" }] },
-    twitter: { card: "summary_large_image", title: "Strongbear Kids — Grandir avec confiance", description: "Jiu-Jitsu et Grappling adaptés aux enfants à Marines.", images: [image] },
+    openGraph: { title: "Strongbear Kids — Grandir avec confiance", description: "Jiu-Jitsu et Grappling à partir de 6 ans à Marines. Un cadre sûr, positif et progressif.", url, type: "website", locale: "fr_FR", images: [{ url: image, width: 1729, height: 910, alt: "Strongbear BJJ & Grappling à Marines" }] },
+    twitter: { card: "summary_large_image", title: "Strongbear Kids — Grandir avec confiance", description: "Jiu-Jitsu et Grappling à partir de 6 ans à Marines.", images: [image] },
   };
 }
 
@@ -65,8 +65,8 @@ const classSteps = [
 ];
 
 const ageGroups = [
-  { age: "4–6 ans", label: "Éveil", copy: "Bouger, écouter et découvrir le contact à travers des jeux courts, rassurants et très encadrés.", focus: ["Motricité", "Repères", "Plaisir"] },
-  { age: "7–10 ans", label: "Fondamentaux", copy: "Construire les premières bases du Jiu-Jitsu, apprendre à coopérer et gagner en autonomie.", focus: ["Coordination", "Technique", "Confiance"] },
+  { age: "6–7 ans", label: "Découverte", copy: "Bouger, écouter et découvrir le contact à travers des jeux courts, rassurants et très encadrés.", focus: ["Motricité", "Repères", "Plaisir"] },
+  { age: "8–10 ans", label: "Fondamentaux", copy: "Construire les premières bases du Jiu-Jitsu, apprendre à coopérer et gagner en autonomie.", focus: ["Coordination", "Technique", "Confiance"] },
   { age: "11–14 ans", label: "Progression", copy: "Approfondir les fondamentaux, mieux comprendre les situations et progresser avec responsabilité.", focus: ["Maîtrise", "Stratégie", "Collectif"] },
 ];
 
@@ -80,7 +80,7 @@ const kidsFightySteps = [
 export default async function KidsPage() {
   const origin = await getRequestOrigin();
   const structuredData = [
-    { "@context": "https://schema.org", "@type": "Service", name: "Strongbear Kids — Jiu-Jitsu et Grappling enfants", serviceType: "Cours d’arts martiaux pour enfants", areaServed: { "@type": "AdministrativeArea", name: "Vexin, Val-d’Oise" }, provider: { "@id": `${origin}/#academy` }, audience: { "@type": "PeopleAudience", suggestedMinAge: 4, suggestedMaxAge: 14 } },
+    { "@context": "https://schema.org", "@type": "Service", name: "Strongbear Kids — Jiu-Jitsu et Grappling enfants", serviceType: "Cours d’arts martiaux pour enfants à partir de 6 ans", areaServed: { "@type": "AdministrativeArea", name: "Vexin, Val-d’Oise" }, provider: { "@id": `${origin}/#academy` }, audience: { "@type": "PeopleAudience", suggestedMinAge: 6, suggestedMaxAge: 14 } },
     buildFaqSchema(kidsFAQ),
     buildBreadcrumbSchema([{ name: "Accueil", url: origin }, { name: "Kids", url: `${origin}/kids` }]),
   ].filter(Boolean);
@@ -94,8 +94,8 @@ export default async function KidsPage() {
             <nav className="kids-breadcrumb" aria-label="Fil d’Ariane"><a href="/">Accueil</a><span aria-hidden="true">/</span><span>Kids</span></nav>
             <p className="eyebrow">Strongbear Kids · Marines</p>
             <h1 id="kids-title">Aider les enfants à grandir avec confiance.</h1>
-            <p>Le Jiu-Jitsu Brésilien transmet respect, confiance, discipline et coordination dans un environnement sûr, positif et adapté à chaque âge.</p>
-            <div className="kids-hero-actions"><FightyCTA label="Réserver un essai gratuit" /><ButtonLink href="#pedagogie" variant="text">Découvrir notre pédagogie</ButtonLink></div>
+            <p>À partir de 6 ans, le Jiu-Jitsu Brésilien transmet respect, confiance, discipline et coordination dans un environnement sûr et positif.</p>
+            <div className="kids-hero-actions"><FightyCTA label="Réserver l’essai gratuit en septembre" /><ButtonLink href="#pedagogie" variant="text">Découvrir notre pédagogie</ButtonLink></div>
             <div className="kids-trust-line"><span><Icon icon={ShieldCheck} size="sm" />Cadre sécurisé</span><span><Icon icon={HeartHandshake} size="sm" />Encouragement positif</span></div>
           </div>
           <div className="kids-hero-media"><OptimizedImage source="/kids-hero.webp" alt="Illustration provisoire d’un coach accompagnant un groupe d’enfants" loading="eager" fetchPriority="high" sizes="(min-width: 64rem) 50vw, 100vw" /><div className="kids-photo-note"><strong>Apprendre.</strong><span>À son rythme.</span></div></div>
@@ -110,17 +110,17 @@ export default async function KidsPage() {
 
       <section className="kids-page-section kids-class-flow"><Container><SectionTitle inverse={false} eyebrow="Une séance Kids" title="Des repères du début à la fin." intro="Un cours suit un rythme prévisible. Cette structure aide les enfants à se sentir en confiance et disponibles pour apprendre." /><ol className="kids-timeline">{classSteps.map((step, index) => <li className="reveal" key={step.title}><span>0{index + 1}</span><Icon icon={step.icon} /><div><h3>{step.title}</h3><p>{step.copy}</p></div></li>)}</ol></Container></section>
 
-      <section className="kids-page-section kids-ages" id="ages"><Container><SectionTitle inverse={false} eyebrow="Groupes d’âge" title="Grandir avec les bons objectifs." intro="Les contenus évoluent avec la motricité, la concentration et l’autonomie. L’équipe vous aide à choisir le groupe le plus adapté." /><div className="kids-age-grid">{ageGroups.map((group, index) => <article className="kids-age-card reveal" key={group.age}><div className="kids-age-number"><span>0{index + 1}</span><small>{group.label}</small></div><h3>{group.age}</h3><p>{group.copy}</p><ul>{group.focus.map((item) => <li key={item}><CheckCircle2 aria-hidden="true" />{item}</li>)}</ul></article>)}</div></Container></section>
+      <section className="kids-page-section kids-ages" id="ages"><Container><SectionTitle inverse={false} eyebrow="À partir de 6 ans" title="Grandir avec les bons objectifs." intro="Les contenus évoluent avec la motricité, la concentration et l’autonomie. L’équipe vous aide à choisir le groupe le plus adapté." /><div className="kids-age-grid">{ageGroups.map((group, index) => <article className="kids-age-card reveal" key={group.age}><div className="kids-age-number"><span>0{index + 1}</span><small>{group.label}</small></div><h3>{group.age}</h3><p>{group.copy}</p><ul>{group.focus.map((item) => <li key={item}><CheckCircle2 aria-hidden="true" />{item}</li>)}</ul></article>)}</div></Container></section>
 
-      <section className="kids-page-section kids-schedule" id="planning"><Container className="kids-schedule-layout"><SectionTitle inverse={false} eyebrow="Planning" title="Un rythme adapté à chaque âge." intro="Les créneaux exacts et les places disponibles sont mis à jour directement sur Fighty." /><div className="kids-schedule-list"><ScheduleCard day="Groupe Kids" time="Voir les créneaux" discipline="4–6 ans · Éveil" level="Découverte, jeux et motricité" /><ScheduleCard day="Groupe Kids" time="Voir les créneaux" discipline="7–10 ans · Fondamentaux" level="Coordination et premières techniques" /><ScheduleCard day="Groupe Kids" time="Voir les créneaux" discipline="11–14 ans · Progression" level="Technique, autonomie et collectif" /></div></Container></section>
+      <section className="kids-page-section kids-schedule" id="planning"><Container className="kids-schedule-layout"><SectionTitle inverse={false} eyebrow="Planning" title="Un rythme adapté à chaque âge." intro="Les créneaux exacts et les places disponibles sont mis à jour directement sur Fighty." /><div className="kids-schedule-list"><ScheduleCard day="Groupe Kids" time="Voir les créneaux" discipline="6–7 ans · Découverte" level="Jeux, motricité et premiers repères" /><ScheduleCard day="Groupe Kids" time="Voir les créneaux" discipline="8–10 ans · Fondamentaux" level="Coordination et premières techniques" /><ScheduleCard day="Groupe Kids" time="Voir les créneaux" discipline="11–14 ans · Progression" level="Technique, autonomie et collectif" /></div></Container></section>
 
-      <section className="kids-page-section kids-pricing" id="tarifs"><Container><SectionTitle inverse={false} eyebrow="Tarifs" title="Commencer sans pression." intro="L’offre Kids est indépendante de l’abonnement adulte. Le premier cours est offert ; les conditions à jour sont présentées sur Fighty." /><div className="kids-pricing-grid"><PricingCard name="Cours d’essai" price="0 €" period="sans engagement" description="Une vraie séance pour permettre à votre enfant de découvrir le groupe et la pédagogie." features={["Cours adapté à son âge", "Accueil par l’équipe", "Échange avec le parent", "Aucune expérience requise"]} featured ctaLabel="Réserver l’essai gratuit" /><PricingCard name="Adhésion Kids" price="Kids" period="offre dédiée" description="Une formule séparée, pensée uniquement pour le programme enfants et sa progression." features={["Parcours adapté par âge", "Encadrement technique", "Progression régulière", "Modalités à jour sur Fighty"]} ctaLabel="Voir l’offre Kids sur Fighty" /></div></Container></section>
+      <section className="kids-page-section kids-pricing" id="tarifs"><Container><SectionTitle inverse={false} eyebrow="Offre de septembre" title="Commencer sans pression." intro="Le cours d’essai Kids est gratuit pendant le mois de septembre. Les conditions à jour sont présentées sur Fighty." /><div className="kids-pricing-grid"><PricingCard name="Cours d’essai" price="0 €" period="en septembre" description="Une vraie séance pour permettre à votre enfant de découvrir le groupe et la pédagogie." features={["Accessible à partir de 6 ans", "Accueil par l’équipe", "Échange avec le parent", "Aucune expérience requise"]} featured ctaLabel="Réserver l’essai gratuit en septembre" /><PricingCard name="Adhésion Kids" price="Kids" period="offre dédiée" description="Une formule séparée, pensée uniquement pour le programme enfants et sa progression." features={["Parcours adapté par âge", "Encadrement technique", "Progression régulière", "Modalités à jour sur Fighty"]} ctaLabel="Voir l’offre Kids sur Fighty" /></div></Container></section>
 
       <section className="kids-page-section kids-faq" id="faq"><Container className="kids-faq-layout"><SectionTitle inverse={false} eyebrow="Questions fréquentes" title="Tout ce qu’un parent veut savoir." intro="Si une question concerne spécifiquement votre enfant, indiquez-la lors de la réservation : l’équipe vous répondra avant la séance." /><FAQ items={kidsFAQ} /></Container></section>
 
-      <section className="kids-fighty"><Container><FightyJourney title="Son premier cours. Simplement." ctaLabel="Réserver l’essai de mon enfant" steps={kidsFightySteps} /></Container></section>
+      <section className="kids-fighty"><Container><FightyJourney title="Son premier cours. Simplement." ctaLabel="Réserver l’essai gratuit en septembre" steps={kidsFightySteps} /></Container></section>
     </main>
-    <FloatingCTA label="Essai Kids" />
+    <FloatingCTA label="Essai Kids · Septembre" />
     <Footer variant="kids" />
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
   </>;

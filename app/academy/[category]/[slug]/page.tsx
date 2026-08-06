@@ -60,7 +60,7 @@ export default async function AcademyArticlePage({ params }: ArticlePageProps) {
       <Container><RelatedArticles articles={related} /></Container>
       <section className="academy-conversion-section"><Container><AcademyFightyCTA /><AcademyNewsletterCTA /></Container></section>
     </main>
-    <FloatingCTA label="Essai gratuit" />
+    <FloatingCTA label="Essai septembre" />
     <Footer />
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas) }} />
   </>;

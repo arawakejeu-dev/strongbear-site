@@ -63,14 +63,14 @@ export const kidsFAQ: FAQItem[] = [
   { question: "Les filles peuvent-elles pratiquer ?", answer: "Bien sûr. Le programme accueille les filles et les garçons dans le même cadre de respect, de progression et de sécurité." },
   { question: "Combien de fois par semaine faut-il venir ?", answer: "La régularité compte davantage que la fréquence. Un cours hebdomadaire permet déjà de construire de bons repères ; Fighty présente les créneaux disponibles." },
   { question: "Comment la sécurité est-elle assurée ?", answer: "Les exercices sont adaptés à l’âge, les contacts sont contrôlés et le coach supervise les binômes. Aucune intimidation ni recherche de puissance n’est encouragée." },
-  { question: "Comment choisissez-vous les groupes d’âge ?", answer: "L’âge sert de premier repère. Le coach tient aussi compte de la maturité, de l’aisance et des besoins de chaque enfant." },
+  { question: "À partir de quel âge mon enfant peut-il commencer ?", answer: "Les cours Strongbear Kids sont accessibles à partir de 6 ans. Le coach tient ensuite compte de la maturité, de l’aisance et des besoins de chaque enfant pour choisir le groupe adapté." },
   { question: "Puis-je assister au premier cours ?", answer: "Les modalités d’observation dépendent de l’organisation du créneau. Indiquez votre besoin lors de la réservation afin que l’équipe prépare le meilleur accueil." },
   { question: "La compétition est-elle obligatoire ?", answer: "Non. La priorité est l’apprentissage, la confiance et le plaisir de progresser. La compétition reste une possibilité, jamais une obligation." },
   { question: "Comment réserver et inscrire mon enfant ?", answer: "Le site informe uniquement. L’essai, les disponibilités et toute inscription sont gérés sur Fighty. Strongbear accueille ensuite votre enfant au club." },
 ];
 
 export const pricingFAQ: FAQItem[] = [
-  { question: "L’essai est-il gratuit ?", answer: "Oui, le premier essai annoncé par Strongbear est gratuit. Réservez-le sur Fighty pour connaître le créneau disponible et les conditions à jour." },
+  { question: "L’essai est-il gratuit ?", answer: "Le cours d’essai est gratuit pendant le mois de septembre. Réservez-le sur Fighty pour connaître le créneau disponible et les conditions à jour." },
   { question: "L’abonnement adulte couvre-t-il les trois disciplines ?", answer: "Oui. L’offre adulte donne un accès au Jiu-Jitsu Brésilien, au Grappling et au MMA avec un seul abonnement." },
   { question: "L’offre Kids est-elle incluse dans l’abonnement adulte ?", answer: "Non. Le programme Kids dispose d’une offre séparée et d’une communication dédiée aux parents." },
   { question: "Les tarifs affichés sur le site font-ils foi ?", answer: "Les conditions finales, disponibilités et éventuelles mises à jour sont celles affichées sur Fighty au moment de la réservation." },

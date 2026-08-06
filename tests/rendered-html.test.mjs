@@ -25,6 +25,8 @@ test("renders the trust-ready home without unsupported reviews", async () => {
   assert.match(html, /Quatre étapes/);
   assert.match(html, /Réservation externe sécurisée sur Fighty/);
   assert.match(html, /disciplines adultes/);
+  assert.match(html, /Gratuit en septembre/);
+  assert.match(html, /essai gratuit en septembre/);
   assert.match(html, /SportsActivityLocation/);
   assert.match(html, /LocalBusiness/);
   assert.match(html, /type="image\/avif"/);
@@ -52,6 +54,12 @@ test("renders the centralized Kids FAQ and keeps MMA out of the offer", async ()
   const html = await response.text();
   assert.match(html, /Mon enfant peut-il commencer sans aucune expérience/);
   assert.match(html, /Les filles peuvent-elles pratiquer/);
+  assert.match(html, /À partir de 6 ans/);
+  assert.match(html, /6–7 ans/);
+  assert.match(html, /8–10 ans/);
+  assert.match(html, /"suggestedMinAge":6/);
+  assert.match(html, /gratuit en septembre/);
+  assert.doesNotMatch(html, /4–6 ans/);
   assert.match(html, /FAQPage/);
   assert.match(html, /data-image-authenticity="provisional-generated"/);
   assert.match(html, /data-media-slot="kids\.hero"/);
