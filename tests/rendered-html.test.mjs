@@ -85,6 +85,7 @@ test("renders the Academy hub with five editorial collections", async () => {
   assert.equal(response.status, 200);
 
   const html = await response.text();
+  assert.match(html, /academy-hub-page/);
   assert.match(html, /Comprendre/);
   assert.match(html, /Bien débuter/);
   assert.match(html, /Jiu-Jitsu Brésilien/);

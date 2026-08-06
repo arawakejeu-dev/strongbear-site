@@ -30,7 +30,7 @@ export default async function AcademyPage() {
 
   return <>
     <Header />
-    <main className="academy-page" id="contenu">
+    <main className="academy-page academy-hub-page" id="contenu">
       <AcademyMasthead />
       <AcademyCategoryNav />
 

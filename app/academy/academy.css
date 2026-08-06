@@ -83,3 +83,39 @@
   .academy-category-page-grappling .academy-article-card>a,
   .academy-category-page-grappling .academy-article-card>div{padding:1.5rem}
 }
+
+/* The Academy hub follows the same compact editorial rhythm. */
+.academy-hub-page .academy-masthead{min-height:64svh;padding:6.75rem 0 2.75rem}
+.academy-hub-page .academy-breadcrumb ol{margin-bottom:1.25rem}
+.academy-hub-page .academy-masthead-grid{gap:1.75rem}
+.academy-hub-page .academy-masthead h1{font-size:clamp(2.9rem,6.5vw,5.75rem)}
+.academy-hub-page .academy-masthead-intro>p{margin-bottom:1.25rem;font-size:clamp(1rem,1.7vw,1.3rem);line-height:1.5}
+.academy-hub-page .academy-scroll-cue{margin-top:2rem}
+.academy-hub-page .academy-featured-section,
+.academy-hub-page .academy-categories-section,
+.academy-hub-page .academy-method-section,
+.academy-hub-page .academy-conversion-section{padding-block:clamp(3.5rem,6vw,5.5rem)}
+.academy-hub-page .academy-editorial-heading{gap:1.25rem;margin-bottom:clamp(2.5rem,4vw,3.75rem)}
+.academy-hub-page .academy-editorial-heading h2{font-size:clamp(2.5rem,5vw,4.75rem)}
+.academy-hub-page .academy-article-card>a,
+.academy-hub-page .academy-article-card>div{padding-block:1.5rem}
+.academy-hub-page .academy-article-card-media{margin-bottom:1.5rem}
+.academy-hub-page .academy-article-card h3{margin:1.35rem 0 .75rem}
+.academy-hub-page .academy-article-card p{margin-bottom:1.5rem;line-height:1.6}
+.academy-hub-page .academy-category-card>a{min-height:20rem;padding-block:1.5rem}
+.academy-hub-page .academy-category-card h2{margin:clamp(2.5rem,4vw,3.75rem) 0 1rem;font-size:clamp(2rem,3.4vw,3rem)}
+.academy-hub-page .academy-category-card p{line-height:1.6}
+.academy-hub-page .academy-category-card-bottom{padding-top:1.5rem}
+.academy-hub-page .academy-method-grid{gap:2.25rem}
+.academy-hub-page .academy-method-section h2{font-size:clamp(2.75rem,5.5vw,5rem)}
+.academy-hub-page .academy-method-section li{padding:1.1rem 0}
+.academy-hub-page .academy-fighty-cta,
+.academy-hub-page .academy-newsletter{padding:clamp(1.75rem,3.5vw,3.25rem)}
+.academy-hub-page .academy-fighty-cta h2{margin:1.5rem 0 1rem;font-size:clamp(2.5rem,4.5vw,4.5rem)}
+.academy-hub-page .academy-newsletter>div>.icon{margin-bottom:1.25rem}
+.academy-hub-page .academy-newsletter h2{font-size:clamp(2.25rem,4vw,4rem)}
+
+@media(min-width:48rem){
+  .academy-hub-page .academy-article-card>a,
+  .academy-hub-page .academy-article-card>div{padding:1.5rem}
+}
