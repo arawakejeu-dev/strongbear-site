@@ -31,7 +31,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const image = `${origin}/og.jpg`;
   return {
     title: "Arts martiaux enfants à Marines | Strongbear Kids",
-    description: "Jiu-Jitsu Brésilien et Grappling à partir de 6 ans à Marines, dans le Vexin. Le cours d’essai est gratuit en septembre.",
+    description: "Jiu-Jitsu Brésilien et Grappling à partir de 6 ans à Marines. Le cours d’essai est gratuit en septembre, puis à 10 €.",
     keywords: ["Kids martial arts Marines", "Brazilian Jiu-Jitsu kids Marines", "arts martiaux enfants Marines", "arts martiaux pour enfants Vexin", "JJB enfants Val-d'Oise"],
     alternates: { canonical: url },
     openGraph: { title: "Strongbear Kids — Grandir avec confiance", description: "Jiu-Jitsu et Grappling à partir de 6 ans à Marines. Un cadre sûr, positif et progressif.", url, type: "website", locale: "fr_FR", images: [{ url: image, width: 1729, height: 910, alt: "Strongbear BJJ & Grappling à Marines" }] },
@@ -95,7 +95,7 @@ export default async function KidsPage() {
             <p className="eyebrow">Strongbear Kids · Marines</p>
             <h1 id="kids-title">Aider les enfants à grandir avec confiance.</h1>
             <p>À partir de 6 ans, le Jiu-Jitsu Brésilien transmet respect, confiance, discipline et coordination dans un environnement sûr et positif.</p>
-            <div className="kids-hero-actions"><FightyCTA label="Réserver l’essai gratuit en septembre" /><ButtonLink href="#pedagogie" variant="text">Découvrir notre pédagogie</ButtonLink></div>
+            <div className="kids-hero-actions"><FightyCTA label="Réserver le cours d’essai" /><ButtonLink href="#pedagogie" variant="text">Découvrir notre pédagogie</ButtonLink></div>
             <div className="kids-trust-line"><span><Icon icon={ShieldCheck} size="sm" />Cadre sécurisé</span><span><Icon icon={HeartHandshake} size="sm" />Encouragement positif</span></div>
           </div>
           <div className="kids-hero-media"><OptimizedImage source="/kids-hero.webp" alt="Illustration provisoire d’un coach accompagnant un groupe d’enfants" loading="eager" fetchPriority="high" sizes="(min-width: 64rem) 50vw, 100vw" /><div className="kids-photo-note"><strong>Apprendre.</strong><span>À son rythme.</span></div></div>
@@ -114,13 +114,13 @@ export default async function KidsPage() {
 
       <section className="kids-page-section kids-schedule" id="planning"><Container className="kids-schedule-layout"><SectionTitle inverse={false} eyebrow="Planning" title="Un rythme adapté à chaque âge." intro="Les créneaux exacts et les places disponibles sont mis à jour directement sur Fighty." /><div className="kids-schedule-list"><ScheduleCard day="Groupe Kids" time="Voir les créneaux" discipline="6–7 ans · Découverte" level="Jeux, motricité et premiers repères" /><ScheduleCard day="Groupe Kids" time="Voir les créneaux" discipline="8–10 ans · Fondamentaux" level="Coordination et premières techniques" /><ScheduleCard day="Groupe Kids" time="Voir les créneaux" discipline="11–14 ans · Progression" level="Technique, autonomie et collectif" /></div></Container></section>
 
-      <section className="kids-page-section kids-pricing" id="tarifs"><Container><SectionTitle inverse={false} eyebrow="Offre de septembre" title="Commencer sans pression." intro="Le cours d’essai Kids est gratuit pendant le mois de septembre. Les conditions à jour sont présentées sur Fighty." /><div className="kids-pricing-grid"><PricingCard name="Cours d’essai" price="0 €" period="en septembre" description="Une vraie séance pour permettre à votre enfant de découvrir le groupe et la pédagogie." features={["Accessible à partir de 6 ans", "Accueil par l’équipe", "Échange avec le parent", "Aucune expérience requise"]} featured ctaLabel="Réserver l’essai gratuit en septembre" /><PricingCard name="Adhésion Kids" price="Kids" period="offre dédiée" description="Une formule séparée, pensée uniquement pour le programme enfants et sa progression." features={["Parcours adapté par âge", "Encadrement technique", "Progression régulière", "Modalités à jour sur Fighty"]} ctaLabel="Voir l’offre Kids sur Fighty" /></div></Container></section>
+      <section className="kids-page-section kids-pricing" id="tarifs"><Container><SectionTitle inverse={false} eyebrow="Tarif du cours d’essai" title="Commencer sans pression." intro="Le cours d’essai Kids est gratuit pendant le mois de septembre. Après septembre, son tarif est de 10 €." /><div className="kids-pricing-grid"><PricingCard name="Cours d’essai" price="0 €" period="en septembre" description="Après septembre, le cours d’essai est proposé au tarif de 10 €." features={["10 € après septembre", "Accessible à partir de 6 ans", "Accueil par l’équipe", "Échange avec le parent"]} featured ctaLabel="Réserver le cours d’essai" /><PricingCard name="Adhésion Kids" price="Kids" period="offre dédiée" description="Une formule séparée, pensée uniquement pour le programme enfants et sa progression." features={["Parcours adapté par âge", "Encadrement technique", "Progression régulière", "Modalités à jour sur Fighty"]} ctaLabel="Voir l’offre Kids sur Fighty" /></div></Container></section>
 
       <section className="kids-page-section kids-faq" id="faq"><Container className="kids-faq-layout"><SectionTitle inverse={false} eyebrow="Questions fréquentes" title="Tout ce qu’un parent veut savoir." intro="Si une question concerne spécifiquement votre enfant, indiquez-la lors de la réservation : l’équipe vous répondra avant la séance." /><FAQ items={kidsFAQ} /></Container></section>
 
-      <section className="kids-fighty"><Container><FightyJourney title="Son premier cours. Simplement." ctaLabel="Réserver l’essai gratuit en septembre" steps={kidsFightySteps} /></Container></section>
+      <section className="kids-fighty"><Container><FightyJourney title="Son premier cours. Simplement." ctaLabel="Réserver le cours d’essai" steps={kidsFightySteps} /></Container></section>
     </main>
-    <FloatingCTA label="Essai Kids · Septembre" />
+    <FloatingCTA label="Cours d’essai Kids" />
     <Footer variant="kids" />
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
   </>;

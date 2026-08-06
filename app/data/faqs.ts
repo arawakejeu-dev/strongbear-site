@@ -70,7 +70,7 @@ export const kidsFAQ: FAQItem[] = [
 ];
 
 export const pricingFAQ: FAQItem[] = [
-  { question: "L’essai est-il gratuit ?", answer: "Le cours d’essai est gratuit pendant le mois de septembre. Réservez-le sur Fighty pour connaître le créneau disponible et les conditions à jour." },
+  { question: "Combien coûte le cours d’essai ?", answer: "Le cours d’essai est gratuit pendant le mois de septembre. Après septembre, son tarif est de 10 €. Réservez-le sur Fighty pour connaître le créneau disponible et les conditions à jour." },
   { question: "L’abonnement adulte couvre-t-il les trois disciplines ?", answer: "Oui. L’offre adulte donne un accès au Jiu-Jitsu Brésilien, au Grappling et au MMA avec un seul abonnement." },
   { question: "L’offre Kids est-elle incluse dans l’abonnement adulte ?", answer: "Non. Le programme Kids dispose d’une offre séparée et d’une communication dédiée aux parents." },
   { question: "Les tarifs affichés sur le site font-ils foi ?", answer: "Les conditions finales, disponibilités et éventuelles mises à jour sont celles affichées sur Fighty au moment de la réservation." },

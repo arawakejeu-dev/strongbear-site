@@ -110,7 +110,7 @@ export function RelatedArticles({ articles }: { articles: AcademyArticle[] }) {
 }
 
 export function AcademyFightyCTA() {
-  return <aside className="academy-fighty-cta"><div><span><Icon icon={ShieldCheck} size="sm" />Premier cours accompagné</span><h2>La théorie vous prépare.<br />Le tatami vous apprend.</h2><p>En septembre, le cours d’essai est gratuit. Choisissez un créneau sur Fighty ; l’équipe vous guide dès votre arrivée.</p></div><FightyCTA label="Réserver l’essai gratuit en septembre" /></aside>;
+  return <aside className="academy-fighty-cta"><div><span><Icon icon={ShieldCheck} size="sm" />Premier cours accompagné</span><h2>La théorie vous prépare.<br />Le tatami vous apprend.</h2><p>Le cours d’essai est gratuit en septembre, puis à 10 € après septembre. Choisissez votre créneau sur Fighty.</p></div><FightyCTA label="Réserver mon cours d’essai" /></aside>;
 }
 
 export function AcademyNewsletterCTA() {

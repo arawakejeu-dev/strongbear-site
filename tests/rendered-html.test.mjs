@@ -26,8 +26,8 @@ test("renders the trust-ready home without unsupported reviews", async () => {
   assert.match(html, /Quatre étapes/);
   assert.match(html, /Réservation externe sécurisée sur Fighty/);
   assert.match(html, /disciplines adultes/);
-  assert.match(html, /Gratuit en septembre/);
-  assert.match(html, /essai gratuit en septembre/);
+  assert.match(html, /gratuit en septembre/i);
+  assert.match(html, /10 € après septembre/);
   assert.match(html, /SportsActivityLocation/);
   assert.match(html, /LocalBusiness/);
   assert.match(html, /type="image\/avif"/);
@@ -63,6 +63,8 @@ test("renders the centralized Kids FAQ and keeps MMA out of the offer", async ()
   assert.match(html, /8–10 ans/);
   assert.match(html, /"suggestedMinAge":6/);
   assert.match(html, /gratuit en septembre/);
+  assert.match(html, /Après septembre, son tarif est de 10 €/);
+  assert.match(html, /10 € après septembre/);
   assert.doesNotMatch(html, /4–6 ans/);
   assert.match(html, /FAQPage/);
   assert.match(html, /data-image-authenticity="provisional-generated"/);

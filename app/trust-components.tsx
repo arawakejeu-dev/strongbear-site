@@ -179,7 +179,7 @@ export function FightyTrustJourney({ audience = "adult" }: { audience?: "adult" 
   return <section className="section fighty-trust" aria-labelledby="fighty-trust-title"><Container>
     <div className="fighty-trust-heading"><p className="eyebrow">Votre première séance</p><h2 id="fighty-trust-title">Quatre étapes.<br />Aucune zone floue.</h2><p>{audience === "parent" ? "Vous gardez la maîtrise de chaque étape, de la découverte au choix de poursuivre." : "Vous savez quoi faire avant de venir, ce qui se passe sur place et quand décider de continuer."}</p></div>
     <ol className="fighty-trust-steps">{journeySteps.map((step, index) => <li className="reveal" key={step.title}><div className="fighty-trust-number"><span>0{index + 1}</span><Icon icon={step.icon} /></div><div><h3>{step.title}</h3><p>{step.copy}</p></div>{index < journeySteps.length - 1 && <Icon icon={ArrowDown} className="fighty-trust-arrow" />}</li>)}</ol>
-    <div className="fighty-trust-action"><FightyCTA label={audience === "parent" ? "Réserver l’essai de mon enfant" : "Essai gratuit en septembre"} /><span><Icon icon={ShieldCheck} size="sm" />Réservation externe sécurisée sur Fighty</span></div>
+    <div className="fighty-trust-action"><FightyCTA label={audience === "parent" ? "Réserver l’essai de mon enfant" : "Réserver mon cours d’essai"} /><span><Icon icon={ShieldCheck} size="sm" />Réservation externe sécurisée sur Fighty</span></div>
   </Container></section>;
 }
 

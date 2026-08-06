@@ -13,7 +13,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const image = `${origin}/og.jpg`;
   return {
     title: "Arts martiaux à Marines | Strongbear BJJ & Grappling",
-    description: "Jiu-Jitsu Brésilien, Grappling et MMA avec un seul abonnement à Marines, au cœur du Vexin. Le cours d’essai est gratuit en septembre.",
+    description: "Jiu-Jitsu Brésilien, Grappling et MMA avec un seul abonnement à Marines. Le cours d’essai est gratuit en septembre, puis à 10 €.",
     alternates: { canonical: origin },
     openGraph: { title: "Strongbear BJJ & Grappling", description: "Trois disciplines. Un abonnement. Une équipe.", url: origin, images: [{ url: image, width: 1729, height: 910, alt: "Strongbear BJJ & Grappling à Marines" }], type: "website", locale: "fr_FR" },
     twitter: { card: "summary_large_image", title: "Strongbear BJJ & Grappling", description: "Trois disciplines. Un abonnement. Une équipe.", images: [image] },
@@ -37,7 +37,7 @@ export default function Home() {
           <p className="eyebrow eyebrow-inverse">Marines · Val-d’Oise · Académie d’arts martiaux</p>
           <h1 id="hero-title"><span>Trois disciplines.</span><span>Un abonnement.</span><span>Une équipe.</span></h1>
           <p className="hero-copy">Jiu-Jitsu Brésilien, Grappling et MMA réunis dans une académie conviviale, ambitieuse et profondément technique.</p>
-          <div className="hero-actions"><FightyCTA label="Réserver mon essai gratuit en septembre" /><ButtonLink href="#disciplines">Découvrir les cours</ButtonLink></div>
+          <div className="hero-actions"><FightyCTA label="Réserver mon cours d’essai" /><ButtonLink href="#disciplines">Découvrir les cours</ButtonLink></div>
         </Container>
       </section>
 
@@ -45,7 +45,7 @@ export default function Home() {
         { value: "3", label: "disciplines adultes", detail: "JJB · Grappling · MMA" },
         { value: "1", label: "abonnement adulte", detail: "Un parcours sans cloison" },
         { value: "Marines", label: "au cœur du Vexin", detail: "Val-d’Oise" },
-        { value: "0 €", label: "cours d’essai", detail: "Gratuit en septembre" },
+        { value: "0 €", label: "essai en septembre", detail: "Puis 10 € après septembre" },
       ]} />
 
       <section className="section about-section" id="strongbear">
@@ -73,9 +73,9 @@ export default function Home() {
 
       <FightyTrustJourney />
 
-      <section className="final-cta"><Container><p className="eyebrow eyebrow-inverse">Votre premier pas</p><h2>Entrez dans<br/>l’équipe.</h2><p>En septembre, votre cours d’essai est gratuit. Réservez-le sur Fighty ; nous nous occupons de votre accueil sur le tatami.</p><FightyCTA label="Réserver mon essai gratuit en septembre" /></Container></section>
+      <section className="final-cta"><Container><p className="eyebrow eyebrow-inverse">Votre premier pas</p><h2>Entrez dans<br/>l’équipe.</h2><p>Le cours d’essai est gratuit en septembre, puis à 10 € après septembre. Réservez-le sur Fighty ; nous nous occupons de votre accueil.</p><FightyCTA label="Réserver mon cours d’essai" /></Container></section>
     </main>
-    <FloatingCTA label="Essai septembre" />
+    <FloatingCTA label="Cours d’essai" />
     <Footer />
   </>;
 }
