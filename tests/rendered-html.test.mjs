@@ -95,6 +95,11 @@ test("renders the Academy hub with five editorial collections", async () => {
 });
 
 test("renders a category and the complete SEO article template", async () => {
+  const grapplingResponse = await render("/academy/grappling");
+  assert.equal(grapplingResponse.status, 200);
+  const grapplingHtml = await grapplingResponse.text();
+  assert.match(grapplingHtml, /academy-category-page-grappling/);
+
   const categoryResponse = await render("/academy/bien-debuter");
   assert.equal(categoryResponse.status, 200);
   const categoryHtml = await categoryResponse.text();

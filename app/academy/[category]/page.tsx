@@ -43,7 +43,7 @@ export default async function AcademyCategoryPage({ params }: CategoryPageProps)
 
   return <>
     <Header />
-    <main className="academy-page" id="contenu">
+    <main className={`academy-page academy-category-page academy-category-page-${category.slug}`} id="contenu">
       <AcademyCategoryHero category={category} articleCount={articles.length} />
       <AcademyCategoryNav active={category.slug} />
       <section className="academy-category-list"><Container>

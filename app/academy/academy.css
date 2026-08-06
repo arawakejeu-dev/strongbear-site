@@ -57,3 +57,29 @@
 .article-authority{padding-block:clamp(2.5rem,5vw,4rem)}
 @media(min-width:64rem){.article-layout{gap:clamp(3.5rem,6vw,7rem)}}
 @media(min-width:82rem){.academy-category-card>a{min-height:28rem}}
+
+/* The Grappling collection is intentionally denser for faster scanning. */
+.academy-category-page-grappling .academy-category-hero{padding:6.75rem 0 2.75rem}
+.academy-category-page-grappling .academy-breadcrumb ol{margin-bottom:1.25rem}
+.academy-category-page-grappling .academy-category-hero-grid{gap:1.75rem}
+.academy-category-page-grappling .academy-category-hero h1{font-size:clamp(3rem,7vw,6rem)}
+.academy-category-page-grappling .academy-category-hero-grid>div:last-child>p{margin-bottom:1rem;font-size:clamp(1rem,1.6vw,1.2rem);line-height:1.55}
+.academy-category-page-grappling .academy-category-hero .text-link{margin-top:1.25rem}
+.academy-category-page-grappling .academy-category-list{padding-block:clamp(3.5rem,6vw,5.5rem)}
+.academy-category-page-grappling .academy-category-list-heading{gap:1.25rem;margin-bottom:clamp(2.5rem,4vw,3.75rem)}
+.academy-category-page-grappling .academy-category-list-heading h2{font-size:clamp(2.5rem,5vw,4.75rem)}
+.academy-category-page-grappling .academy-article-card>a,
+.academy-category-page-grappling .academy-article-card>div{padding-block:1.5rem}
+.academy-category-page-grappling .academy-article-card h3{margin:1.35rem 0 .75rem}
+.academy-category-page-grappling .academy-article-card p{margin-bottom:1.5rem;line-height:1.6}
+.academy-category-page-grappling .academy-conversion-section{padding-block:clamp(3.5rem,6vw,5.5rem)}
+.academy-category-page-grappling .academy-fighty-cta,
+.academy-category-page-grappling .academy-newsletter{padding:clamp(1.75rem,3.5vw,3.25rem)}
+.academy-category-page-grappling .academy-fighty-cta h2{margin:1.5rem 0 1rem;font-size:clamp(2.5rem,4.5vw,4.5rem)}
+.academy-category-page-grappling .academy-newsletter>div>.icon{margin-bottom:1.25rem}
+.academy-category-page-grappling .academy-newsletter h2{font-size:clamp(2.25rem,4vw,4rem)}
+
+@media(min-width:48rem){
+  .academy-category-page-grappling .academy-article-card>a,
+  .academy-category-page-grappling .academy-article-card>div{padding:1.5rem}
+}
