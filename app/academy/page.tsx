@@ -11,8 +11,8 @@ export async function generateMetadata(): Promise<Metadata> {
     title: "Strongbear Academy — Guides JJB, Grappling, MMA et Parents",
     description: "Guides experts sur le Jiu-Jitsu Brésilien, le Grappling, le MMA et les arts martiaux pour enfants à Marines et dans le Vexin.",
     alternates: { canonical: url },
-    openGraph: { title: "Strongbear Academy — Comprendre. Puis pratiquer.", description: "L’Academy premium dédiée au JJB, au Grappling, au MMA et aux parents dans le Vexin.", url, type: "website", locale: "fr_FR", images: [{ url: `${origin}/og.png`, width: 1536, height: 864, alt: "Strongbear Academy" }] },
-    twitter: { card: "summary_large_image", title: "Strongbear Academy", description: "Comprendre. Puis pratiquer.", images: [`${origin}/og.png`] },
+    openGraph: { title: "Strongbear Academy — Comprendre. Puis pratiquer.", description: "L’Academy premium dédiée au JJB, au Grappling, au MMA et aux parents dans le Vexin.", url, type: "website", locale: "fr_FR", images: [{ url: `${origin}/og.jpg`, width: 1729, height: 910, alt: "Strongbear Academy" }] },
+    twitter: { card: "summary_large_image", title: "Strongbear Academy", description: "Comprendre. Puis pratiquer.", images: [`${origin}/og.jpg`] },
   };
 }
 

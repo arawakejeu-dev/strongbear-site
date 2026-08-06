@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
   const origin = await getRequestOrigin();
   const url = `${origin}${academyArticleHref(article)}`;
   const imageRecord = article.image ? getImageSeoRecord(article.image) : undefined;
-  const image = imageRecord?.structuredDataEligible ? `${origin}${imageRecord.source}` : `${origin}/og.png`;
+  const image = imageRecord?.structuredDataEligible ? `${origin}${imageRecord.source}` : `${origin}/og.jpg`;
   return {
     title: article.title,
     description: article.metaDescription,

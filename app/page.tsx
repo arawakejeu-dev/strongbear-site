@@ -9,12 +9,12 @@ export async function generateMetadata(): Promise<Metadata> {
   const host = requestHeaders.get("x-forwarded-host") ?? requestHeaders.get("host") ?? "localhost:3000";
   const protocol = requestHeaders.get("x-forwarded-proto") ?? (host.startsWith("localhost") ? "http" : "https");
   const origin = `${protocol}://${host}`;
-  const image = `${origin}/og.png`;
+  const image = `${origin}/og.jpg`;
   return {
     title: "Arts martiaux à Marines | Strongbear BJJ & Grappling",
     description: "Jiu-Jitsu Brésilien, Grappling et MMA avec un seul abonnement à Marines, au cœur du Vexin. Réservez votre essai gratuit sur Fighty.",
     alternates: { canonical: origin },
-    openGraph: { title: "Strongbear BJJ & Grappling", description: "Trois disciplines. Un abonnement. Une équipe.", url: origin, images: [{ url: image, width: 1536, height: 864, alt: "Strongbear BJJ & Grappling à Marines" }], type: "website", locale: "fr_FR" },
+    openGraph: { title: "Strongbear BJJ & Grappling", description: "Trois disciplines. Un abonnement. Une équipe.", url: origin, images: [{ url: image, width: 1729, height: 910, alt: "Strongbear BJJ & Grappling à Marines" }], type: "website", locale: "fr_FR" },
     twitter: { card: "summary_large_image", title: "Strongbear BJJ & Grappling", description: "Trois disciplines. Un abonnement. Une équipe.", images: [image] },
   };
 }
@@ -58,9 +58,9 @@ export default function Home() {
 
       <section className="section disciplines-section" id="disciplines">
         <Container><div className="section-heading-row"><SectionTitle eyebrow="Les disciplines" title="Un parcours complet." intro="Trois manières de comprendre le combat. Une seule équipe pour vous accompagner." /><span className="section-index">01 — 03</span></div><div className="disciplines-grid">
-          <DisciplineCard index="01" title="Jiu-Jitsu Brésilien" detail="Avec kimono · Tous niveaux" description="Contrôle, stratégie et précision au sol." href="/jiu-jitsu-bresilien" image="/bjj-class.jpg" alt="Cours de Jiu-Jitsu Brésilien à Marines" />
-          <DisciplineCard index="02" title="Grappling" detail="Sans kimono · Tous niveaux" description="Fluidité, mobilité et maîtrise des positions." href="/grappling" image="/bjj-hero.jpg" alt="Entraînement de Grappling à Marines" />
-          <DisciplineCard index="03" title="MMA" detail="Pratique complète · Encadrée" description="Relier les distances avec calme et méthode." href="/mma" image="/mma-training.jpg" alt="Entraînement de MMA à Marines" />
+          <DisciplineCard index="01" title="Jiu-Jitsu Brésilien" detail="Avec kimono · Tous niveaux" description="Contrôle, stratégie et précision au sol." href="/academy/jiu-jitsu-bresilien" image="/bjj-class.jpg" alt="Cours de Jiu-Jitsu Brésilien à Marines" />
+          <DisciplineCard index="02" title="Grappling" detail="Sans kimono · Tous niveaux" description="Fluidité, mobilité et maîtrise des positions." href="/academy/grappling" image="/bjj-hero.jpg" alt="Entraînement de Grappling à Marines" />
+          <DisciplineCard index="03" title="MMA" detail="Pratique complète · Encadrée" description="Relier les distances avec calme et méthode." href="/academy/mma" image="/mma-training.jpg" alt="Entraînement de MMA à Marines" />
         </div></Container>
       </section>
 

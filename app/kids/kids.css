@@ -100,9 +100,9 @@
 .kids-age-card li svg{width:1rem;height:1rem;color:var(--kids-green)}
 
 .kids-schedule{background:var(--kids-blue)}
-.kids-schedule-layout{display:grid;gap:clamp(3.5rem,8vw,8rem);align-items:start}
+.kids-schedule-layout{display:grid;gap:clamp(3.5rem,8vw,8rem);align-items:start}.kids-schedule-layout>*{min-width:0}
 .kids-schedule-list{border-bottom:1px solid var(--kids-line)}
-.kids-schedule .schedule-card{border-color:var(--kids-line)}
+.kids-schedule .schedule-card{border-color:var(--kids-line);min-width:0}.kids-schedule .schedule-card>*{min-width:0}
 .kids-schedule .schedule-card:hover{border-color:rgb(23 51 49/.4)}
 .kids-schedule .schedule-card-day,.kids-schedule .schedule-card p{color:var(--kids-muted)}
 .kids-schedule .schedule-card>a{color:var(--kids-green-deep)}

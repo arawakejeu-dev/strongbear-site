@@ -13,7 +13,7 @@ export function buildOrganizationSchema(origin: string): JsonLd {
         "@id": `${origin}/#organization`,
         name: "Strongbear BJJ & Grappling",
         url: origin,
-        logo: { "@type": "ImageObject", url: `${origin}/og.png` },
+        logo: { "@type": "ImageObject", url: `${origin}/favicon.png` },
       },
       {
         "@type": ["SportsActivityLocation", "LocalBusiness"],

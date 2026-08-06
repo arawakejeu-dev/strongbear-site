@@ -23,8 +23,8 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
     title,
     description: category.description,
     alternates: { canonical: url },
-    openGraph: { title, description: category.promise, url, type: "website", locale: "fr_FR", images: [{ url: `${origin}/og.png`, width: 1536, height: 864, alt: category.name }] },
-    twitter: { card: "summary_large_image", title, description: category.promise, images: [`${origin}/og.png`] },
+    openGraph: { title, description: category.promise, url, type: "website", locale: "fr_FR", images: [{ url: `${origin}/og.jpg`, width: 1729, height: 910, alt: category.name }] },
+    twitter: { card: "summary_large_image", title, description: category.promise, images: [`${origin}/og.jpg`] },
   };
 }
 

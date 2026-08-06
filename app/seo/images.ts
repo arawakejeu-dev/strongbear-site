@@ -1,8 +1,12 @@
+import placeholders from "./image-placeholders.json";
+
 export type ImageAuthenticity = "verified-academy" | "unverified-source" | "provisional-generated";
 
 export type ImageSeoRecord = {
   source: string;
   variants: Array<{ src: string; width: number }>;
+  avifVariants: Array<{ src: string; width: number }>;
+  placeholder: string;
   width: number;
   height: number;
   alt: string;
@@ -17,6 +21,8 @@ export const imageSeoRegistry: Record<string, ImageSeoRecord> = {
   "/bjj-hero.jpg": {
     source: "/media/bjj-hero-2400.webp",
     variants: [640, 1024, 1600, 2400].map((width) => ({ src: `/media/bjj-hero-${width}.webp`, width })),
+    avifVariants: [640, 1024, 1600, 2400].map((width) => ({ src: `/media/bjj-hero-${width}.avif`, width })),
+    placeholder: placeholders["/bjj-hero.jpg"],
     width: 2400,
     height: 1600,
     alt: "Entraînement technique au sol en Jiu-Jitsu Brésilien",
@@ -29,6 +35,8 @@ export const imageSeoRegistry: Record<string, ImageSeoRecord> = {
   "/bjj-class.jpg": {
     source: "/media/bjj-class-1600.webp",
     variants: [640, 1024, 1600].map((width) => ({ src: `/media/bjj-class-${width}.webp`, width })),
+    avifVariants: [640, 1024, 1600].map((width) => ({ src: `/media/bjj-class-${width}.avif`, width })),
+    placeholder: placeholders["/bjj-class.jpg"],
     width: 1800,
     height: 806,
     alt: "Démonstration technique pendant un cours de Jiu-Jitsu Brésilien",
@@ -41,6 +49,8 @@ export const imageSeoRegistry: Record<string, ImageSeoRecord> = {
   "/mma-training.jpg": {
     source: "/media/mma-training-1600.webp",
     variants: [640, 1024, 1600].map((width) => ({ src: `/media/mma-training-${width}.webp`, width })),
+    avifVariants: [640, 1024, 1600].map((width) => ({ src: `/media/mma-training-${width}.avif`, width })),
+    placeholder: placeholders["/mma-training.jpg"],
     width: 1800,
     height: 1200,
     alt: "Exercice technique encadré pendant un entraînement de MMA",
@@ -53,6 +63,8 @@ export const imageSeoRegistry: Record<string, ImageSeoRecord> = {
   "/kids-martial-arts.jpg": {
     source: "/media/kids-martial-arts-1600.webp",
     variants: [640, 1024, 1600].map((width) => ({ src: `/media/kids-martial-arts-${width}.webp`, width })),
+    avifVariants: [640, 1024, 1600].map((width) => ({ src: `/media/kids-martial-arts-${width}.avif`, width })),
+    placeholder: placeholders["/kids-martial-arts.jpg"],
     width: 1800,
     height: 1229,
     alt: "Enfants participant à un exercice d’arts martiaux encadré",
@@ -65,6 +77,8 @@ export const imageSeoRegistry: Record<string, ImageSeoRecord> = {
   "/kids-hero.webp": {
     source: "/media/kids-hero-1536.webp",
     variants: [640, 1024, 1536].map((width) => ({ src: `/media/kids-hero-${width}.webp`, width })),
+    avifVariants: [640, 1024, 1536].map((width) => ({ src: `/media/kids-hero-${width}.avif`, width })),
+    placeholder: placeholders["/kids-hero.webp"],
     width: 1536,
     height: 1024,
     alt: "Illustration provisoire d’un coach accompagnant un groupe d’enfants",
@@ -87,7 +101,9 @@ export function validateImageSeoRegistry() {
     if (!image.title.trim()) issues.push(`${image.source}: title manquant`);
     if (!image.caption.trim()) issues.push(`${image.source}: caption manquant`);
     if (!image.description.trim()) issues.push(`${image.source}: description manquante`);
+    if (!image.placeholder.startsWith("data:image/")) issues.push(`${image.source}: placeholder invalide`);
     if (!image.variants.length || image.variants.some((variant) => !variant.src.endsWith(".webp"))) issues.push(`${image.source}: variantes WebP invalides`);
+    if (!image.avifVariants.length || image.avifVariants.some((variant) => !variant.src.endsWith(".avif"))) issues.push(`${image.source}: variantes AVIF invalides`);
     if (image.structuredDataEligible && image.authenticity !== "verified-academy") issues.push(`${image.source}: ImageObject interdit sans authenticité vérifiée`);
     return issues;
   });

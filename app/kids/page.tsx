@@ -28,13 +28,13 @@ import "./kids.css";
 export async function generateMetadata(): Promise<Metadata> {
   const origin = await getRequestOrigin();
   const url = `${origin}/kids`;
-  const image = `${origin}/og.png`;
+  const image = `${origin}/og.jpg`;
   return {
     title: "Arts martiaux enfants à Marines | Strongbear Kids",
     description: "Jiu-Jitsu Brésilien et Grappling pour enfants à Marines, dans le Vexin. Confiance, respect, coordination et progression dans un cadre sûr. Essai gratuit.",
     keywords: ["Kids martial arts Marines", "Brazilian Jiu-Jitsu kids Marines", "arts martiaux enfants Marines", "arts martiaux pour enfants Vexin", "JJB enfants Val-d'Oise"],
     alternates: { canonical: url },
-    openGraph: { title: "Strongbear Kids — Grandir avec confiance", description: "Jiu-Jitsu et Grappling adaptés aux enfants à Marines. Un cadre sûr, positif et progressif.", url, type: "website", locale: "fr_FR", images: [{ url: image, width: 1536, height: 1024, alt: "Un coach accompagne des enfants pendant un cours de Jiu-Jitsu" }] },
+    openGraph: { title: "Strongbear Kids — Grandir avec confiance", description: "Jiu-Jitsu et Grappling adaptés aux enfants à Marines. Un cadre sûr, positif et progressif.", url, type: "website", locale: "fr_FR", images: [{ url: image, width: 1729, height: 910, alt: "Strongbear BJJ & Grappling à Marines" }] },
     twitter: { card: "summary_large_image", title: "Strongbear Kids — Grandir avec confiance", description: "Jiu-Jitsu et Grappling adaptés aux enfants à Marines.", images: [image] },
   };
 }

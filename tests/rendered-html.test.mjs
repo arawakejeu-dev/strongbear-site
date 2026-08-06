@@ -27,11 +27,18 @@ test("renders the trust-ready home without unsupported reviews", async () => {
   assert.match(html, /disciplines adultes/);
   assert.match(html, /SportsActivityLocation/);
   assert.match(html, /LocalBusiness/);
+  assert.match(html, /type="image\/avif"/);
   assert.match(html, /srcset="[^"]+\.webp 640w/i);
   assert.match(html, /data-caption=/);
+  assert.match(html, /background-image:url\(data:image\/webp;base64,/);
+  assert.equal((html.match(/rel="preload" href="\/fonts\/geist-latin\.woff2"/g) ?? []).length, 1);
   assert.doesNotMatch(html, /Alexandre M\.|Sonia L\.|Thomas R\./);
   assert.doesNotMatch(html, /Avis vérifié/);
   assert.doesNotMatch(html, /"@type":"Review"|"@type":"Event"|"@type":"VideoObject"/);
+  assert.match(response.headers.get("content-security-policy") ?? "", /frame-ancestors 'none'/);
+  assert.match(response.headers.get("cache-control") ?? "", /s-maxage=300/);
+  assert.equal(response.headers.get("x-content-type-options"), "nosniff");
+  assert.equal(response.headers.get("x-frame-options"), "DENY");
 });
 
 test("renders the centralized Kids FAQ and keeps MMA out of the offer", async () => {
@@ -43,7 +50,7 @@ test("renders the centralized Kids FAQ and keeps MMA out of the offer", async ()
   assert.match(html, /Les filles peuvent-elles pratiquer/);
   assert.match(html, /FAQPage/);
   assert.match(html, /data-image-authenticity="provisional-generated"/);
-  assert.match(html, /property="og:image" content="https?:\/\/[^\"]+\/og.png"/);
+  assert.match(html, /property="og:image" content="https?:\/\/[^\"]+\/og.jpg"/);
   assert.doesNotMatch(html, /Cours de MMA|MMA pour enfants|MMA Kids/i);
 });
 
@@ -78,7 +85,7 @@ test("renders a category and the complete SEO article template", async () => {
   assert.match(articleHtml, /FAQPage/);
   assert.match(articleHtml, /"@type":"Article"/);
   assert.doesNotMatch(articleHtml, /"@type":"Article"[^<]+"image":/);
-  assert.match(articleHtml, /property="og:image" content="https?:\/\/[^\"]+\/og.png"/);
+  assert.match(articleHtml, /property="og:image" content="https?:\/\/[^\"]+\/og.jpg"/);
   assert.match(articleHtml, /rel="canonical"/);
 });
 
@@ -90,4 +97,17 @@ test("publishes Academy routes in the sitemap", async () => {
   assert.match(xml, /\/academy\/bien-debuter<\/loc>/);
   assert.match(xml, /premier-cours-jiu-jitsu-bresilien<\/loc>/);
   assert.doesNotMatch(xml, /equipement-premier-cours<\/loc>/);
+});
+
+test("redirects legacy discipline URLs and returns an accessible noindex 404", async () => {
+  const redirect = await render("/mma");
+  assert.equal(redirect.status, 308);
+  assert.match(redirect.headers.get("location") ?? "", /\/academy\/mma$/);
+
+  const missing = await render("/page-inexistante");
+  assert.equal(missing.status, 404);
+  const html = await missing.text();
+  assert.match(html, /Cette page/);
+  assert.match(html, /<meta[^>]+content="noindex"[^>]+name="robots"/);
+  assert.match(html, /Revenir à l’accueil/);
 });
