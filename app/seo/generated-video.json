@@ -1,4 +1,27 @@
 {
-  "ready": false,
-  "slotId": "home.hero-video"
+  "ready": true,
+  "slotId": "home.hero-video",
+  "poster": "/media/home-hero-video-thumbnail.webp",
+  "sources": [
+    {
+      "src": "/media/home-hero-video-desktop.webm",
+      "type": "video/webm",
+      "media": "(min-width: 48rem)"
+    },
+    {
+      "src": "/media/home-hero-video-desktop.mp4",
+      "type": "video/mp4",
+      "media": "(min-width: 48rem)"
+    },
+    {
+      "src": "/media/home-hero-video-mobile.webm",
+      "type": "video/webm",
+      "media": "(max-width: 47.99rem)"
+    },
+    {
+      "src": "/media/home-hero-video-mobile.mp4",
+      "type": "video/mp4",
+      "media": "(max-width: 47.99rem)"
+    }
+  ]
 }

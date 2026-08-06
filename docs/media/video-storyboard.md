@@ -37,9 +37,9 @@ Le master long conserve le son naturel : pas sur le tatami, respiration, consign
 
 ## Livrables
 
-- `home-hero-video-master.mp4` : master 4K de 20 à 30 secondes.
+- `home-hero-video-master.mp4` : master web de 20 à 30 secondes. Le master actuel est un extrait authentique 640×480 ; un futur tournage pourra le remplacer en 4K sans modifier le Hero.
 - Archive de montage avec médias liés et autorisations.
 - Version sonore longue pour les réseaux sociaux.
-- Le pipeline du site génère ensuite automatiquement MP4 et WebM desktop, tablette, mobile, ainsi qu’un poster WebP.
+- Le pipeline du site génère ensuite automatiquement MP4 et WebM pour ordinateur et mobile, ainsi qu’un poster WebP.
 
 Le hero conserve toujours l’image de secours optimisée si la vidéo manque, échoue ou ne peut pas être lue.

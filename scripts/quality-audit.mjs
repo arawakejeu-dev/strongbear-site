@@ -27,6 +27,12 @@ const robots = await fetch(`${baseUrl}/robots.txt`);
 const sitemap = await fetch(`${baseUrl}/sitemap.xml`);
 const missing = await fetch(`${baseUrl}/page-inexistante`);
 const missingHtml = await missing.text();
+const heroVideoResponses = await Promise.all([
+  "/media/home-hero-video-desktop.webm",
+  "/media/home-hero-video-desktop.mp4",
+  "/media/home-hero-video-mobile.webm",
+  "/media/home-hero-video-mobile.mp4",
+].map((path) => fetch(`${baseUrl}${path}`)));
 const internalPaths = [...new Set(pages.flatMap(({ html }) => [...html.matchAll(/href="(\/[^"]*)"/g)]
   .map((match) => match[1].split("#")[0] || "/")
   .filter((path) => !path.startsWith("/_"))))];
@@ -48,6 +54,9 @@ const checks = {
     "Responsive dimensions": pages.every(({ html }) => imageTags(html).every((tag) => /\bwidth=/.test(tag) && /\bheight=/.test(tag))),
     "Blur placeholders": /data:image\/webp;base64/.test(home.html),
     "One self-hosted font preload": (home.html.match(/rel="preload" href="\/fonts\/geist-latin\.woff2"/g) ?? []).length === 1,
+    "Responsive hero video": heroVideoResponses.every((response) => response.ok && Number(response.headers.get("content-length")) < 2_000_000)
+      && /home-hero-video-desktop\.webm[^>]+type="video\/webm"/.test(home.html)
+      && /home-hero-video-mobile\.mp4[^>]+type="video\/mp4"/.test(home.html),
     "Deployment-safe HTML revalidation": /s-maxage=0/.test(home.response.headers.get("cache-control") ?? "")
       && /must-revalidate/.test(home.response.headers.get("cache-control") ?? "")
       && !/stale-while-revalidate/.test(home.response.headers.get("cache-control") ?? ""),

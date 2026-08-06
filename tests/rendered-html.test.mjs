@@ -33,9 +33,11 @@ test("renders the trust-ready home without unsupported reviews", async () => {
   assert.match(html, /type="image\/avif"/);
   assert.match(html, /\.avif 320w/);
   assert.match(html, /srcset="[^"]+\.webp 640w/i);
-  assert.match(html, /data-media-slot="home\.hero-backup"/);
-  assert.match(html, /data-media-status="temporary-active"/);
-  assert.doesNotMatch(html, /<video\b/);
+  assert.match(html, /data-media-slot="home\.hero-video"/);
+  assert.match(html, /data-media-status="verified-academy"/);
+  assert.match(html, /<video\b/);
+  assert.match(html, /poster="\/media\/home-hero-video-thumbnail\.webp"/);
+  assert.match(html, /home-hero-video-mobile\.webm/);
   assert.match(html, /data-caption=/);
   assert.match(html, /background-image:url\(data:image\/webp;base64,/);
   assert.equal((html.match(/rel="preload" href="\/fonts\/geist-latin\.woff2"/g) ?? []).length, 1);

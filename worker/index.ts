@@ -50,6 +50,9 @@ function secureResponse(response: Response, pathname: string) {
   secured.headers.set("Referrer-Policy", "strict-origin-when-cross-origin");
   secured.headers.set("Permissions-Policy", "camera=(), microphone=(), geolocation=(), browsing-topics=()");
   secured.headers.set("Cross-Origin-Opener-Policy", "same-origin");
+  if (pathname.endsWith(".mp4")) secured.headers.set("Content-Type", "video/mp4");
+  else if (pathname.endsWith(".webm")) secured.headers.set("Content-Type", "video/webm");
+  else if (pathname.endsWith(".webp")) secured.headers.set("Content-Type", "image/webp");
   if (pathname.startsWith("/assets/")) secured.headers.set("Cache-Control", "public, max-age=31536000, immutable");
   else if (pathname.startsWith("/media/") || pathname.startsWith("/fonts/") || pathname === "/og.jpg" || pathname === "/favicon.png") secured.headers.set("Cache-Control", "public, max-age=604800, stale-while-revalidate=2592000");
   // Revalidate the HTML shell on every navigation. Keeping stale HTML at the

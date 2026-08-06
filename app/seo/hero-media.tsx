@@ -15,7 +15,7 @@ export function HeroMedia() {
     return <OptimizedVideo
       className="hero-image"
       slotId={video.slotId}
-      label="Entraînements et moments de communauté chez Strongbear à Marines"
+      label="Démonstration technique de Jiu-Jitsu Brésilien chez Strongbear à Marines"
       poster={video.poster}
       sources={video.sources}
     />;

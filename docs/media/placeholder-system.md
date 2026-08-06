@@ -43,12 +43,11 @@ Les images LCP sont explicitement marquées `eager` ; toutes les autres restent 
 
 Déposer `home-hero-video-master.mp4` dans `assets/source`, puis lancer `pnpm run media:all`. Le pipeline utilise FFmpeg via la commande `ffmpeg` ou la variable `MEDIA_FFMPEG` et génère :
 
-- Desktop : 1920 px, MP4 et WebM.
-- Tablette : 1280 px, MP4 et WebM.
-- Mobile : 960 px, MP4 et WebM.
+- Ordinateur et tablette : jusqu’à 640 px, MP4 et WebM, sans agrandissement artificiel du master.
+- Mobile : jusqu’à 480 px, MP4 et WebM.
 - Poster WebP.
 
-Sans master vidéo, le pipeline réussit et conserve automatiquement l’image de secours. Si un master est présent mais que FFmpeg manque, il s’arrête avec un message explicite afin d’éviter de publier un fichier non optimisé.
+Sans master vidéo, le pipeline réussit et conserve les versions vérifiées déjà générées ; si aucune vidéo n’existe encore, l’image de secours reste active. Si un master est présent mais que FFmpeg manque, il s’arrête avec un message explicite afin d’éviter de publier un fichier non optimisé.
 
 ## Nommage des médias Academy
 

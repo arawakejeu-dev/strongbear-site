@@ -1,4 +1,4 @@
-import { access, mkdir, writeFile } from "node:fs/promises";
+import { access, mkdir, readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { spawn } from "node:child_process";
 
@@ -10,8 +10,11 @@ const manifestPath = resolve(root, "app/seo/generated-video.json");
 try {
   await access(input);
 } catch {
-  await writeFile(manifestPath, JSON.stringify({ ready: false, slotId: "home.hero-video" }, null, 2) + "\n");
-  console.log("Hero video master absent: the optimized backup image remains active.");
+  const currentManifest = JSON.parse(await readFile(manifestPath, "utf8")) as { ready?: boolean };
+  if (!currentManifest.ready) await writeFile(manifestPath, JSON.stringify({ ready: false, slotId: "home.hero-video" }, null, 2) + "\n");
+  console.log(currentManifest.ready
+    ? "Hero video master absent: existing verified renditions remain active."
+    : "Hero video master absent: the optimized backup image remains active.");
   process.exit(0);
 }
 
@@ -27,18 +30,17 @@ async function run(args: string[]) {
 }
 
 const renditions = [
-  { name: "desktop", width: 1920, media: "(min-width: 80rem)" },
-  { name: "tablet", width: 1280, media: "(min-width: 48rem)" },
-  { name: "mobile", width: 960, media: "(max-width: 47.99rem)" },
+  { name: "desktop", width: 640, media: "(min-width: 48rem)", mp4Crf: "24", webmCrf: "36" },
+  { name: "mobile", width: 480, media: "(max-width: 47.99rem)", mp4Crf: "26", webmCrf: "38" },
 ];
 
 for (const rendition of renditions) {
-  const scale = `scale='min(${rendition.width},iw)':-2`;
-  await run(["-y", "-i", input, "-an", "-vf", scale, "-c:v", "libx264", "-preset", "slow", "-crf", "24", "-movflags", "+faststart", resolve(outputDir, `home-hero-video-${rendition.name}.mp4`)]);
-  await run(["-y", "-i", input, "-an", "-vf", scale, "-c:v", "libvpx-vp9", "-crf", "34", "-b:v", "0", "-row-mt", "1", resolve(outputDir, `home-hero-video-${rendition.name}.webm`)]);
+  const videoFilter = `fps=24,scale='min(${rendition.width},iw)':-2`;
+  await run(["-y", "-i", input, "-an", "-vf", videoFilter, "-c:v", "libx264", "-preset", "slow", "-crf", rendition.mp4Crf, "-pix_fmt", "yuv420p", "-movflags", "+faststart", resolve(outputDir, `home-hero-video-${rendition.name}.mp4`)]);
+  await run(["-y", "-i", input, "-an", "-vf", videoFilter, "-c:v", "libvpx-vp9", "-crf", rendition.webmCrf, "-b:v", "0", "-row-mt", "1", "-deadline", "good", "-cpu-used", "3", resolve(outputDir, `home-hero-video-${rendition.name}.webm`)]);
 }
 
-await run(["-y", "-ss", "00:00:01", "-i", input, "-frames:v", "1", "-vf", "scale='min(1280,iw)':-2", "-c:v", "libwebp", "-quality", "82", resolve(outputDir, "home-hero-video-thumbnail.webp")]);
+await run(["-y", "-ss", "00:00:04", "-i", input, "-frames:v", "1", "-vf", "scale='min(640,iw)':-2", "-c:v", "libwebp", "-quality", "84", "-update", "1", resolve(outputDir, "home-hero-video-thumbnail.webp")]);
 
 await writeFile(manifestPath, JSON.stringify({
   ready: true,
