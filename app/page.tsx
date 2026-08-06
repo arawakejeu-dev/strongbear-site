@@ -23,7 +23,7 @@ export async function generateMetadata(): Promise<Metadata> {
 const academy = [
   { category: "Bien débuter", title: "Votre premier cours de JJB", summary: "Tenue, arrivée, sécurité et déroulé : tous les repères pour commencer sereinement.", href: "/academy/bien-debuter/premier-cours-jiu-jitsu-bresilien", readingTime: "9 min" },
   { category: "Jiu-Jitsu", title: "Comprendre le Jiu-Jitsu Brésilien", summary: "Une collection structurée sur les principes, les grades, la compétition et les disciplines voisines.", href: "/academy/jiu-jitsu-bresilien", readingTime: "6 guides" },
-  { category: "Parents", title: "Enfants & Parents", summary: "Sécurité, confiance, respect et pédagogie : des réponses conçues pour décider sereinement.", href: "/academy/enfants-parents", readingTime: "6 guides" },
+  { category: "Strongbear", title: "La vie de l’académie", summary: "Événements, séminaires, compétitions et communauté : la vie Strongbear racontée avec des faits.", href: "/academy/vie-strongbear", readingTime: "5 guides" },
 ];
 
 export default function Home() {

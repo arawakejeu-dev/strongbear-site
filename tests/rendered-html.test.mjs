@@ -54,6 +54,8 @@ test("renders the centralized Kids FAQ and keeps MMA out of the offer", async ()
   const html = await response.text();
   assert.match(html, /Mon enfant peut-il commencer sans aucune expérience/);
   assert.match(html, /Les filles peuvent-elles pratiquer/);
+  assert.match(html, /Consulter les guides parents/);
+  assert.match(html, /href="\/academy\/enfants-parents"/);
   assert.match(html, /À partir de 6 ans/);
   assert.match(html, /6–7 ans/);
   assert.match(html, /8–10 ans/);
@@ -67,7 +69,7 @@ test("renders the centralized Kids FAQ and keeps MMA out of the offer", async ()
   assert.doesNotMatch(html, /Cours de MMA|MMA pour enfants|MMA Kids/i);
 });
 
-test("renders the Academy hub with six editorial collections", async () => {
+test("renders the Academy hub with five editorial collections", async () => {
   const response = await render("/academy");
   assert.equal(response.status, 200);
 
@@ -75,7 +77,8 @@ test("renders the Academy hub with six editorial collections", async () => {
   assert.match(html, /Comprendre/);
   assert.match(html, /Bien débuter/);
   assert.match(html, /Jiu-Jitsu Brésilien/);
-  assert.match(html, /Enfants &amp; Parents/);
+  assert.match(html, /Cinq collections/);
+  assert.doesNotMatch(html, /Enfants &amp; Parents/);
   assert.match(html, /Vie Strongbear/);
   assert.match(html, /sujets structurés/);
 });

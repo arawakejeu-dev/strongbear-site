@@ -61,6 +61,7 @@
 .kids-parent-grid{display:grid;gap:clamp(3.5rem,8vw,8rem)}
 .kids-parent-grid>div:first-child h2{max-width:11ch;margin:0;font-family:var(--display);font-size:clamp(3rem,6vw,5.75rem);line-height:.94;text-transform:uppercase}
 .kids-parent-grid>div:first-child>p:not(.eyebrow){max-width:35rem;color:#b7cbc8;line-height:1.75;margin:2rem 0 0}
+.kids-parent-grid>div:first-child>.button{margin-top:2rem}
 .kids-parent-points{border-top:1px solid rgb(255 255 255/.18)}
 .kids-parent-points article{display:grid;grid-template-columns:2rem 1fr;gap:1.25rem;padding:1.6rem 0;border-bottom:1px solid rgb(255 255 255/.18)}
 .kids-parent-points article>.icon{color:#d0aa6d}

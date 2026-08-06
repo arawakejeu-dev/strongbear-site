@@ -58,7 +58,7 @@ const navigationItems = [
 ];
 
 const kidsNavigationItems = [
-  { label: "Bénéfices", href: "#benefices" },
+  { label: "Parents", href: "#parents" },
   { label: "Pédagogie", href: "#pedagogie" },
   { label: "Âges", href: "#ages" },
   { label: "Planning", href: "#planning" },

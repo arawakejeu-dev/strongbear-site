@@ -19,12 +19,15 @@ import {
   type ArticleSection,
 } from "../data/academy";
 
+export const academyHubCategories = academyCategories.filter((category) => category.slug !== "enfants-parents");
+
 export function AcademyBreadcrumb({ items }: { items: Array<{ label: string; href?: string }> }) {
   return <nav className="academy-breadcrumb" aria-label="Fil d’Ariane"><ol>{items.map((item, index) => <li key={`${item.label}-${index}`}>{item.href ? <a href={item.href}>{item.label}</a> : <span aria-current="page">{item.label}</span>}</li>)}</ol></nav>;
 }
 
 export function AcademyCategoryNav({ active }: { active?: string }) {
-  return <nav className="academy-category-nav" aria-label="Catégories de l’Academy"><Container><a className={!active ? "is-active" : ""} href="/academy">Tous les sujets</a>{academyCategories.map((category) => <a className={active === category.slug ? "is-active" : ""} href={`/academy/${category.slug}`} key={category.slug}>{category.shortName}</a>)}</Container></nav>;
+  const isParents = active === "enfants-parents";
+  return <nav className="academy-category-nav" aria-label="Catégories de l’Academy"><Container><a className={!active ? "is-active" : ""} href="/academy">Tous les sujets</a>{isParents && <a className="is-active" href="/kids#parents">Kids & Parents</a>}{academyHubCategories.map((category) => <a className={active === category.slug ? "is-active" : ""} href={`/academy/${category.slug}`} key={category.slug}>{category.shortName}</a>)}</Container></nav>;
 }
 
 export function AcademyMasthead() {
@@ -32,9 +35,9 @@ export function AcademyMasthead() {
     <AcademyBreadcrumb items={[{ label: "Accueil", href: "/" }, { label: "Academy" }]} />
     <div className="academy-masthead-grid">
       <div><p className="eyebrow">Strongbear Academy · Marines</p><h1 id="academy-title"><span>Comprendre.</span><span>Puis pratiquer.</span></h1></div>
-      <div className="academy-masthead-intro"><p>Des guides précis pour les débutants, les parents et les pratiquants qui veulent mieux lire leur discipline.</p><span><Icon icon={BookOpen} size="sm" />Éducation d’abord. Conversion ensuite.</span></div>
+      <div className="academy-masthead-intro"><p>Des guides précis pour les débutants et les pratiquants qui veulent mieux lire leur discipline.</p><span><Icon icon={BookOpen} size="sm" />Éducation d’abord. Conversion ensuite.</span></div>
     </div>
-    <a className="academy-scroll-cue" href="#categories">Explorer les six univers<Icon icon={ArrowDown} size="sm" /></a>
+    <a className="academy-scroll-cue" href="#categories">Explorer les univers<Icon icon={ArrowDown} size="sm" /></a>
   </Container></section>;
 }
 
@@ -62,9 +65,10 @@ export function AcademyArticleCard({ article, index, featured = false }: { artic
 }
 
 export function AcademyCategoryHero({ category, articleCount }: { category: AcademyCategory; articleCount: number }) {
+  const isParents = category.slug === "enfants-parents";
   return <section className="academy-category-hero" aria-labelledby="category-title"><Container>
-    <AcademyBreadcrumb items={[{ label: "Accueil", href: "/" }, { label: "Academy", href: "/academy" }, { label: category.name }]} />
-    <div className="academy-category-hero-grid"><div><p className="eyebrow">Academy · {category.number}</p><h1 id="category-title">{category.name}</h1></div><div><p>{category.description}</p><span>{articleCount} sujets · Collection évolutive</span>{category.disciplineHref && <ButtonLink href={category.disciplineHref} variant="text">Découvrir les cours</ButtonLink>}</div></div>
+    <AcademyBreadcrumb items={isParents ? [{ label: "Accueil", href: "/" }, { label: "Kids", href: "/kids" }, { label: "Parents" }] : [{ label: "Accueil", href: "/" }, { label: "Academy", href: "/academy" }, { label: category.name }]} />
+    <div className="academy-category-hero-grid"><div><p className="eyebrow">{isParents ? "Strongbear Kids" : `Academy · ${category.number}`}</p><h1 id="category-title">{category.name}</h1></div><div><p>{category.description}</p><span>{articleCount} sujets · Collection évolutive</span>{category.disciplineHref && <ButtonLink href={category.disciplineHref} variant="text">{isParents ? "Découvrir Strongbear Kids" : "Découvrir les cours"}</ButtonLink>}</div></div>
   </Container></section>;
 }
 

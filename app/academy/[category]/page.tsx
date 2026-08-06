@@ -18,7 +18,8 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
   if (!category) return {};
   const origin = await getRequestOrigin();
   const url = `${origin}/academy/${category.slug}`;
-  const title = `${category.name} — Strongbear Academy`;
+  const isParents = category.slug === "enfants-parents";
+  const title = isParents ? "Guides parents — Strongbear Kids" : `${category.name} — Strongbear Academy`;
   return {
     title,
     description: category.description,
@@ -34,9 +35,10 @@ export default async function AcademyCategoryPage({ params }: CategoryPageProps)
   if (!category) notFound();
   const articles = getAcademyArticlesByCategory(slug);
   const origin = await getRequestOrigin();
+  const isParents = category.slug === "enfants-parents";
   const structuredData = [
-    { "@context": "https://schema.org", "@type": "CollectionPage", name: category.name, description: category.description, url: `${origin}/academy/${category.slug}`, isPartOf: { "@type": "CollectionPage", name: "Strongbear Academy", url: `${origin}/academy` } },
-    buildBreadcrumbSchema([{ name: "Accueil", url: origin }, { name: "Academy", url: `${origin}/academy` }, { name: category.name, url: `${origin}/academy/${category.slug}` }]),
+    { "@context": "https://schema.org", "@type": "CollectionPage", name: category.name, description: category.description, url: `${origin}/academy/${category.slug}`, isPartOf: { "@type": "WebPage", name: isParents ? "Strongbear Kids" : "Strongbear Academy", url: isParents ? `${origin}/kids` : `${origin}/academy` } },
+    buildBreadcrumbSchema(isParents ? [{ name: "Accueil", url: origin }, { name: "Kids", url: `${origin}/kids` }, { name: "Parents", url: `${origin}/academy/${category.slug}` }] : [{ name: "Accueil", url: origin }, { name: "Academy", url: `${origin}/academy` }, { name: category.name, url: `${origin}/academy/${category.slug}` }]),
   ];
 
   return <>
