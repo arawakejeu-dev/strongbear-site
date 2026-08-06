@@ -64,13 +64,15 @@ test("renders the centralized Kids FAQ and keeps MMA out of the offer", async ()
   assert.match(html, /Consulter les guides parents/);
   assert.match(html, /href="\/academy\/enfants-parents"/);
   assert.match(html, /À partir de 6 ans/);
-  assert.match(html, /6–7 ans/);
-  assert.match(html, /8–10 ans/);
+  assert.match(html, /6–10 ans/);
+  assert.match(html, /11–14 ans/);
   assert.match(html, /"suggestedMinAge":6/);
+  assert.match(html, /"suggestedMaxAge":14/);
   assert.match(html, /gratuit en septembre/);
   assert.match(html, /Après septembre, son tarif est de 10 €/);
   assert.match(html, /10 € après septembre/);
   assert.doesNotMatch(html, /4–6 ans/);
+  assert.doesNotMatch(html, /6–7 ans|8–10 ans/);
   assert.match(html, /FAQPage/);
   assert.match(html, /data-image-authenticity="provisional-generated"/);
   assert.match(html, /data-media-slot="kids\.hero"/);
