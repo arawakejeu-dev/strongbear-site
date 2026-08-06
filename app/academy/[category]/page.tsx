@@ -45,7 +45,7 @@ export default async function AcademyCategoryPage({ params }: CategoryPageProps)
       <AcademyCategoryHero category={category} articleCount={articles.length} />
       <AcademyCategoryNav active={category.slug} />
       <section className="academy-category-list"><Container>
-        <div className="academy-category-list-heading"><p className="eyebrow">Collection {category.number}</p><h2>{category.promise}</h2><p>Les guides marqués « En préparation » définissent la feuille de route. Ils ne deviennent accessibles qu’après rédaction, validation experte et contrôle SEO.</p></div>
+        <div className="academy-category-list-heading"><p className="eyebrow">Collection {category.number}</p><h2>{category.promise}</h2><p>Les prochains sujets sont annoncés avec transparence. Chaque guide devient accessible après validation pédagogique et éditoriale.</p></div>
         <div className="academy-articles-grid">{articles.map((article, index) => <AcademyArticleCard article={article} index={index} featured={article.status === "published"} key={article.slug} />)}</div>
       </Container></section>
       <section className="academy-conversion-section"><Container><AcademyFightyCTA /><AcademyNewsletterCTA /></Container></section>

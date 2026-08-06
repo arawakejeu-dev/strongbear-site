@@ -51,7 +51,7 @@ export default function Home() {
       <section className="section about-section" id="strongbear">
         <Container className="about-grid">
           <div className="about-visual"><OptimizedImage source="/bjj-class.jpg" alt="Démonstration technique pendant un cours de Jiu-Jitsu Brésilien" sizes="(min-width: 64rem) 45vw, 100vw" /><span>Marines · Vexin</span><div className="image-caption"><strong>Technique</strong><small>Avant l’intensité</small></div></div>
-          <div className="about-copy"><SectionTitle eyebrow="Notre académie" title="L’exigence technique. Sans l’ego." intro="Un enseignement précis, un collectif bienveillant et des repères clairs pour progresser durablement — quel que soit votre point de départ." /><blockquote>“La progression naît d’un cadre exigeant où chacun se sent à sa place.”</blockquote><ul><li>Débutants réellement accompagnés</li><li>Enseignement structuré par niveaux</li><li>Ambiance responsable et soudée</li><li>Objectifs loisir ou compétition</li></ul><FightyCTA label="Rencontrer l’équipe" /></div>
+          <div className="about-copy"><SectionTitle eyebrow="Notre académie" title="L’exigence technique. Sans l’ego." intro="Un enseignement précis, un collectif bienveillant et des repères clairs pour progresser durablement — quel que soit votre point de départ." /><blockquote>“La progression naît d’un cadre exigeant où chacun se sent à sa place.”</blockquote><ul><li>Débutants réellement accompagnés</li><li>Enseignement structuré par niveaux</li><li>Ambiance responsable et soudée</li><li>Objectifs loisir ou compétition</li></ul><FightyCTA label="Réserver un essai avec l’équipe" /></div>
         </Container>
       </section>
 

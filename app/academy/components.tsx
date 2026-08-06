@@ -31,7 +31,7 @@ export function AcademyMasthead() {
   return <section className="academy-masthead" aria-labelledby="academy-title"><Container>
     <AcademyBreadcrumb items={[{ label: "Accueil", href: "/" }, { label: "Academy" }]} />
     <div className="academy-masthead-grid">
-      <div><p className="eyebrow">Strongbear Academy · Marines</p><h1 id="academy-title">Comprendre.<br />Puis pratiquer.</h1></div>
+      <div><p className="eyebrow">Strongbear Academy · Marines</p><h1 id="academy-title"><span>Comprendre.</span><span>Puis pratiquer.</span></h1></div>
       <div className="academy-masthead-intro"><p>Des guides précis pour les débutants, les parents et les pratiquants qui veulent mieux lire leur discipline.</p><span><Icon icon={BookOpen} size="sm" />Éducation d’abord. Conversion ensuite.</span></div>
     </div>
     <a className="academy-scroll-cue" href="#categories">Explorer les six univers<Icon icon={ArrowDown} size="sm" /></a>
@@ -110,5 +110,7 @@ export function AcademyFightyCTA() {
 }
 
 export function AcademyNewsletterCTA() {
-  return <aside className="academy-newsletter"><div><Icon icon={Mail} /><p className="eyebrow">La lettre Strongbear</p><h2>Un guide utile.<br />Quand il est prêt.</h2><p>La lettre éditoriale est en préparation. Aucun formulaire n’est activé tant qu’un service d’envoi et une politique de consentement ne sont pas configurés.</p></div><span className="academy-newsletter-status" aria-label="Newsletter bientôt disponible">Bientôt disponible</span></aside>;
+  const newsletterUrl = process.env.NEXT_PUBLIC_NEWSLETTER_URL;
+  if (!newsletterUrl) return null;
+  return <aside className="academy-newsletter"><div><Icon icon={Mail} /><p className="eyebrow">La lettre Strongbear</p><h2>Un guide utile.<br />Au bon moment.</h2><p>Recevez les nouveaux guides pratiques de l’Academy. Une lecture utile, sans bruit inutile.</p></div><ButtonLink href={newsletterUrl} variant="secondary" external>Recevoir les guides</ButtonLink></aside>;
 }

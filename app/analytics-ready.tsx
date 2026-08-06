@@ -35,6 +35,15 @@ function bootstrapAnalytics(config: typeof analyticsConfig) {
         window.fbq("track", "PageView");
         loadScript("https://connect.facebook.net/fr_FR/fbevents.js");
       }
+      document.addEventListener("click", (event) => {
+        const target = event.target instanceof Element ? event.target.closest<HTMLAnchorElement>('[data-conversion="fighty"]') : null;
+        if (!target) return;
+        const detail = { event: "fighty_click", cta_label: target.dataset.ctaLabel || target.textContent?.trim() || "Fighty", page_path: window.location.pathname };
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push(detail);
+        if (config.ga4Id && window.gtag) window.gtag("event", "fighty_click", { cta_label: detail.cta_label, page_path: detail.page_path });
+        if (config.metaPixelId && window.fbq) window.fbq("trackCustom", "FightyClick", { cta_label: detail.cta_label });
+      }, { passive: true });
     };
     if ("requestIdleCallback" in window) window.requestIdleCallback(run, { timeout: 2500 });
     else window.setTimeout(run, 1200);

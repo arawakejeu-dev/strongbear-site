@@ -171,7 +171,7 @@ const journeySteps = [
   { icon: CalendarCheck, title: "Réservez", copy: "Choisissez sur Fighty le cours qui correspond à votre profil." },
   { icon: DoorOpen, title: "Venez", copy: "Arrivez quelques minutes en avance. L’équipe vous accueille et vous guide." },
   { icon: Focus, title: "Entraînez-vous", copy: "Découvrez une vraie séance, à une intensité adaptée et sans pression." },
-  { icon: UsersRound, title: "Rejoignez", copy: "Décidez après l’essai. L’adhésion reste un choix et se fait sur Fighty." },
+  { icon: UsersRound, title: "Rejoignez l’équipe", copy: "Décidez après l’essai. L’adhésion reste un choix et se fait sur Fighty." },
 ];
 
 export function FightyTrustJourney({ audience = "adult" }: { audience?: "adult" | "parent" }) {

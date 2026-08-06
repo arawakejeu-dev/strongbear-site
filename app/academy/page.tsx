@@ -35,12 +35,12 @@ export default async function AcademyPage() {
       <AcademyCategoryNav />
 
       <section className="academy-featured-section"><Container>
-        <div className="academy-editorial-heading"><div><p className="eyebrow">Guide à la une</p><h2>Commencer avec<br />des repères clairs.</h2></div><p>Le premier contenu publié valide le modèle éditorial complet : lecture longue, sommaire, FAQ, liens internes et CTA discret.</p></div>
+        <div className="academy-editorial-heading"><div><p className="eyebrow">Guide à la une</p><h2>Commencer avec<br />des repères clairs.</h2></div><p>Un guide complet pour comprendre le déroulé d’un premier cours, préparer votre venue et avancer sans pression.</p></div>
         <div className="academy-featured-grid">{publishedAcademyArticles.map((article, index) => <AcademyArticleCard article={article} index={index} featured key={article.slug} />)}</div>
       </Container></section>
 
       <section className="academy-categories-section" id="categories"><Container>
-        <div className="academy-editorial-heading"><div><p className="eyebrow">Six collections</p><h2>Une question.<br />Le bon univers.</h2></div><p>Chaque collection possède une intention éditoriale précise. Les sujets planifiés sont visibles sans être présentés comme des articles déjà publiés.</p></div>
+        <div className="academy-editorial-heading"><div><p className="eyebrow">Six collections</p><h2>Une question.<br />Le bon univers.</h2></div><p>Débutants, parents et pratiquants retrouvent leurs repères dans une collection dédiée, avec des réponses claires et vérifiées.</p></div>
         <div className="academy-categories-grid">{academyCategories.map((category) => <AcademyCategoryCard category={category} articleCount={academyArticles.filter((article) => article.category === category.slug).length} key={category.slug} />)}</div>
       </Container></section>
 

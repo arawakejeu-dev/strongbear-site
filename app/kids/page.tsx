@@ -74,7 +74,7 @@ const kidsFightySteps = [
   { icon: CalendarCheck, title: "Réservez", copy: "Choisissez le créneau d’essai adapté sur Fighty." },
   { icon: DoorOpen, title: "Venez", copy: "Arrivez quelques minutes avant le cours avec une tenue confortable." },
   { icon: Eye, title: "Découvrez", copy: "Votre enfant participe à une séance encadrée, sans pression." },
-  { icon: HeartHandshake, title: "Rejoignez", copy: "Échangez avec l’équipe avant de choisir la suite sur Fighty." },
+  { icon: HeartHandshake, title: "Rejoignez l’équipe", copy: "Échangez avec l’équipe avant de choisir la suite sur Fighty." },
 ];
 
 export default async function KidsPage() {

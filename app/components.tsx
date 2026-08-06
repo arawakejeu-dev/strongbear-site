@@ -19,6 +19,9 @@ import {
 import { OptimizedImage } from "./seo/optimized-image";
 
 const FIGHTY_URL = process.env.NEXT_PUBLIC_FIGHTY_URL ?? "https://fighty.com/";
+const PRIVACY_URL = process.env.NEXT_PUBLIC_PRIVACY_URL;
+const LEGAL_URL = process.env.NEXT_PUBLIC_LEGAL_URL;
+const GOOGLE_BUSINESS_URL = process.env.NEXT_PUBLIC_GOOGLE_BUSINESS_URL;
 
 export type IconSize = "sm" | "md" | "lg";
 
@@ -38,7 +41,7 @@ export function ButtonLink({ href, children, variant = "secondary", external = f
 }
 
 export function FightyCTA({ label = "Réserver mon essai", className = "", variant = "primary" }: { label?: string; className?: string; variant?: "primary" | "secondary" | "ghost" }) {
-  return <a className={`button button-${variant} ${className}`} href={FIGHTY_URL} rel="external">{label}<Icon icon={ArrowUpRight} size="sm" /><span className="sr-only"> — réservation sur Fighty</span></a>;
+  return <a className={`button button-${variant} ${className}`} href={FIGHTY_URL} rel="external" data-conversion="fighty" data-cta-label={label}>{label}<Icon icon={ArrowUpRight} size="sm" /><span className="sr-only"> — réservation sur Fighty</span></a>;
 }
 
 export function SectionTitle({ eyebrow, title, intro, inverse = true, titleId }: { eyebrow: string; title: string; intro?: string; inverse?: boolean; titleId?: string }) {
@@ -46,9 +49,9 @@ export function SectionTitle({ eyebrow, title, intro, inverse = true, titleId }:
 }
 
 const navigationItems = [
-  { label: "Jiu-Jitsu", href: "/#disciplines" },
-  { label: "Grappling", href: "/#disciplines" },
-  { label: "MMA", href: "/#disciplines" },
+  { label: "Jiu-Jitsu", href: "/academy/jiu-jitsu-bresilien" },
+  { label: "Grappling", href: "/academy/grappling" },
+  { label: "MMA", href: "/academy/mma" },
   { label: "Kids", href: "/kids" },
   { label: "Academy", href: "/academy" },
   { label: "Contact", href: "/#contact" },
@@ -97,7 +100,7 @@ export function DisciplineCard({ index, title, description, href, image, alt, de
 }
 
 export function ScheduleCard({ day, time, discipline, level = "Tous niveaux", href = FIGHTY_URL }: { day: string; time: string; discipline: string; level?: string; href?: string }) {
-  return <article className="schedule-card reveal"><div className="schedule-card-day"><Icon icon={CalendarCheck} size="sm" /><span>{day}</span></div><div><strong>{discipline}</strong><p>{level}</p></div><a href={href} rel="external" aria-label={`Réserver le cours de ${discipline}, ${day} à ${time}`}><span>{time}</span><Icon icon={ArrowUpRight} size="sm" /></a></article>;
+  return <article className="schedule-card reveal"><div className="schedule-card-day"><Icon icon={CalendarCheck} size="sm" /><span>{day}</span></div><div><strong>{discipline}</strong><p>{level}</p></div><a href={href} rel="external" data-conversion={href === FIGHTY_URL ? "fighty" : undefined} data-cta-label={href === FIGHTY_URL ? `Planning · ${discipline}` : undefined} aria-label={`Réserver le cours de ${discipline}, ${day} à ${time}`}><span>{time}</span><Icon icon={ArrowUpRight} size="sm" /></a></article>;
 }
 
 export function TestimonialCard({ quote, name, profile, rating = 5, source, sourceUrl, verified = false }: { quote: string; name: string; profile: string; rating?: number; source?: string; sourceUrl?: string; verified?: boolean }) {
@@ -125,7 +128,7 @@ const fightySteps = [
   { icon: CalendarCheck, title: "Réservez", copy: "Choisissez votre cours d’essai sur Fighty." },
   { icon: DoorOpen, title: "Venez", copy: "Présentez-vous quelques minutes avant la séance." },
   { icon: Focus, title: "Entraînez-vous", copy: "L’équipe vous accompagne dès votre arrivée." },
-  { icon: UsersRound, title: "Rejoignez", copy: "Continuez avec l’offre adaptée à votre pratique." },
+  { icon: UsersRound, title: "Rejoignez l’équipe", copy: "Continuez avec l’offre adaptée à votre pratique." },
 ];
 
 export function FightyJourney({ title = "Votre premier cours. Simplement.", ctaLabel = "Réserver mon essai gratuit", steps = fightySteps }: { title?: string; ctaLabel?: string; steps?: Array<{ icon: LucideIcon; title: string; copy: string }> }) {
@@ -138,5 +141,5 @@ export function FloatingCTA({ label = "Réserver mon essai" }: { label?: string 
 
 export function Footer({ variant = "default" }: { variant?: "default" | "kids" }) {
   const isKids = variant === "kids";
-  return <footer className={`footer ${isKids ? "footer-kids" : ""}`} id="contact"><Container><div className="footer-top"><div><a className="brand" href="/"><strong>STRONGBEAR</strong><span>{isKids ? "KIDS · JIU-JITSU · GRAPPLING" : "BJJ · GRAPPLING · MMA"}</span></a><p>{isKids ? "Un espace sûr pour apprendre, grandir et prendre confiance." : "L’académie d’arts martiaux du Vexin."}</p><span className="footer-location"><Icon icon={MapPin} size="sm" />Marines · Val-d’Oise</span></div><div className="footer-cta"><span>{isKids ? "Prêt pour une première découverte ?" : "Prêt à progresser ?"}</span><FightyCTA label={isKids ? "Réserver l’essai de mon enfant" : "Réserver mon essai"} /></div></div><div className="footer-grid">{isKids ? <><nav aria-label="Programme Kids"><strong>Programme Kids</strong><a href="#benefices">Bénéfices</a><a href="#pedagogie">Pédagogie</a><a href="#ages">Groupes d’âge</a></nav><nav aria-label="Informations parents"><strong>Parents</strong><a href="#planning">Planning</a><a href="#tarifs">Tarifs</a><a href="#faq">Questions fréquentes</a></nav></> : <><nav aria-label="Disciplines"><strong>Disciplines</strong><a href="/academy/jiu-jitsu-bresilien">Jiu-Jitsu Brésilien</a><a href="/academy/grappling">Grappling</a><a href="/academy/mma">MMA</a></nav><nav aria-label="Découvrir"><strong>Découvrir</strong><a href="/kids">Kids</a><a href="/academy">Academy</a><a href="/#strongbear">À propos</a><a href="/#contact">Contact</a></nav></>}<nav aria-label="Informations"><strong>Informations</strong><a href="/academy/bien-debuter">Bien débuter</a><a href={FIGHTY_URL} rel="external">Fighty</a></nav></div><div className="footer-bottom"><span>© 2026 Strongbear BJJ & Grappling</span><span>{isKids ? "Confiance · Respect · Plaisir" : "Technique · Respect · Progression"}</span></div></Container></footer>;
+  return <footer className={`footer ${isKids ? "footer-kids" : ""}`} id="contact"><Container><div className="footer-top"><div><a className="brand" href="/"><strong>STRONGBEAR</strong><span>{isKids ? "KIDS · JIU-JITSU · GRAPPLING" : "BJJ · GRAPPLING · MMA"}</span></a><p>{isKids ? "Un espace sûr pour apprendre, grandir et prendre confiance." : "L’académie d’arts martiaux du Vexin."}</p><span className="footer-location"><Icon icon={MapPin} size="sm" />Marines · Val-d’Oise</span></div><div className="footer-cta"><span>{isKids ? "Prêt pour une première découverte ?" : "Prêt à progresser ?"}</span><FightyCTA label={isKids ? "Réserver l’essai de mon enfant" : "Réserver mon essai"} /></div></div><div className="footer-grid">{isKids ? <><nav aria-label="Programme Kids"><strong>Programme Kids</strong><a href="#benefices">Bénéfices</a><a href="#pedagogie">Pédagogie</a><a href="#ages">Groupes d’âge</a></nav><nav aria-label="Informations parents"><strong>Parents</strong><a href="#planning">Planning</a><a href="#tarifs">Tarifs</a><a href="#faq">Questions fréquentes</a></nav></> : <><nav aria-label="Disciplines"><strong>Disciplines</strong><a href="/academy/jiu-jitsu-bresilien">Jiu-Jitsu Brésilien</a><a href="/academy/grappling">Grappling</a><a href="/academy/mma">MMA</a></nav><nav aria-label="Découvrir"><strong>Découvrir</strong><a href="/kids">Kids</a><a href="/academy">Academy</a><a href="/#strongbear">À propos</a><a href="/#contact">Contact</a></nav></>}<nav aria-label="Informations"><strong>Informations</strong><a href="/academy/bien-debuter">Bien débuter</a><a href={FIGHTY_URL} rel="external" data-conversion="fighty" data-cta-label="Footer · Fighty">Fighty</a>{GOOGLE_BUSINESS_URL && <a href={GOOGLE_BUSINESS_URL} rel="external">Google Business</a>}{PRIVACY_URL && <a href={PRIVACY_URL}>Confidentialité</a>}{LEGAL_URL && <a href={LEGAL_URL}>Mentions légales</a>}</nav></div><div className="footer-bottom"><span>© 2026 Strongbear BJJ & Grappling</span><span>{isKids ? "Confiance · Respect · Plaisir" : "Technique · Respect · Progression"}</span></div></Container></footer>;
 }
