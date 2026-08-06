@@ -106,6 +106,7 @@ export function CoachStory({ name, role, image, alt, story, teachingPhilosophy, 
 }
 
 const strongbearPillars = [
+  { icon: Award, title: "Professeurs diplômés", copy: "Tous nos professeurs sont diplômés pour transmettre dans un cadre structuré, responsable et adapté." },
   { icon: Focus, title: "Technique", copy: "Comprendre les positions et les décisions, pas seulement reproduire des gestes." },
   { icon: UsersRound, title: "Communauté", copy: "Des partenaires qui s’entraident et font de chaque cours un progrès collectif." },
   { icon: Layers3, title: "Progression", copy: "Des repères clairs pour avancer depuis le premier cours jusqu’à vos objectifs." },

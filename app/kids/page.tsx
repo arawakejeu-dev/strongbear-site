@@ -49,7 +49,7 @@ const childBenefits = [
 ];
 
 const parentBenefits = [
-  { icon: ShieldCheck, title: "Un cadre sécurisé", copy: "Des règles claires, des exercices adaptés et une attention constante portée au bien-être de chaque enfant." },
+  { icon: ShieldCheck, title: "Des professeurs diplômés", copy: "Tous nos professeurs sont diplômés et proposent des exercices adaptés, dans un cadre clair et attentif au bien-être de chaque enfant." },
   { icon: BookOpenCheck, title: "Une progression lisible", copy: "Votre enfant construit des bases techniques étape par étape, sans pression ni comparaison inutile." },
   { icon: HeartHandshake, title: "Un dialogue avec les parents", copy: "L’équipe reste disponible pour comprendre les besoins de votre enfant et accompagner son intégration." },
 ];

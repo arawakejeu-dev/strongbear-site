@@ -22,6 +22,7 @@ test("renders the trust-ready home without unsupported reviews", async () => {
 
   const html = await response.text();
   assert.match(html, /Pourquoi Strongbear/);
+  assert.match(html, /Tous nos professeurs sont diplômés/);
   assert.match(html, /Quatre étapes/);
   assert.match(html, /Réservation externe sécurisée sur Fighty/);
   assert.match(html, /disciplines adultes/);
@@ -54,6 +55,7 @@ test("renders the centralized Kids FAQ and keeps MMA out of the offer", async ()
   const html = await response.text();
   assert.match(html, /Mon enfant peut-il commencer sans aucune expérience/);
   assert.match(html, /Les filles peuvent-elles pratiquer/);
+  assert.match(html, /Tous nos professeurs sont diplômés/);
   assert.match(html, /Consulter les guides parents/);
   assert.match(html, /href="\/academy\/enfants-parents"/);
   assert.match(html, /À partir de 6 ans/);
