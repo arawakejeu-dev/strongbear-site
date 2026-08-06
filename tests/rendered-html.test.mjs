@@ -28,7 +28,11 @@ test("renders the trust-ready home without unsupported reviews", async () => {
   assert.match(html, /SportsActivityLocation/);
   assert.match(html, /LocalBusiness/);
   assert.match(html, /type="image\/avif"/);
+  assert.match(html, /\.avif 320w/);
   assert.match(html, /srcset="[^"]+\.webp 640w/i);
+  assert.match(html, /data-media-slot="home\.hero-backup"/);
+  assert.match(html, /data-media-status="temporary-active"/);
+  assert.doesNotMatch(html, /<video\b/);
   assert.match(html, /data-caption=/);
   assert.match(html, /background-image:url\(data:image\/webp;base64,/);
   assert.equal((html.match(/rel="preload" href="\/fonts\/geist-latin\.woff2"/g) ?? []).length, 1);
@@ -50,6 +54,7 @@ test("renders the centralized Kids FAQ and keeps MMA out of the offer", async ()
   assert.match(html, /Les filles peuvent-elles pratiquer/);
   assert.match(html, /FAQPage/);
   assert.match(html, /data-image-authenticity="provisional-generated"/);
+  assert.match(html, /data-media-slot="kids\.hero"/);
   assert.match(html, /property="og:image" content="https?:\/\/[^\"]+\/og.jpg"/);
   assert.doesNotMatch(html, /Cours de MMA|MMA pour enfants|MMA Kids/i);
 });

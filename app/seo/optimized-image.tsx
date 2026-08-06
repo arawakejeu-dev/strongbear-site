@@ -22,7 +22,7 @@ export function OptimizedImage({ source, alt, className, sizes = "100vw", loadin
     return <img className={className} src={source} alt={resolvedAlt} width={resolvedWidth} height={resolvedHeight} loading={loading} fetchPriority={fetchPriority} decoding={loading === "eager" ? "sync" : "async"} />;
   }
 
-  return <picture className="optimized-picture" data-image-authenticity={record.authenticity} style={{ backgroundImage: `url(${record.placeholder})` }}>
+  return <picture className="optimized-picture" data-media-slot={record.slotId} data-media-status={record.status} data-media-priority={record.priority} data-image-authenticity={record.authenticity} style={{ backgroundImage: `url(${record.placeholder})` }}>
       <source type="image/avif" srcSet={record.avifVariants.map((variant) => `${variant.src} ${variant.width}w`).join(", ")} sizes={sizes} />
       <source type="image/webp" srcSet={record.variants.map((variant) => `${variant.src} ${variant.width}w`).join(", ")} sizes={sizes} />
       <img className={className} src={record.source} alt={resolvedAlt} title={record.title} width={resolvedWidth} height={resolvedHeight} loading={loading} fetchPriority={fetchPriority} decoding={loading === "eager" ? "sync" : "async"} data-caption={record.caption} data-description={record.description} />

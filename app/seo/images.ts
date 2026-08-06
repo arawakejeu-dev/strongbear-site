@@ -1,8 +1,13 @@
-import placeholders from "./image-placeholders.json";
+import { activeImageSlots } from "../../content/media-inventory";
+import generatedMedia from "./generated-media.json";
 
 export type ImageAuthenticity = "verified-academy" | "unverified-source" | "provisional-generated";
 
 export type ImageSeoRecord = {
+  slotId: string;
+  purpose: string;
+  priority: "P0" | "P1" | "P2";
+  status: "temporary-active" | "awaiting-authentic" | "verified-academy";
   source: string;
   variants: Array<{ src: string; width: number }>;
   avifVariants: Array<{ src: string; width: number }>;
@@ -17,78 +22,35 @@ export type ImageSeoRecord = {
   structuredDataEligible: boolean;
 };
 
-export const imageSeoRegistry: Record<string, ImageSeoRecord> = {
-  "/bjj-hero.jpg": {
-    source: "/media/bjj-hero-2400.webp",
-    variants: [640, 1024, 1600, 2400].map((width) => ({ src: `/media/bjj-hero-${width}.webp`, width })),
-    avifVariants: [640, 1024, 1600, 2400].map((width) => ({ src: `/media/bjj-hero-${width}.avif`, width })),
-    placeholder: placeholders["/bjj-hero.jpg"],
-    width: 2400,
-    height: 1600,
-    alt: "Entraînement technique au sol en Jiu-Jitsu Brésilien",
-    title: "Entraînement de Jiu-Jitsu Brésilien",
-    caption: "Travail technique au sol pendant une séance de Jiu-Jitsu Brésilien.",
-    description: "Photographie d’entraînement utilisée pour présenter la pratique adulte.",
-    authenticity: "unverified-source",
-    structuredDataEligible: false,
-  },
-  "/bjj-class.jpg": {
-    source: "/media/bjj-class-1600.webp",
-    variants: [640, 1024, 1600].map((width) => ({ src: `/media/bjj-class-${width}.webp`, width })),
-    avifVariants: [640, 1024, 1600].map((width) => ({ src: `/media/bjj-class-${width}.avif`, width })),
-    placeholder: placeholders["/bjj-class.jpg"],
-    width: 1800,
-    height: 806,
-    alt: "Démonstration technique pendant un cours de Jiu-Jitsu Brésilien",
-    title: "Démonstration technique de Jiu-Jitsu Brésilien",
-    caption: "Une technique est décomposée avant la répétition en binôme.",
-    description: "Image éditoriale illustrant la transmission technique sur le tatami.",
-    authenticity: "unverified-source",
-    structuredDataEligible: false,
-  },
-  "/mma-training.jpg": {
-    source: "/media/mma-training-1600.webp",
-    variants: [640, 1024, 1600].map((width) => ({ src: `/media/mma-training-${width}.webp`, width })),
-    avifVariants: [640, 1024, 1600].map((width) => ({ src: `/media/mma-training-${width}.avif`, width })),
-    placeholder: placeholders["/mma-training.jpg"],
-    width: 1800,
-    height: 1200,
-    alt: "Exercice technique encadré pendant un entraînement de MMA",
-    title: "Entraînement technique de MMA",
-    caption: "Travail technique encadré reliant les différentes distances du MMA.",
-    description: "Photographie éditoriale utilisée pour présenter le cours de MMA adulte.",
-    authenticity: "unverified-source",
-    structuredDataEligible: false,
-  },
-  "/kids-martial-arts.jpg": {
-    source: "/media/kids-martial-arts-1600.webp",
-    variants: [640, 1024, 1600].map((width) => ({ src: `/media/kids-martial-arts-${width}.webp`, width })),
-    avifVariants: [640, 1024, 1600].map((width) => ({ src: `/media/kids-martial-arts-${width}.avif`, width })),
-    placeholder: placeholders["/kids-martial-arts.jpg"],
-    width: 1800,
-    height: 1229,
-    alt: "Enfants participant à un exercice d’arts martiaux encadré",
-    title: "Cours d’arts martiaux pour enfants",
-    caption: "Exercice collectif adapté à l’apprentissage des enfants.",
-    description: "Image éditoriale représentant une activité martiale pour enfants.",
-    authenticity: "unverified-source",
-    structuredDataEligible: false,
-  },
-  "/kids-hero.webp": {
-    source: "/media/kids-hero-1536.webp",
-    variants: [640, 1024, 1536].map((width) => ({ src: `/media/kids-hero-${width}.webp`, width })),
-    avifVariants: [640, 1024, 1536].map((width) => ({ src: `/media/kids-hero-${width}.avif`, width })),
-    placeholder: placeholders["/kids-hero.webp"],
-    width: 1536,
-    height: 1024,
-    alt: "Illustration provisoire d’un coach accompagnant un groupe d’enfants",
-    title: "Visuel provisoire du programme Kids",
-    caption: "Visuel provisoire à remplacer par une photographie authentique et autorisée de l’académie.",
-    description: "Image générée utilisée temporairement pour matérialiser la direction du programme Kids.",
-    authenticity: "provisional-generated",
-    structuredDataEligible: false,
-  },
+type GeneratedMediaRecord = {
+  source: string;
+  variants: Array<{ src: string; width: number }>;
+  avifVariants: Array<{ src: string; width: number }>;
+  placeholder: string;
+  width: number;
+  height: number;
 };
+
+const generated = generatedMedia as Record<string, GeneratedMediaRecord>;
+
+export const imageSeoRegistry: Record<string, ImageSeoRecord> = Object.fromEntries(activeImageSlots.map((slot) => {
+  const source = slot.activeSource!;
+  const asset = generated[source];
+  if (!asset) throw new Error(`${slot.id}: données médias générées manquantes`);
+  return [source, {
+    slotId: slot.id,
+    purpose: slot.purpose,
+    priority: slot.priority,
+    status: slot.status,
+    ...asset,
+    alt: slot.altGuidance,
+    title: slot.title ?? slot.purpose,
+    caption: slot.caption ?? slot.purpose,
+    description: slot.description ?? slot.purpose,
+    authenticity: slot.authenticity ?? "unverified-source",
+    structuredDataEligible: slot.status === "verified-academy",
+  }];
+}));
 
 export function getImageSeoRecord(source: string) {
   return imageSeoRegistry[source];
@@ -97,6 +59,8 @@ export function getImageSeoRecord(source: string) {
 export function validateImageSeoRegistry() {
   return Object.values(imageSeoRegistry).flatMap((image) => {
     const issues: string[] = [];
+    if (!image.slotId.trim()) issues.push(`${image.source}: identifiant média manquant`);
+    if (!image.purpose.trim()) issues.push(`${image.source}: usage éditorial manquant`);
     if (!image.alt.trim()) issues.push(`${image.source}: alt manquant`);
     if (!image.title.trim()) issues.push(`${image.source}: title manquant`);
     if (!image.caption.trim()) issues.push(`${image.source}: caption manquant`);

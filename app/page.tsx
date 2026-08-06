@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { headers } from "next/headers";
 import { AcademyCard, ButtonLink, Container, DisciplineCard, FightyCTA, FloatingCTA, Footer, Header, SectionTitle } from "./components";
 import { OptimizedImage } from "./seo/optimized-image";
+import { HeroMedia } from "./seo/hero-media";
 import { FightyTrustJourney, TrustIndicators, WhyStrongbear } from "./trust-components";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -30,7 +31,7 @@ export default function Home() {
     <Header />
     <main id="contenu">
       <section className="hero" aria-labelledby="hero-title">
-        <OptimizedImage className="hero-image" source="/bjj-hero.jpg" alt="Entraînement technique au sol en Jiu-Jitsu Brésilien" loading="eager" fetchPriority="high" sizes="100vw" />
+        <HeroMedia />
         <div className="hero-shade"></div>
         <Container className="hero-inner">
           <p className="eyebrow eyebrow-inverse">Marines · Val-d’Oise · Académie d’arts martiaux</p>

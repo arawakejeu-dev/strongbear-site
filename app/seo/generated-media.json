@@ -1,0 +1,220 @@
+{
+  "/bjj-hero.jpg": {
+    "source": "/media/bjj-hero-2400.webp",
+    "variants": [
+      {
+        "src": "/media/bjj-hero-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/media/bjj-hero-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/media/bjj-hero-1024.webp",
+        "width": 1024
+      },
+      {
+        "src": "/media/bjj-hero-1600.webp",
+        "width": 1600
+      },
+      {
+        "src": "/media/bjj-hero-2400.webp",
+        "width": 2400
+      }
+    ],
+    "avifVariants": [
+      {
+        "src": "/media/bjj-hero-320.avif",
+        "width": 320
+      },
+      {
+        "src": "/media/bjj-hero-640.avif",
+        "width": 640
+      },
+      {
+        "src": "/media/bjj-hero-1024.avif",
+        "width": 1024
+      },
+      {
+        "src": "/media/bjj-hero-1600.avif",
+        "width": 1600
+      },
+      {
+        "src": "/media/bjj-hero-2400.avif",
+        "width": 2400
+      }
+    ],
+    "placeholder": "data:image/webp;base64,UklGRlQAAABXRUJQVlA4IEgAAABwBACdASogABUAPxF4rVIsKCQit/qoAYAiCWcAAF4NvD6ud67TlSr25mzrAAD+6OWFioTDvvrXNkuwqUh8SMUnHOLxeW8hgAA=",
+    "width": 2400,
+    "height": 1600
+  },
+  "/bjj-class.jpg": {
+    "source": "/media/bjj-class-1600.webp",
+    "variants": [
+      {
+        "src": "/media/bjj-class-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/media/bjj-class-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/media/bjj-class-1024.webp",
+        "width": 1024
+      },
+      {
+        "src": "/media/bjj-class-1600.webp",
+        "width": 1600
+      }
+    ],
+    "avifVariants": [
+      {
+        "src": "/media/bjj-class-320.avif",
+        "width": 320
+      },
+      {
+        "src": "/media/bjj-class-640.avif",
+        "width": 640
+      },
+      {
+        "src": "/media/bjj-class-1024.avif",
+        "width": 1024
+      },
+      {
+        "src": "/media/bjj-class-1600.avif",
+        "width": 1600
+      }
+    ],
+    "placeholder": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAADQAwCdASogAA4APymEt1MuKKUisAgBwCUJZgC7ACHWaVZFt4oQZcAA8lOYMxS7XuHO7Ycu54Wag3Azfk1lXgTydW/5Wj7yN/MLPlrQWM0rc/dP/KgAAA==",
+    "width": 1800,
+    "height": 806
+  },
+  "/kids-martial-arts.jpg": {
+    "source": "/media/kids-martial-arts-1600.webp",
+    "variants": [
+      {
+        "src": "/media/kids-martial-arts-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/media/kids-martial-arts-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/media/kids-martial-arts-1024.webp",
+        "width": 1024
+      },
+      {
+        "src": "/media/kids-martial-arts-1600.webp",
+        "width": 1600
+      }
+    ],
+    "avifVariants": [
+      {
+        "src": "/media/kids-martial-arts-320.avif",
+        "width": 320
+      },
+      {
+        "src": "/media/kids-martial-arts-640.avif",
+        "width": 640
+      },
+      {
+        "src": "/media/kids-martial-arts-1024.avif",
+        "width": 1024
+      },
+      {
+        "src": "/media/kids-martial-arts-1600.avif",
+        "width": 1600
+      }
+    ],
+    "placeholder": "data:image/webp;base64,UklGRnQAAABXRUJQVlA4IGgAAADQBACdASogABYAPyGAsFItKKSisAwBoCQJYwDE2Bt9aohXvI+CX242XsmkftgGAAD+go0A7SefleJHxjuZAqA8s7yDkNszOlWVy6hwqPix84ZsaRg3u6eJEWKZhoolHJRlvNN9CMAAAA==",
+    "width": 1800,
+    "height": 1229
+  },
+  "/mma-training.jpg": {
+    "source": "/media/mma-training-1600.webp",
+    "variants": [
+      {
+        "src": "/media/mma-training-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/media/mma-training-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/media/mma-training-1024.webp",
+        "width": 1024
+      },
+      {
+        "src": "/media/mma-training-1600.webp",
+        "width": 1600
+      }
+    ],
+    "avifVariants": [
+      {
+        "src": "/media/mma-training-320.avif",
+        "width": 320
+      },
+      {
+        "src": "/media/mma-training-640.avif",
+        "width": 640
+      },
+      {
+        "src": "/media/mma-training-1024.avif",
+        "width": 1024
+      },
+      {
+        "src": "/media/mma-training-1600.avif",
+        "width": 1600
+      }
+    ],
+    "placeholder": "data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAACQBACdASogABUAPymCuFUuKCUjMBgIAcAlCWUAxNgv03qFl43pXaOodfEiLAAA/qhoZK02tDMPYpjg1g50yysHhLt5f1AP7PykIdcbhDakcOIEhcq8lHxyH+AAAA==",
+    "width": 1800,
+    "height": 1200
+  },
+  "/kids-hero.webp": {
+    "source": "/media/kids-hero-1536.webp",
+    "variants": [
+      {
+        "src": "/media/kids-hero-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/media/kids-hero-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/media/kids-hero-1024.webp",
+        "width": 1024
+      },
+      {
+        "src": "/media/kids-hero-1536.webp",
+        "width": 1536
+      }
+    ],
+    "avifVariants": [
+      {
+        "src": "/media/kids-hero-320.avif",
+        "width": 320
+      },
+      {
+        "src": "/media/kids-hero-640.avif",
+        "width": 640
+      },
+      {
+        "src": "/media/kids-hero-1024.avif",
+        "width": 1024
+      },
+      {
+        "src": "/media/kids-hero-1536.avif",
+        "width": 1536
+      }
+    ],
+    "placeholder": "data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAADQBACdASogABUAPyl6slKuJyQisBgMAcAlCWUAzfw0a6hXIBUEgAJXgwtfn+4XwAD+79BAeKTHosawSWI1sO9y9bnogz/m6R9J39kgOsdFNXtjTRiZA6lk3aBoAAAA",
+    "width": 1536,
+    "height": 1024
+  }
+}
