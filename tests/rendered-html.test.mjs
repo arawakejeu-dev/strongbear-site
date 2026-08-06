@@ -43,7 +43,10 @@ test("renders the trust-ready home without unsupported reviews", async () => {
   assert.doesNotMatch(html, /Avis vérifié/);
   assert.doesNotMatch(html, /"@type":"Review"|"@type":"Event"|"@type":"VideoObject"/);
   assert.match(response.headers.get("content-security-policy") ?? "", /frame-ancestors 'none'/);
-  assert.match(response.headers.get("cache-control") ?? "", /s-maxage=300/);
+  const htmlCacheControl = response.headers.get("cache-control") ?? "";
+  assert.match(htmlCacheControl, /s-maxage=0/);
+  assert.match(htmlCacheControl, /must-revalidate/);
+  assert.doesNotMatch(htmlCacheControl, /stale-while-revalidate/);
   assert.equal(response.headers.get("x-content-type-options"), "nosniff");
   assert.equal(response.headers.get("x-frame-options"), "DENY");
 });

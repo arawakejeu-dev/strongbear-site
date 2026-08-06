@@ -52,7 +52,11 @@ function secureResponse(response: Response, pathname: string) {
   secured.headers.set("Cross-Origin-Opener-Policy", "same-origin");
   if (pathname.startsWith("/assets/")) secured.headers.set("Cache-Control", "public, max-age=31536000, immutable");
   else if (pathname.startsWith("/media/") || pathname.startsWith("/fonts/") || pathname === "/og.jpg" || pathname === "/favicon.png") secured.headers.set("Cache-Control", "public, max-age=604800, stale-while-revalidate=2592000");
-  else if (response.ok && secured.headers.get("Content-Type")?.includes("text/html")) secured.headers.set("Cache-Control", "public, max-age=0, s-maxage=300, stale-while-revalidate=86400");
+  // Revalidate the HTML shell on every navigation. Keeping stale HTML at the
+  // edge can make it reference CSS/JS hashes from the previous deployment,
+  // which leaves a newly deployed page unstyled until the visitor refreshes.
+  // Fingerprinted assets remain cached immutably by the branch above.
+  else if (response.ok && secured.headers.get("Content-Type")?.includes("text/html")) secured.headers.set("Cache-Control", "public, max-age=0, s-maxage=0, must-revalidate");
   else if (response.ok && (pathname === "/robots.txt" || pathname === "/sitemap.xml")) secured.headers.set("Cache-Control", "public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800");
   return secured;
 }

@@ -48,7 +48,9 @@ const checks = {
     "Responsive dimensions": pages.every(({ html }) => imageTags(html).every((tag) => /\bwidth=/.test(tag) && /\bheight=/.test(tag))),
     "Blur placeholders": /data:image\/webp;base64/.test(home.html),
     "One self-hosted font preload": (home.html.match(/rel="preload" href="\/fonts\/geist-latin\.woff2"/g) ?? []).length === 1,
-    "Edge HTML cache": /s-maxage=300/.test(home.response.headers.get("cache-control") ?? ""),
+    "Deployment-safe HTML revalidation": /s-maxage=0/.test(home.response.headers.get("cache-control") ?? "")
+      && /must-revalidate/.test(home.response.headers.get("cache-control") ?? "")
+      && !/stale-while-revalidate/.test(home.response.headers.get("cache-control") ?? ""),
     "Client JS gzip budget": clientAssets.filter(({ name }) => name.endsWith(".js")).reduce((sum, asset) => sum + asset.gzipBytes, 0) < 90_000,
     "CSS gzip budget": clientAssets.filter(({ name }) => name.endsWith(".css")).reduce((sum, asset) => sum + asset.gzipBytes, 0) < 20_000,
   },
