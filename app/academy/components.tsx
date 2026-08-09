@@ -90,7 +90,7 @@ export function ArticleBody({ sections }: { sections: ArticleSection[] }) {
     <div className="article-section-content"><h2 id={`${section.id}-title`}>{section.title}</h2>{section.introduction && <p className="article-lead">{section.introduction}</p>}{section.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
       {section.checklist && <div className="article-checklist"><h3>La checklist</h3><ul>{section.checklist.map((item) => <li key={item}><Icon icon={CheckCircle2} size="sm" />{item}</li>)}</ul></div>}
       {section.callout && <aside className="article-callout"><span>{section.callout.label}</span><p>{section.callout.text}</p></aside>}
-      {section.subsections?.map((subsection) => <div className="article-subsection" key={subsection.title}><h3>{subsection.title}</h3>{subsection.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div>)}
+      {section.subsections?.map((subsection) => <div className="article-subsection" key={subsection.title}><h3>{subsection.title}</h3>{subsection.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}{subsection.checklist && <ul className="article-subsection-list">{subsection.checklist.map((item) => <li key={item}>{item}</li>)}</ul>}</div>)}
     </div>
   </section>)}</div>;
 }

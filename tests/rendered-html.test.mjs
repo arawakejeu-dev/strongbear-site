@@ -120,6 +120,17 @@ test("renders a category and the complete SEO article template", async () => {
   assert.doesNotMatch(articleHtml, /"@type":"Article"[^<]+"image":/);
   assert.match(articleHtml, /property="og:image" content="https?:\/\/[^\"]+\/og.jpg"/);
   assert.match(articleHtml, /rel="canonical"/);
+
+  const equipmentResponse = await render("/academie/equipement-jjb-grappling-mma");
+  assert.equal(equipmentResponse.status, 200);
+  const equipmentHtml = await equipmentResponse.text();
+  assert.match(equipmentHtml, /<title>Équipement JJB, Grappling et MMA : que faut-il acheter \? \| Strongbear<\/title>/);
+  assert.match(equipmentHtml, /Kimono, rashguard, gants, protège-dents : découvrez l'équipement réellement nécessaire/);
+  assert.match(equipmentHtml, /<h1>Quel équipement faut-il pour le JJB, le Grappling et le MMA \?<\/h1>/);
+  assert.equal((equipmentHtml.match(/<h1/g) ?? []).length, 1);
+  assert.match(equipmentHtml, /"@type":"Article"/);
+  assert.match(equipmentHtml, /FAQPage/);
+  assert.match(equipmentHtml, /href="\/academy\/bien-debuter"/);
 });
 
 test("publishes Academy routes in the sitemap", async () => {
@@ -129,6 +140,7 @@ test("publishes Academy routes in the sitemap", async () => {
   assert.match(xml, /\/academy<\/loc>/);
   assert.match(xml, /\/academy\/bien-debuter<\/loc>/);
   assert.match(xml, /premier-cours-jiu-jitsu-bresilien<\/loc>/);
+  assert.match(xml, /academie\/equipement-jjb-grappling-mma<\/loc>/);
   assert.doesNotMatch(xml, /equipement-premier-cours<\/loc>/);
 });
 
