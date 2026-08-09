@@ -1,4 +1,5 @@
 import type { FAQItem } from "./faqs";
+import { importedAcademyArticles } from "./imported-academy-articles";
 
 export type AcademyCategorySlug =
   | "bien-debuter"
@@ -311,6 +312,7 @@ export const academyArticles: AcademyArticle[] = [
   { slug: "seminaires-strongbear", category: "vie-strongbear", title: "Séminaires et intervenants", cardTitle: "Séminaires", description: "Présentation des intervenants, thèmes et enseignements avec sources vérifiables.", metaDescription: "Séminaires de JJB, Grappling et MMA chez Strongbear à Marines.", readingTime: "6 min", status: "planned", keywords: ["séminaire JJB Marines", "stage grappling Vexin"] },
   { slug: "competitions-resultats", category: "vie-strongbear", title: "Compétitions et résultats Strongbear", cardTitle: "Compétitions & résultats", description: "Résultats datés, contexte sportif et récits des pratiquants — sans palmarès inventé.", metaDescription: "Résultats et récits de compétition des pratiquants Strongbear BJJ & Grappling.", readingTime: "8 min", status: "planned", keywords: ["résultats Strongbear", "compétition JJB Marines"] },
   { slug: "communaute-strongbear", category: "vie-strongbear", title: "Ce qui construit une communauté d’entraînement", cardTitle: "Construire une communauté", description: "Les gestes quotidiens qui rendent une académie exigeante, accueillante et durable.", metaDescription: "La communauté Strongbear à Marines : respect, transmission et progression collective.", readingTime: "8 min", status: "planned", keywords: ["communauté Strongbear", "club arts martiaux Vexin"] },
+  ...importedAcademyArticles,
 ];
 
 export const publishedAcademyArticles = academyArticles.filter((article) => article.status === "published");
