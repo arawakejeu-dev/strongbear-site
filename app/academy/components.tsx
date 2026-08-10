@@ -96,7 +96,7 @@ export function ArticleBody({ sections }: { sections: ArticleSection[] }) {
 }
 
 export function ArticleFAQ({ items }: { items: NonNullable<AcademyArticle["faq"]> }) {
-  return <section className="article-faq" id="questions-frequentes" aria-labelledby="article-faq-title"><p className="eyebrow">Questions fréquentes</p><h2 id="article-faq-title">Les réponses avant de commencer.</h2><FAQ items={items} /></section>;
+  return <section className="article-faq" id="questions-frequentes" aria-labelledby="article-faq-title"><p className="eyebrow">Questions fréquentes</p><h2 id="article-faq-title">Questions fréquentes</h2><FAQ items={items} /></section>;
 }
 
 export function ArticleAuthorityLinks({ links }: { links: NonNullable<AcademyArticle["authorityLinks"]> }) {
