@@ -116,7 +116,7 @@ const firstClassSections: ArticleSection[] = [
   },
 ];
 
-export const academyArticles: AcademyArticle[] = [
+const academyArticleEntries: AcademyArticle[] = [
   {
     slug: "premier-cours-jiu-jitsu-bresilien",
     category: "bien-debuter",
@@ -312,7 +312,21 @@ export const academyArticles: AcademyArticle[] = [
   { slug: "seminaires-strongbear", category: "vie-strongbear", title: "Séminaires et intervenants", cardTitle: "Séminaires", description: "Présentation des intervenants, thèmes et enseignements avec sources vérifiables.", metaDescription: "Séminaires de JJB, Grappling et MMA chez Strongbear à Marines.", readingTime: "6 min", status: "planned", keywords: ["séminaire JJB Marines", "stage grappling Vexin"] },
   { slug: "competitions-resultats", category: "vie-strongbear", title: "Compétitions et résultats Strongbear", cardTitle: "Compétitions & résultats", description: "Résultats datés, contexte sportif et récits des pratiquants — sans palmarès inventé.", metaDescription: "Résultats et récits de compétition des pratiquants Strongbear BJJ & Grappling.", readingTime: "8 min", status: "planned", keywords: ["résultats Strongbear", "compétition JJB Marines"] },
   { slug: "communaute-strongbear", category: "vie-strongbear", title: "Ce qui construit une communauté d’entraînement", cardTitle: "Construire une communauté", description: "Les gestes quotidiens qui rendent une académie exigeante, accueillante et durable.", metaDescription: "La communauté Strongbear à Marines : respect, transmission et progression collective.", readingTime: "8 min", status: "planned", keywords: ["communauté Strongbear", "club arts martiaux Vexin"] },
-  ...importedAcademyArticles,
+];
+
+const finalizedArticleSlugs: Record<string, string> = {
+  "qu-est-ce-que-le-jiu-jitsu-bresilien": "comprendre-le-jjb",
+  "qu-est-ce-que-le-grappling": "comprendre-le-grappling",
+  "qu-est-ce-que-le-mma": "comprendre-le-mma",
+  "benefices-grappling": "benefices-grappling",
+};
+
+export const academyArticles: AcademyArticle[] = [
+  ...academyArticleEntries.map((article) => {
+    const finalized = importedAcademyArticles.find((item) => item.slug === finalizedArticleSlugs[article.slug]);
+    return finalized ? { ...article, ...finalized, slug: article.slug, category: article.category } : article;
+  }),
+  ...importedAcademyArticles.filter((article) => article.slug === "jjb-femmes"),
 ];
 
 export const publishedAcademyArticles = academyArticles.filter((article) => article.status === "published");
