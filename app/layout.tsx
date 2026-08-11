@@ -8,7 +8,7 @@ import { buildOrganizationSchema } from "./seo/schema";
 export const metadata: Metadata = {
   title: { default: "Strongbear BJJ & Grappling", template: "%s | Strongbear" },
   description: "Académie premium de Jiu-Jitsu Brésilien, Grappling et MMA à Marines, dans le Vexin.",
-  icons: { icon: [{ url: "/favicon.png", type: "image/png", sizes: "128x128" }] },
+  icons: { icon: [{ url: "/favicon.png?v=strongbear-mark", type: "image/png", sizes: "128x128" }] },
   verification: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION ? { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION } : undefined,
 };
 
