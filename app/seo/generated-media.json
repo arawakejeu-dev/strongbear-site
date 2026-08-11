@@ -91,6 +91,48 @@
     "width": 1800,
     "height": 806
   },
+  "/bjj-about-bear.png": {
+    "source": "/media/bjj-about-bear-1600.webp",
+    "variants": [
+      {
+        "src": "/media/bjj-about-bear-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/media/bjj-about-bear-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/media/bjj-about-bear-1024.webp",
+        "width": 1024
+      },
+      {
+        "src": "/media/bjj-about-bear-1600.webp",
+        "width": 1600
+      }
+    ],
+    "avifVariants": [
+      {
+        "src": "/media/bjj-about-bear-320.avif",
+        "width": 320
+      },
+      {
+        "src": "/media/bjj-about-bear-640.avif",
+        "width": 640
+      },
+      {
+        "src": "/media/bjj-about-bear-1024.avif",
+        "width": 1024
+      },
+      {
+        "src": "/media/bjj-about-bear-1600.avif",
+        "width": 1600
+      }
+    ],
+    "placeholder": "data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAADQAwCdASogAA4APymEt1MuKKUisAgBwCUJZgC7ACGGSkppt+SRDQAA8lOYNdZkI7ML9y7cvJdAfbCvWw1Ga/drHIG+JpKycRFPuXaMkXwMqailtVwp99FElEAAAA==",
+    "width": 1874,
+    "height": 839
+  },
   "/bjj-card-bear.png": {
     "source": "/media/bjj-card-bear-1600.webp",
     "variants": [

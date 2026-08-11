@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Container, FloatingCTA, Footer, Header } from "../components";
 import { academyArticles, publishedAcademyArticles } from "../data/academy";
 import { getRequestOrigin } from "../lib/site";
+import { OptimizedImage } from "../seo/optimized-image";
 import { AcademyArticleCard, AcademyCategoryCard, AcademyCategoryNav, AcademyFightyCTA, AcademyMasthead, AcademyNewsletterCTA, academyHubCategories } from "./components";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -36,6 +37,7 @@ export default async function AcademyPage() {
 
       <section className="academy-featured-section"><Container>
         <div className="academy-editorial-heading"><div><p className="eyebrow">Guide à la une</p><h2>Commencer avec<br />des repères clairs.</h2></div><p>Un guide complet pour comprendre le déroulé d’un premier cours, préparer votre venue et avancer sans pression.</p></div>
+        <div className="academy-featured-visual"><OptimizedImage source="/bjj-about-bear.png" alt="Ours Strongbear pratiquant le Jiu-Jitsu Brésilien au sol" sizes="100vw" /></div>
         <div className="academy-featured-grid">{publishedAcademyArticles.map((article, index) => <AcademyArticleCard article={article} index={index} featured key={article.slug} />)}</div>
       </Container></section>
 

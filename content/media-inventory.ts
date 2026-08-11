@@ -66,6 +66,18 @@ export const mediaInventory: MediaSlot[] = [
     description: "Photographie éditoriale consacrée à la transmission et à l’attention des élèves.",
   },
   {
+    id: "home.academy-bear", route: "/", area: "Notre académie", type: "image",
+    purpose: "Accompagner la promesse de l’académie par une scène de Jiu-Jitsu centrée sur l’ours Strongbear.",
+    orientation: "Paysage panoramique", aspectRatio: "20:9", focalPoint: "Ours Strongbear dans le tiers droit",
+    recommendedResolution: "3000×1350 minimum", framing: "Cadrage serré sur l’ours et son partenaire au sol",
+    formats: "PNG source, AVIF et WebP générés", priority: "P1", status: "temporary-active",
+    expectedSourceFile: "bjj-about-bear.png", loading: "lazy",
+    altGuidance: "Ours Strongbear pratiquant le Jiu-Jitsu Brésilien au sol", consentRequired: false,
+    activeSource: "/bjj-about-bear.png", outputBase: "bjj-about-bear", widths: [320, 640, 1024, 1600], authenticity: "unverified-source",
+    title: "Jiu-Jitsu Brésilien Strongbear", caption: "Illustration de la technique et du contrôle au sol.",
+    description: "Visuel de la présentation de l’académie et de l’Academy Strongbear.",
+  },
+  {
     id: "home.bjj-card", route: "/", area: "Carte Jiu-Jitsu Brésilien", type: "image",
     purpose: "Illustrer la pratique du Jiu-Jitsu Brésilien dans la présentation des disciplines.",
     orientation: "Paysage", aspectRatio: "3:2", focalPoint: "Interaction technique au sol",
