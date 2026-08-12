@@ -20,9 +20,13 @@ interface ExecutionContext {
 }
 
 const redirects: Record<string, string> = {
-  "/jiu-jitsu-bresilien": "/academy/jiu-jitsu-bresilien",
-  "/grappling": "/academy/grappling",
-  "/mma": "/academy/mma",
+  "/cours-darts-martiaux-a-marines": "/",
+  "/cours-de-mma": "/mma-marines",
+  "/jiu-jitsu": "/jiu-jitsu-bresilien-marines",
+  "/jiu-jitsu-bresilien": "/jiu-jitsu-bresilien-marines",
+  "/cours-de-jiu-jitsu-bresilien": "/jiu-jitsu-bresilien-marines",
+  "/grappling": "/grappling-marines",
+  "/mma": "/mma-marines",
   "/a-propos": "/#strongbear",
   "/contact": "/#contact",
 };
@@ -80,7 +84,7 @@ const worker = {
     }
 
     const redirect = redirects[url.pathname];
-    if (redirect) return secureResponse(Response.redirect(new URL(redirect, url), 308), url.pathname);
+    if (redirect) return secureResponse(Response.redirect(new URL(redirect, url), 301), url.pathname);
 
     if (url.pathname === "/_vinext/image") {
       const allowedWidths = [...DEFAULT_DEVICE_SIZES, ...DEFAULT_IMAGE_SIZES];

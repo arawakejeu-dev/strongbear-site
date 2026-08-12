@@ -8,6 +8,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
   return [
     { url: productionSiteUrl, lastModified: now, changeFrequency: "weekly", priority: 1 },
+    { url: `${productionSiteUrl}/jiu-jitsu-bresilien-marines`, lastModified: now, changeFrequency: "weekly", priority: .9 },
+    { url: `${productionSiteUrl}/grappling-marines`, lastModified: now, changeFrequency: "weekly", priority: .9 },
+    { url: `${productionSiteUrl}/mma-marines`, lastModified: now, changeFrequency: "weekly", priority: .9 },
     { url: `${productionSiteUrl}/kids`, lastModified: now, changeFrequency: "monthly", priority: .8 },
     { url: `${productionSiteUrl}/academy`, lastModified: now, changeFrequency: "weekly", priority: .9 },
     ...academyCategories.map((category) => ({ url: `${productionSiteUrl}/academy/${category.slug}`, lastModified: now, changeFrequency: "weekly" as const, priority: .75 })),
