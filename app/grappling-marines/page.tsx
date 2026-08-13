@@ -11,8 +11,8 @@ const data: LocalDisciplineData = {
   eyebrow: "Grappling · Marines · Val-d’Oise",
   h1: "Grappling à Marines.",
   intro: "Développez vos contrôles, vos transitions et votre mobilité sans kimono, avec une progression claire et une intensité maîtrisée.",
-  image: "/bjj-hero.jpg",
-  alt: "Cours de Grappling chez Strongbear à Marines dans le Vexin",
+  image: "/grappling-card-bear.png",
+  alt: "Ours Strongbear et pratiquant pendant un échange de Grappling à Marines",
   overviewTitle: "Bouger sans prise sur le tissu.",
   overview: [
     "Le Grappling est une discipline de préhension sans kimono. Le rythme est fluide : les contrôles, les déplacements et les transitions s’appuient directement sur le corps du partenaire.",
