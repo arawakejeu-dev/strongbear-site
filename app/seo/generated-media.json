@@ -175,6 +175,48 @@
     "width": 1535,
     "height": 1024
   },
+  "/grappling-card-bear.png": {
+    "source": "/media/grappling-card-bear-1600.webp",
+    "variants": [
+      {
+        "src": "/media/grappling-card-bear-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/media/grappling-card-bear-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/media/grappling-card-bear-1024.webp",
+        "width": 1024
+      },
+      {
+        "src": "/media/grappling-card-bear-1600.webp",
+        "width": 1600
+      }
+    ],
+    "avifVariants": [
+      {
+        "src": "/media/grappling-card-bear-320.avif",
+        "width": 320
+      },
+      {
+        "src": "/media/grappling-card-bear-640.avif",
+        "width": 640
+      },
+      {
+        "src": "/media/grappling-card-bear-1024.avif",
+        "width": 1024
+      },
+      {
+        "src": "/media/grappling-card-bear-1600.avif",
+        "width": 1600
+      }
+    ],
+    "placeholder": "data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAAAwBQCdASogABgAPymAulUuJ6WjMBgIAcAlCWMAzcAPR/op0ZsvVKreIl9EuVWZVQaFgAD+zNORyCQEycPDZQOPqjyESj+ZTSWpEDxaIF9jhS3E5nZ/iI18TkEoQAAA",
+    "width": 1200,
+    "height": 896
+  },
   "/kids-martial-arts.jpg": {
     "source": "/media/kids-martial-arts-1600.webp",
     "variants": [

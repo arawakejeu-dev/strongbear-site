@@ -57,7 +57,7 @@ export default function Home() {
       <section className="section disciplines-section" id="disciplines">
         <Container><div className="section-heading-row"><SectionTitle eyebrow="Les disciplines" title="Un parcours complet." intro="Trois manières de comprendre le combat. Une seule équipe pour vous accompagner." /><span className="section-index">01 — 03</span></div><div className="disciplines-grid">
           <DisciplineCard index="01" title="Jiu-Jitsu Brésilien" detail="Avec kimono · Tous niveaux" description="Contrôle, stratégie et précision au sol." href="/jiu-jitsu-bresilien-marines" image="/bjj-card-bear.png" alt="Ours Strongbear pratiquant le Jiu-Jitsu Brésilien au sol" />
-          <DisciplineCard index="02" title="Grappling" detail="Sans kimono · Tous niveaux" description="Fluidité, mobilité et maîtrise des positions." href="/grappling-marines" image="/bjj-hero.jpg" alt="Entraînement de Grappling à Marines" />
+          <DisciplineCard index="02" title="Grappling" detail="Sans kimono · Tous niveaux" description="Fluidité, mobilité et maîtrise des positions." href="/grappling-marines" image="/grappling-card-bear.png" alt="Ours Strongbear et pratiquant pendant un échange de Grappling" />
           <DisciplineCard index="03" title="MMA" detail="Pratique complète · Encadrée" description="Relier les distances avec calme et méthode." href="/mma-marines" image="/mma-training.jpg" alt="Entraînement de MMA à Marines" />
         </div></Container>
       </section>
