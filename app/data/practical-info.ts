@@ -2,7 +2,7 @@ export type DisciplineKey = "bjj" | "grappling" | "mma";
 
 export const practicalInfo = {
   contact: { email: "strongbearbjj@gmail.com" },
-  fightyUrl: process.env.NEXT_PUBLIC_FIGHTY_URL ?? "https://fighty.com/",
+  fightyUrl: "https://fighty.com/p/strongbear",
   pricing: {
     kids: { label: "Enfants", price: "250 €", period: "par an" },
     adults: { label: "Adultes", price: "350 €", period: "par an", disciplines: ["Jiu-Jitsu Brésilien", "Grappling", "MMA"] },
