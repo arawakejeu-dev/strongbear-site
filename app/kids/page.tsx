@@ -98,7 +98,7 @@ export default async function KidsPage() {
             <div className="kids-hero-actions"><FightyCTA label="Réserver le cours d’essai" /><ButtonLink href="#pedagogie" variant="text">Découvrir notre pédagogie</ButtonLink></div>
             <div className="kids-trust-line"><span><Icon icon={ShieldCheck} size="sm" />Cadre sécurisé</span><span><Icon icon={HeartHandshake} size="sm" />Encouragement positif</span></div>
           </div>
-          <div className="kids-hero-media"><OptimizedImage source="/kids-hero.webp" alt="Enfants apprenant le Jiu-Jitsu avec l’ourson Strongbear" loading="eager" fetchPriority="high" sizes="(min-width: 64rem) 50vw, 100vw" /><div className="kids-photo-note"><strong>Apprendre.</strong><span>À son rythme.</span></div></div>
+          <div className="kids-hero-media"><OptimizedImage source="/kids-hero.webp" alt="Enfants apprenant le Jiu-Jitsu avec l’ourson Strongbear" loading="eager" fetchPriority="high" sizes="(min-width: 64rem) 50vw, 100vw" /></div>
         </Container>
       </section>
 
