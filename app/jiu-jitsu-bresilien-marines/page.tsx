@@ -2,6 +2,7 @@ import { bjjFAQ } from "../data/faqs";
 import { buildLocalDisciplineMetadata, LocalDisciplinePage, type LocalDisciplineData } from "../local-discipline-template";
 
 const data: LocalDisciplineData = {
+  scheduleKey: "bjj",
   slug: "jiu-jitsu-bresilien-marines",
   name: "Jiu-Jitsu Brésilien",
   shortName: "JJB",

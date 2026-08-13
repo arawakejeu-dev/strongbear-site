@@ -2,6 +2,7 @@ import { mmaFAQ } from "../data/faqs";
 import { buildLocalDisciplineMetadata, LocalDisciplinePage, type LocalDisciplineData } from "../local-discipline-template";
 
 const data: LocalDisciplineData = {
+  scheduleKey: "mma",
   slug: "mma-marines",
   name: "MMA",
   shortName: "MMA",

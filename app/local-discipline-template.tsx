@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import type { FAQItem } from "./data/faqs";
-import { ButtonLink, Container, FAQ, FeatureCell, FightyCTA, FloatingCTA, Footer, Header, Hero, SectionTitle } from "./components";
+import { ButtonLink, Container, FAQ, FeatureCell, FightyCTA, FloatingCTA, Footer, Header, Hero, PricingCard, ScheduleCard, SectionTitle } from "./components";
+import { getDisciplineSchedule, practicalInfo, type DisciplineKey } from "./data/practical-info";
 import { getRequestOrigin } from "./lib/site";
 import { buildBreadcrumbSchema, buildFaqSchema } from "./seo/schema";
 
@@ -22,6 +23,7 @@ export type LocalDisciplineData = {
   classSteps: Array<{ title: string; copy: string }>;
   academyLinks: Array<{ label: string; href: string }>;
   faq: FAQItem[];
+  scheduleKey: DisciplineKey;
 };
 
 export async function buildLocalDisciplineMetadata(data: LocalDisciplineData): Promise<Metadata> {
@@ -55,6 +57,7 @@ export async function LocalDisciplinePage({ data }: { data: LocalDisciplineData 
     buildBreadcrumbSchema([{ name: "Accueil", url: origin }, { name: `${data.shortName} à Marines`, url }]),
     buildFaqSchema(data.faq),
   ].filter(Boolean);
+  const schedule = getDisciplineSchedule(data.scheduleKey);
 
   return <>
     <Header />
@@ -72,7 +75,7 @@ export async function LocalDisciplinePage({ data }: { data: LocalDisciplineData 
 
       <section className="local-training-section"><Container className="local-discipline-two-columns"><SectionTitle eyebrow="Un entraînement Strongbear" title="Comprendre. Essayer. Progresser." intro="Chaque séance suit une structure lisible pour apprendre en sécurité et repartir avec des repères concrets." /><ol className="local-training-steps">{data.classSteps.map((step, index) => <li key={step.title}><span>0{index + 1}</span><div><h3>{step.title}</h3><p>{step.copy}</p></div></li>)}</ol></Container></section>
 
-      <section className="section local-discovery-section" id="horaires"><Container className="local-discovery-grid"><div><p className="eyebrow">Horaires & réservation</p><h2>Commencer à Marines.</h2><p>Les créneaux disponibles, le tarif d’essai et les informations pratiques sont tenus à jour sur Fighty. Un seul abonnement adulte donne accès au Jiu-Jitsu Brésilien, au Grappling et au MMA.</p><FightyCTA label={`Réserver un essai ${data.shortName}`} /></div><aside><strong>Approfondir dans l’Academy</strong>{data.academyLinks.map((link) => <ButtonLink key={link.href} href={link.href} variant="text">{link.label}</ButtonLink>)}</aside></Container></section>
+      <section className="section local-discovery-section" id="horaires"><Container><div className="local-discovery-grid"><div><p className="eyebrow">Horaires & réservation</p><h2>Commencer à Marines.</h2><p>Un seul abonnement adulte donne accès au Jiu-Jitsu Brésilien, au Grappling et au MMA.</p><FightyCTA label={`Réserver un essai ${data.shortName}`} /></div><aside><strong>Approfondir dans l’Academy</strong>{data.academyLinks.map((link) => <ButtonLink key={link.href} href={link.href} variant="text">{link.label}</ButtonLink>)}</aside></div><div className="schedule-list">{schedule.map((session) => <ScheduleCard key={`${session.day}-${session.time}`} day={session.day} time={session.time} discipline={session.discipline} level={`${session.venue.name} — ${session.venue.city}`} />)}</div><div className="kids-pricing-grid"><PricingCard name={practicalInfo.pricing.adults.label} price={practicalInfo.pricing.adults.price} period={practicalInfo.pricing.adults.period} description="Un abonnement = 3 disciplines." features={[...practicalInfo.pricing.adults.disciplines]} featured ctaLabel="Réserver mon cours d’essai" /></div></Container></section>
 
       <section className="section local-faq-section"><Container className="local-discipline-two-columns"><SectionTitle inverse={false} eyebrow="Questions fréquentes" title={`Avant votre premier cours de ${data.shortName}.`} intro="Les réponses essentielles pour arriver sereinement." /><FAQ items={data.faq} /></Container></section>
 

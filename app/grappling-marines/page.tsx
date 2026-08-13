@@ -2,6 +2,7 @@ import { grapplingFAQ } from "../data/faqs";
 import { buildLocalDisciplineMetadata, LocalDisciplinePage, type LocalDisciplineData } from "../local-discipline-template";
 
 const data: LocalDisciplineData = {
+  scheduleKey: "grappling",
   slug: "grappling-marines",
   name: "Grappling",
   shortName: "Grappling",

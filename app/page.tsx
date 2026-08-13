@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { AcademyCard, ButtonLink, Container, DisciplineCard, FightyCTA, FloatingCTA, Footer, Header, SectionTitle } from "./components";
+import { AcademyCard, ButtonLink, Container, DisciplineCard, FightyCTA, FloatingCTA, Footer, Header, ScheduleCard, SectionTitle } from "./components";
+import { globalSchedule, practicalInfo } from "./data/practical-info";
 import { getRequestOrigin } from "./lib/site";
 import { OptimizedImage } from "./seo/optimized-image";
 import { HeroMedia } from "./seo/hero-media";
@@ -64,7 +65,7 @@ export default function Home() {
 
       <section className="kids-section" id="kids"><div className="kids-image"><OptimizedImage source="/kids-martial-arts.jpg" alt="Enfant s’exerçant au Jiu-Jitsu avec l’ourson Strongbear" sizes="(min-width: 60rem) 54vw, 100vw" /><span>Strongbear Kids</span></div><div className="kids-copy"><p className="eyebrow">Programme enfants · Dès 6 ans</p><h2>Grandir.<br/>Avec confiance.</h2><p>Une pédagogie accessible à partir de 6 ans, pensée pour développer la coordination, le respect, l’autonomie et le plaisir de progresser.</p><div className="kids-values"><span>Confiance</span><span>Respect</span><span>Discipline</span><span>Sécurité</span></div><ButtonLink href="/kids" variant="text">Découvrir Strongbear Kids</ButtonLink></div></section>
 
-      <section className="schedule-section" id="planning"><Container className="schedule-grid"><div><p className="eyebrow eyebrow-inverse">Planning & accès</p><h2>Entraînez-vous.<br/><span>Sans limites.</span></h2></div><div className="schedule-copy"><p>Un seul abonnement adulte. Un accès illimité au Jiu-Jitsu Brésilien, au Grappling et au MMA.</p><small>Les créneaux à jour et les réservations sont disponibles sur Fighty.</small><FightyCTA label="Voir le planning sur Fighty" /></div></Container></section>
+      <section className="schedule-section" id="planning"><Container><div className="schedule-grid"><div><p className="eyebrow eyebrow-inverse">Planning & accès</p><h2>Entraînez-vous.<br/><span>Sans limites.</span></h2></div><div className="schedule-copy"><p>{practicalInfo.pricing.adults.price} par an. Un seul abonnement adulte pour le Jiu-Jitsu Brésilien, le Grappling et le MMA.</p><small>Les réservations restent disponibles sur Fighty.</small><FightyCTA label="Voir le planning sur Fighty" /></div></div><div className="schedule-list">{globalSchedule.map((session) => <ScheduleCard key={`${session.day}-${session.time}-${session.discipline}`} day={session.day} time={session.time} discipline={session.discipline} level={`${session.venue.name} — ${session.venue.city}`} />)}</div></Container></section>
 
       <section className="section academy-section" id="academy"><Container><div className="academy-heading"><SectionTitle eyebrow="Strongbear Academy" title="Comprendre. Puis pratiquer." intro="Des contenus éditoriaux utiles pour les débutants, les parents et les pratiquants curieux." /><ButtonLink href="/academy" variant="text">Explorer l’Academy</ButtonLink></div><div className="academy-grid">{academy.map((article,index)=><AcademyCard key={article.title} index={`0${index+1}`} {...article}/>)}</div></Container></section>
 
