@@ -1,7 +1,7 @@
 export type DisciplineKey = "bjj" | "grappling" | "mma";
 
 export const practicalInfo = {
-  contact: { email: "strongbearbjj@gmail.com" },
+  contact: { email: "strongbearbjj@gmail.com", instagram: "https://www.instagram.com/strongbearbjj/" },
   fightyUrl: "https://fighty.com/p/strongbear",
   pricing: {
     kids: { label: "Enfants", price: "250 €", period: "par an" },
@@ -33,11 +33,16 @@ export const practicalInfo = {
 } as const;
 
 export function getDisciplineSchedule(discipline: DisciplineKey) {
-  return practicalInfo.schedules[discipline].map((session) => ({ ...session, venue: practicalInfo.locations[session.location] }));
+  return practicalInfo.schedules[discipline].map((session) => ({ ...session, venue: practicalInfo.locations[session.location] })).sort(compareSessions);
+}
+
+const dayOrder: Record<string, number> = { Lundi: 1, Mardi: 2, Mercredi: 3, Jeudi: 4, Vendredi: 5, Samedi: 6, Dimanche: 7 };
+function compareSessions(a: { day: string; time: string }, b: { day: string; time: string }) {
+  return (dayOrder[a.day] ?? 99) - (dayOrder[b.day] ?? 99) || a.time.localeCompare(b.time, "fr");
 }
 
 export const globalSchedule = [
   ...getDisciplineSchedule("bjj"),
   ...getDisciplineSchedule("grappling"),
   ...getDisciplineSchedule("mma").filter((session) => !(session.day === "Mercredi" && session.time === "20h00–21h00")),
-].map((session) => session.day === "Mercredi" && session.time === "20h00–21h00" ? { ...session, discipline: "Sparring Grappling / MMA" } : session);
+].map((session) => session.day === "Mercredi" && session.time === "20h00–21h00" ? { ...session, discipline: "Sparring Grappling / MMA" } : session).sort(compareSessions);

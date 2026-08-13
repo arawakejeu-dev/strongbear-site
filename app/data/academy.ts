@@ -127,8 +127,6 @@ const academyArticleEntries: AcademyArticle[] = [
     metaDescription: "Préparez votre premier cours de Jiu-Jitsu Brésilien à Marines : tenue, déroulé, sécurité, intensité et conseils pour débuter sereinement.",
     readingTime: "9 min",
     status: "published",
-    image: "/bjj-class.jpg",
-    imageAlt: "Démonstration technique pendant un cours de Jiu-Jitsu Brésilien",
     publishedAt: "2026-08-06",
     updatedAt: "2026-08-06",
     keywords: ["premier cours Jiu-Jitsu Brésilien", "débuter JJB Marines", "Jiu-Jitsu Brésilien débutant Vexin"],
