@@ -1,5 +1,6 @@
 import type { FAQItem } from "./faqs";
 import { importedAcademyArticles } from "./imported-academy-articles";
+import { hygieneArticle } from "./hygiene-article";
 
 export type AcademyCategorySlug =
   | "bien-debuter"
@@ -327,6 +328,7 @@ export const academyArticles: AcademyArticle[] = [
     return finalized ? { ...article, ...finalized, slug: article.slug, category: article.category } : article;
   }),
   ...importedAcademyArticles.filter((article) => article.slug === "jjb-femmes"),
+  hygieneArticle,
 ];
 
 export const publishedAcademyArticles = academyArticles.filter((article) => article.status === "published");
