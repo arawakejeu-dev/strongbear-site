@@ -5,6 +5,12 @@ import { academyArticles, getAcademyArticleBySlug, getAcademyCategory } from "..
 
 type ArticleProps = { params: Promise<{ slug: string }> };
 
+export function generateStaticParams() {
+  return academyArticles
+    .filter((article) => article.canonicalPath?.startsWith("/academie/"))
+    .map((article) => ({ slug: article.canonicalPath!.split("/").filter(Boolean).at(-1)! }));
+}
+
 export async function generateMetadata({ params }: ArticleProps): Promise<Metadata> {
   const slug = (await params).slug;
   const article = getAcademyArticleBySlug(slug) ?? academyArticles.find((item) => item.canonicalPath === `/academie/${slug}`);

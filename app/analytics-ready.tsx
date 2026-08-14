@@ -45,7 +45,7 @@ function bootstrapAnalytics(config: typeof analyticsConfig) {
         if (config.metaPixelId && window.fbq) window.fbq("trackCustom", "FightyClick", { cta_label: detail.cta_label });
       }, { passive: true });
     };
-    if ("requestIdleCallback" in window) window.requestIdleCallback(run, { timeout: 2500 });
+    if (typeof window.requestIdleCallback === "function") window.requestIdleCallback(run, { timeout: 2500 });
     else window.setTimeout(run, 1200);
   };
   const consent = window.localStorage.getItem(storageKey);

@@ -59,7 +59,7 @@ export const academyCategories: AcademyCategory[] = [
   { slug: "grappling", number: "03", name: "Grappling", shortName: "Grappling", description: "Explorer la pratique sans kimono, ses bénéfices, ses règles et les choix tactiques qui la rendent unique.", promise: "Comprendre ce qui change lorsque les saisies et le rythme évoluent.", disciplineHref: "/grappling-marines" },
   { slug: "mma", number: "04", name: "MMA", shortName: "MMA", description: "Découvrir une pratique complète, son entraînement et ses règles de sécurité, avec un langage accessible aux débutants.", promise: "Distinguer l’apprentissage quotidien de l’image spectaculaire de la compétition.", disciplineHref: "/mma-marines" },
   { slug: "enfants-parents", number: "05", name: "Enfants & Parents", shortName: "Parents", description: "Des guides pour comprendre la pédagogie, la sécurité, la confiance et la place des parents dans la progression.", promise: "Aider les parents à décider avec des informations claires et rassurantes.", disciplineHref: "/kids" },
-  { slug: "vie-strongbear", number: "06", name: "Vie Strongbear", shortName: "Strongbear", description: "La vie réelle de l’académie : enseignement, événements, séminaires, compétitions et projets de la communauté.", promise: "Documenter la culture du club avec des faits, des visages et des résultats vérifiables." },
+  { slug: "vie-strongbear", number: "06", name: "Vie Strongbear", shortName: "Strongbear", description: "La vie réelle de l’académie : enseignement, événements, séminaires, compétitions et projets de la communauté.", promise: "Notre club se raconte par ceux qui le font vivre." },
 ];
 
 const firstClassSections: ArticleSection[] = [

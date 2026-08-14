@@ -3,6 +3,8 @@ import { academyArticleHref, academyCategories, publishedAcademyArticles } from 
 import { productionSiteUrl } from "./lib/site";
 import { assertSeoAuthoritySystem } from "./seo/validate";
 
+export const dynamic = "force-static";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   assertSeoAuthoritySystem();
   const now = new Date();
