@@ -2,35 +2,30 @@
 
 Site public de Strongbear BJJ & Grappling à Marines, Val-d’Oise.
 
-## Production Hostinger
+## Production Hostinger via GitHub
 
-Le site est un projet Next.js exporté en fichiers statiques : aucun serveur Node.js n’est nécessaire en production.
+Le déploiement GitHub/Hostinger utilise l’application Node.js Next.js standard. Il produit le dossier `.next/`, détecté automatiquement par Hostinger, et permet de conserver les redirections HTTP 301 côté serveur.
+
+Dans Hostinger, gardez le répertoire racine `./`, Node.js 22 et les paramètres de compilation/démarrage par défaut. Les scripts utilisés sont :
+
+- build : `pnpm run build` → `next build --webpack`
+- start : `pnpm run start` → `next start`
+
+Ne configurez pas `dist/standalone/` ni un dossier de sortie manuel : Hostinger reconnaît alors le format Next.js `.next/`.
+
+## Export statique facultatif
+
+Pour un téléversement FTP manuel uniquement, la commande ci-dessous génère `out/` et son fichier `.htaccess` :
 
 ```bash
-pnpm install --frozen-lockfile
-pnpm run lint
 pnpm run build:hostinger
 ```
 
-Le dossier généré est `out/`. Téléversez **uniquement son contenu** dans le dossier `public_html/` du domaine `strongbearbjj.com`.
-
-Conservez le fichier `out/.htaccess` : il permet les URLs propres, la page 404 et les redirections 301 des anciennes URLs indexées.
-
-Ne déployez pas le dossier source complet, `node_modules`, `.next` ou `dist` sur un hébergement mutualisé Hostinger.
-
-## Déploiement Hostinger via GitHub
-
-Le workflow `.github/workflows/deploy-hostinger.yml` construit le site statique et téléverse le contenu de `out/` par FTPS. Avant son premier lancement, ajoutez ces secrets dans **GitHub → Settings → Secrets and variables → Actions** :
-
-- `HOSTINGER_FTP_SERVER`
-- `HOSTINGER_FTP_USERNAME`
-- `HOSTINGER_FTP_PASSWORD`
-- `HOSTINGER_FTP_DIRECTORY` — par exemple `/domains/strongbearbjj.com/public_html/`
-
-Ensuite, dans **GitHub → Actions → Deploy Strongbear to Hostinger**, cliquez sur **Run workflow**. Le projet ne nécessite ni commande de démarrage ni application Node.js chez Hostinger.
+Ce mode n’est pas utilisé par le déploiement GitHub/Node.js Hostinger.
 
 ## Commandes utiles
 
 - `pnpm run lint` : contrôle ESLint.
 - `pnpm run build:hostinger` : build statique de production dans `out/`.
-- `pnpm test` : contrôle du rendu du build serveur de développement.
+- `pnpm test` : contrôle du rendu Vinext historique.
+- `pnpm run test:hostinger` : vérifie le build Next.js et les redirections 301 côté serveur.
