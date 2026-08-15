@@ -144,10 +144,25 @@ test("publishes Academy routes in the sitemap", async () => {
   assert.doesNotMatch(xml, /equipement-premier-cours<\/loc>/);
 });
 
-test("redirects legacy discipline URLs and returns an accessible noindex 404", async () => {
-  const redirect = await render("/mma");
-  assert.equal(redirect.status, 308);
-  assert.match(redirect.headers.get("location") ?? "", /\/academy\/mma$/);
+test("redirects legacy URLs permanently and returns an accessible noindex 404", async () => {
+  const expectedRedirects = {
+    "/jiu-jitsu-bresilien": "/jiu-jitsu-bresilien-marines",
+    "/jiu-jitsu": "/jiu-jitsu-bresilien-marines",
+    "/cours-de-jiu-jitsu-bresilien": "/jiu-jitsu-bresilien-marines",
+    "/cours-darts-martiaux-a-marines": "/",
+    "/cours-de-mma": "/mma-marines",
+    "/grappling": "/grappling-marines",
+    "/mma": "/mma-marines",
+    "/a-propos": "/#strongbear",
+    "/contact": "/#contact",
+  };
+
+  for (const [pathname, target] of Object.entries(expectedRedirects)) {
+    const redirect = await render(pathname);
+    assert.equal(redirect.status, 301, pathname);
+    const location = new URL(redirect.headers.get("location") ?? "", "https://strongbearbjj.com");
+    assert.equal(`${location.pathname}${location.hash}`, target, pathname);
+  }
 
   const missing = await render("/page-inexistante");
   assert.equal(missing.status, 404);

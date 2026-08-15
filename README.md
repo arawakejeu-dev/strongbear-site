@@ -1,100 +1,36 @@
-# vinext-starter
+# Strongbear BJJ & Grappling
 
-A clean full-stack starter running on
-[vinext](https://github.com/cloudflare/vinext), with optional Cloudflare D1 and
-Drizzle support.
+Site public de Strongbear BJJ & Grappling à Marines, Val-d’Oise.
 
-## Prerequisites
+## Production Hostinger
 
-- Node.js `>=22.13.0`
-
-## Quick Start
+Le site est un projet Next.js exporté en fichiers statiques : aucun serveur Node.js n’est nécessaire en production.
 
 ```bash
-npm install
-npm run dev
-npm run build
+pnpm install --frozen-lockfile
+pnpm run lint
+pnpm run build:hostinger
 ```
 
-This starter does not use `wrangler.jsonc`.
+Le dossier généré est `out/`. Téléversez **uniquement son contenu** dans le dossier `public_html/` du domaine `strongbearbjj.com`.
 
-## Included Shape
+Conservez le fichier `out/.htaccess` : il permet les URLs propres, la page 404 et les redirections 301 des anciennes URLs indexées.
 
-- edit site code under `app/`
-- `.openai/hosting.json` declares optional Sites D1 and R2 bindings
-- `vite.config.ts` simulates declared bindings for local development
-- `db/schema.ts` starts intentionally empty
-- `examples/d1/` contains an optional D1 example surface
-- `drizzle.config.ts` supports local migration generation when needed
+Ne déployez pas le dossier source complet, `node_modules`, `.next` ou `dist` sur un hébergement mutualisé Hostinger.
 
-## Workspace Auth Headers
+## Déploiement Hostinger via GitHub
 
-Signed-in visitors receive both `oai-authenticated-user-id` and `oai-authenticated-user-email`. Private Sites require every visitor to sign in; public Sites may also have anonymous visitors, for whom neither header is present.
+Le workflow `.github/workflows/deploy-hostinger.yml` construit le site statique et téléverse le contenu de `out/` par FTPS. Avant son premier lancement, ajoutez ces secrets dans **GitHub → Settings → Secrets and variables → Actions** :
 
-The user ID is stable for the same user on the same Site and different across Sites. Email and name are intended for display or contact purposes.
+- `HOSTINGER_FTP_SERVER`
+- `HOSTINGER_FTP_USERNAME`
+- `HOSTINGER_FTP_PASSWORD`
+- `HOSTINGER_FTP_DIRECTORY` — par exemple `/domains/strongbearbjj.com/public_html/`
 
-SIWC-authenticated workspace sites may also receive
-`oai-authenticated-user-full-name` when the user's SIWC profile has a non-empty
-`name` claim. The full-name value is percent-encoded UTF-8 and is accompanied by
-`oai-authenticated-user-full-name-encoding: percent-encoded-utf-8`.
+Ensuite, dans **GitHub → Actions → Deploy Strongbear to Hostinger**, cliquez sur **Run workflow**. Le projet ne nécessite ni commande de démarrage ni application Node.js chez Hostinger.
 
-Treat the full name as optional and fall back to email when it is absent:
+## Commandes utiles
 
-```tsx
-import { headers } from "next/headers";
-
-export default async function Home() {
-  const requestHeaders = await headers();
-  const userId = requestHeaders.get("oai-authenticated-user-id");
-  const email = requestHeaders.get("oai-authenticated-user-email");
-  const encodedFullName = requestHeaders.get("oai-authenticated-user-full-name");
-  const fullName =
-    encodedFullName &&
-    requestHeaders.get("oai-authenticated-user-full-name-encoding") ===
-      "percent-encoded-utf-8"
-      ? decodeURIComponent(encodedFullName)
-      : null;
-
-  const displayName = fullName ?? email;
-  // ...
-}
-```
-
-## Optional Dispatch-Owned ChatGPT Sign-In
-
-Import the ready-to-use helpers from `app/chatgpt-auth.ts` when the site needs
-optional or required ChatGPT sign-in:
-
-- Use `getChatGPTUser()` for optional signed-in UI.
-- Use `requireChatGPTUser(returnTo)` for server-rendered pages that should send
-  anonymous visitors through Sign in with ChatGPT.
-- Use `chatGPTSignInPath(returnTo)` and `chatGPTSignOutPath(returnTo)` for
-  browser links or actions.
-- Pass a same-origin relative `returnTo` path for the destination after sign-in
-  or sign-out. The helper validates and safely encodes it.
-- Mark protected pages with `export const dynamic = "force-dynamic"` because
-  they depend on per-request identity headers.
-
-Dispatch owns `/signin-with-chatgpt`, `/signout-with-chatgpt`, `/callback`, the
-OAuth cookies, and identity header injection. Do not implement app routes for
-those reserved paths. Routes that do not import and call the helper remain
-anonymous-compatible.
-
-SIWC establishes identity only; it does not prove workspace membership. Use the
-Sites hosting platform's access policy controls for workspace-wide restrictions,
-or enforce explicit server-side membership or allowlist checks.
-
-Use SIWC for account pages, user-specific dashboards, saved records, and write
-actions tied to the current ChatGPT user. Leave public content anonymous.
-
-## Useful Commands
-
-- `npm run dev`: start local development
-- `npm run build`: verify the vinext build output
-- `npm test`: build the starter and verify its rendered loading skeleton
-- `npm run db:generate`: generate Drizzle migrations after schema changes
-
-## Learn More
-
-- [vinext Documentation](https://github.com/cloudflare/vinext)
-- [Drizzle D1 Guide](https://orm.drizzle.team/docs/get-started/d1-new)
+- `pnpm run lint` : contrôle ESLint.
+- `pnpm run build:hostinger` : build statique de production dans `out/`.
+- `pnpm test` : contrôle du rendu du build serveur de développement.

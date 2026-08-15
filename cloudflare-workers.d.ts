@@ -4,7 +4,7 @@
 // Hostinger's static build depend on a Cloudflare-only package.
 declare module "cloudflare:workers" {
   export const env: {
-    DB?: any;
+    DB?: D1Database;
     [binding: string]: unknown;
   };
 }
