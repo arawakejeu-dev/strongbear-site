@@ -9,7 +9,14 @@ export const metadata: Metadata = {
   metadataBase: new URL(productionSiteUrl),
   title: { default: "Strongbear BJJ & Grappling", template: "%s | Strongbear" },
   description: "Académie premium de Jiu-Jitsu Brésilien, Grappling et MMA à Marines, dans le Vexin.",
-  icons: { icon: [{ url: "/favicon.svg?v=strongbear-round", type: "image/svg+xml", sizes: "any" }] },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", type: "image/x-icon", sizes: "any" },
+      { url: "/favicon-16x16.png", type: "image/png", sizes: "16x16" },
+      { url: "/favicon-32x32.png", type: "image/png", sizes: "32x32" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", type: "image/png", sizes: "180x180" }],
+  },
   verification: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION ? { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION } : undefined,
 };
 
