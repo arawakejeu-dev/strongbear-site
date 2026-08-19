@@ -101,7 +101,8 @@ export function ArticleBody({ sections }: { sections: ArticleSection[] }) {
       }
       flushList();
       if (paragraph.startsWith("::heading::")) {
-        content.push(<h2 className="article-source-heading" key={`heading-${paragraphIndex}`}>{paragraph.slice("::heading::".length)}</h2>);
+        const heading = paragraph.slice("::heading::".length);
+        content.push(<h2 className={`article-source-heading${heading.endsWith("?") ? " article-source-heading--question" : ""}`} key={`heading-${paragraphIndex}`}>{heading}</h2>);
         return;
       }
       content.push(<p key={`paragraph-${paragraphIndex}`}>{paragraph}</p>);
@@ -119,6 +120,7 @@ export function ArticleBody({ sections }: { sections: ArticleSection[] }) {
 }
 
 export function ArticleFAQ({ items }: { items: NonNullable<AcademyArticle["faq"]> }) {
+  if (items.length === 0) return null;
   return <section className="article-faq" id="questions-frequentes" aria-labelledby="article-faq-title"><p className="eyebrow">Questions fréquentes</p><h2 id="article-faq-title">Questions fréquentes</h2><FAQ items={items} /></section>;
 }
 

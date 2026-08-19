@@ -61,6 +61,7 @@
 .academy-article-page .article-section-content h2{margin-bottom:1.65rem}
 .academy-article-page .article-section-content>p,.academy-article-page .article-subsection>p{margin-bottom:1.65rem;font-size:clamp(1.1rem,1.35vw,1.19rem);line-height:1.72}
 .academy-article-page .article-source-heading{max-width:42rem;margin:clamp(3rem,5vw,4.5rem) 0 1.25rem;font-family:var(--display);font-size:clamp(1.45rem,2.35vw,2.1rem);font-weight:inherit;line-height:1.18;text-transform:none;color:#f1f1f2}
+.academy-article-page .article-source-heading--question{font-weight:700}
 .academy-article-page .article-section-content>.article-source-heading:first-child{margin-top:0}
 .academy-article-page .article-source-list{max-width:45rem;margin:0 0 1.65rem;padding-left:1.25rem;color:#c4c4c7;font-size:clamp(1.1rem,1.35vw,1.19rem);line-height:1.72}
 .academy-article-page .article-source-list li{padding:.1rem 0}
