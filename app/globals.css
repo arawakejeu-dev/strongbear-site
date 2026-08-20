@@ -250,3 +250,7 @@ section[id],footer[id]{scroll-margin-top:6rem}
   .fighty-trust-steps li{padding:1.35rem}
   .fighty-trust-steps h3{margin-top:2.5rem}
 }
+@media(max-width:47.99rem){
+  body:has(main>.hero:not(.hero-component)) .floating-cta .button{width:3.1rem;height:3.1rem;min-height:3.1rem;padding:0;border-radius:50%;font-size:0}
+  body:has(main>.hero:not(.hero-component)) .floating-cta .button>span[aria-hidden="true"]{font-size:.8rem}
+}
