@@ -25,9 +25,25 @@ test("legacy URLs are configured as HTTP 301 redirects", () => {
   const manifest = JSON.parse(readFileSync(manifestPath, "utf8"));
 
   for (const [source, destination] of redirects) {
-    const redirect = manifest.redirects.find((entry) => entry.source === source);
+    const redirect = manifest.redirects.find((entry) => entry.source === source && !entry.has?.length);
     assert.ok(redirect, `missing redirect for ${source}`);
     assert.equal(redirect.destination, destination);
+    assert.equal(redirect.statusCode, 301);
+  }
+});
+
+test("www URLs redirect directly to the non-www canonical domain", () => {
+  const manifest = JSON.parse(readFileSync(manifestPath, "utf8"));
+  const hostRedirect = manifest.redirects.find((entry) => entry.source === "/:path*" && entry.has?.some((condition) => condition.type === "host" && condition.value === "www.strongbearbjj.com"));
+
+  assert.ok(hostRedirect, "missing www host redirect");
+  assert.equal(hostRedirect.destination, "https://strongbearbjj.com/:path*");
+  assert.equal(hostRedirect.statusCode, 301);
+
+  for (const [source, destination] of redirects) {
+    const redirect = manifest.redirects.find((entry) => entry.source === source && entry.has?.some((condition) => condition.type === "host" && condition.value === "www.strongbearbjj.com"));
+    assert.ok(redirect, `missing direct www legacy redirect for ${source}`);
+    assert.equal(redirect.destination, `https://strongbearbjj.com${destination}`);
     assert.equal(redirect.statusCode, 301);
   }
 });

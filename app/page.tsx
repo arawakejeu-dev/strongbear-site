@@ -10,11 +10,11 @@ export async function generateMetadata(): Promise<Metadata> {
   const origin = await getRequestOrigin();
   const image = `${origin}/og.jpg`;
   return {
-    title: "Arts martiaux à Marines | Strongbear BJJ & Grappling",
-    description: "Jiu-Jitsu Brésilien, Grappling et MMA avec un seul abonnement à Marines. Le cours d’essai est gratuit en septembre, puis à 10 €.",
+    title: { absolute: "JJB Val-d’Oise à Marines | Strongbear BJJ" },
+    description: "Découvrez Strongbear BJJ, club de Jiu-Jitsu Brésilien, grappling et MMA à Marines dans le Val-d’Oise. Cours adultes et enfants, débutants bienvenus.",
     alternates: { canonical: origin },
-    openGraph: { title: "Strongbear BJJ & Grappling", description: "Trois disciplines. Un abonnement. Une équipe.", url: origin, images: [{ url: image, width: 1729, height: 910, alt: "Strongbear BJJ & Grappling à Marines" }], type: "website", locale: "fr_FR" },
-    twitter: { card: "summary_large_image", title: "Strongbear BJJ & Grappling", description: "Trois disciplines. Un abonnement. Une équipe.", images: [image] },
+    openGraph: { title: "JJB Val-d’Oise à Marines | Strongbear BJJ", description: "Découvrez Strongbear BJJ, club de Jiu-Jitsu Brésilien, grappling et MMA à Marines dans le Val-d’Oise. Cours adultes et enfants, débutants bienvenus.", url: origin, images: [{ url: image, width: 1729, height: 910, alt: "Strongbear BJJ & Grappling à Marines" }], type: "website", locale: "fr_FR" },
+    twitter: { card: "summary_large_image", title: "JJB Val-d’Oise à Marines | Strongbear BJJ", description: "Découvrez Strongbear BJJ, club de Jiu-Jitsu Brésilien, grappling et MMA à Marines dans le Val-d’Oise. Cours adultes et enfants, débutants bienvenus.", images: [image] },
   };
 }
 
@@ -33,8 +33,8 @@ export default function Home() {
         <div className="hero-shade"></div>
         <Container className="hero-inner">
           <p className="eyebrow eyebrow-inverse">Marines · Val-d’Oise · Académie d’arts martiaux</p>
-          <h1 id="hero-title"><span>Trois disciplines.</span><span>Un abonnement.</span><span>Une équipe.</span></h1>
-          <p className="hero-copy">Jiu-Jitsu Brésilien, Grappling et MMA à Marines, réunis dans une académie conviviale, ambitieuse et profondément technique.</p>
+          <h1 id="hero-title"><span>Club de Jiu-Jitsu Brésilien (JJB) </span><span>à Marines dans le Val-d’Oise</span></h1>
+          <p className="hero-copy"><strong className="hero-slogan">Trois disciplines. Un abonnement. Une équipe.</strong>Strongbear est un club de JJB du Vexin proposant du Jiu-Jitsu Brésilien à Marines, du Grappling et du MMA dans une académie conviviale, ambitieuse et profondément technique.</p>
           <div className="hero-actions"><FightyCTA label="Réserver mon cours d’essai" /><ButtonLink href="#disciplines">Découvrir les cours</ButtonLink></div>
         </Container>
       </section>
@@ -49,7 +49,7 @@ export default function Home() {
       <section className="section about-section" id="strongbear">
         <Container className="about-grid">
           <div className="about-visual about-visual-bear"><OptimizedImage source="/bjj-about-bear.png" alt="Ours Strongbear pratiquant le Jiu-Jitsu Brésilien au sol" sizes="(min-width: 64rem) 45vw, 100vw" /><span>Marines · Vexin</span><div className="image-caption"><strong>Technique</strong><small>Avant l’intensité</small></div></div>
-          <div className="about-copy"><SectionTitle eyebrow="Notre académie" title="L’exigence technique. Sans l’ego." intro="Un enseignement précis, un collectif bienveillant et des repères clairs pour progresser durablement — quel que soit votre point de départ." /><blockquote>“La progression naît d’un cadre exigeant où chacun se sent à sa place.”</blockquote><ul><li>Tous nos professeurs sont diplômés</li><li>Débutants réellement accompagnés</li><li>Enseignement structuré par niveaux</li><li>Ambiance responsable et soudée</li><li>Objectifs loisir ou compétition</li></ul><FightyCTA label="Réserver un essai avec l’équipe" /></div>
+          <div className="about-copy"><SectionTitle eyebrow="Notre académie" title="L’exigence technique. Sans l’ego." intro="Un enseignement précis, un collectif bienveillant et des repères clairs pour pratiquer le JJB dans le Val-d’Oise et progresser durablement — quel que soit votre point de départ." /><blockquote>“La progression naît d’un cadre exigeant où chacun se sent à sa place.”</blockquote><ul><li>Tous nos professeurs sont diplômés</li><li>Débutants réellement accompagnés</li><li>Enseignement structuré par niveaux</li><li>Ambiance responsable et soudée</li><li>Objectifs loisir ou compétition</li></ul><FightyCTA label="Réserver un essai avec l’équipe" /></div>
         </Container>
       </section>
 

@@ -22,6 +22,7 @@ export type LocalDisciplineData = {
   benefits: Array<{ title: string; copy: string }>;
   classSteps: Array<{ title: string; copy: string }>;
   academyLinks: Array<{ label: string; href: string }>;
+  localLinks?: Array<{ label: string; href: string }>;
   faq: FAQItem[];
   scheduleKey: DisciplineKey;
 };
@@ -66,7 +67,7 @@ export async function LocalDisciplinePage({ data }: { data: LocalDisciplineData 
 
       <section className="section local-discipline-intro" id="cours"><Container className="local-discipline-two-columns">
         <SectionTitle inverse={false} eyebrow={`${data.shortName} · Strongbear Marines`} title={data.overviewTitle} />
-        <div className="local-discipline-prose">{data.overview.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}<p className="local-location-note">Les cours ont lieu à Marines, au cœur du Vexin, dans le Val-d’Oise.</p></div>
+        <div className="local-discipline-prose">{data.overview.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}<p className="local-location-note">Les cours ont lieu à Marines, au cœur du Vexin, dans le Val-d’Oise.</p>{data.localLinks?.length ? <nav className="local-page-links" aria-label="Liens utiles">{data.localLinks.map((link) => <a key={link.href} href={link.href}>{link.label}</a>)}</nav> : null}</div>
       </Container></section>
 
       <section className="feature-section local-discipline-benefits"><Container><div className="section-heading-row"><SectionTitle eyebrow="Pourquoi pratiquer" title="Progresser avec méthode." intro={`Les bénéfices du ${data.name} se construisent séance après séance, dans un cadre technique et respectueux.`} /><span className="section-index">01 — 04</span></div><div className="feature-grid">{data.benefits.map((benefit, index) => <FeatureCell key={benefit.title} index={`0${index + 1}`} title={benefit.title} description={benefit.copy} />)}</div></Container></section>

@@ -24,8 +24,12 @@ export const generalFAQ: FAQItem[] = [
 ];
 
 export const bjjFAQ: FAQItem[] = [
+  { question: "Où pratiquer le JJB dans le Val-d’Oise ?", answer: "Strongbear BJJ propose des cours de Jiu-Jitsu Brésilien à Marines et accueille les pratiquants du Vexin et du Val-d’Oise. Les créneaux et leur lieu exact sont indiqués sur Fighty." },
+  { question: "Les cours sont-ils accessibles aux débutants ?", answer: "Oui. Aucune expérience n’est nécessaire : les règles de sécurité, les déplacements, les positions et les contrôles sont expliqués progressivement." },
+  { question: "Existe-t-il des cours de JJB pour les enfants ?", answer: "Oui. Strongbear Kids accueille les enfants à partir de 6 ans, dans des groupes adaptés aux 6–10 ans et aux 11–14 ans." },
+  { question: "Où se trouve Strongbear BJJ ?", answer: "L’adresse principale de Strongbear BJJ est 13 rue des Hautiers, 95640 Marines. Fighty précise le lieu correspondant au créneau réservé." },
+  { question: "Comment réserver un cours d’essai ?", answer: "Choisissez votre créneau et réservez directement sur Fighty. L’équipe Strongbear vous accueille ensuite quelques minutes avant le cours." },
   { question: "Qu’est-ce que le Jiu-Jitsu Brésilien ?", answer: "Le Jiu-Jitsu Brésilien est un art martial centré sur le contrôle, les positions et les soumissions, principalement au sol. Il privilégie la technique, le placement et la prise de décision." },
-  { question: "Faut-il déjà savoir combattre ?", answer: "Non. Les bases sont expliquées progressivement : sécurité, déplacements, positions, contrôles puis techniques adaptées au niveau du groupe." },
   { question: "Le kimono est-il obligatoire ?", answer: "Il dépend du créneau. Pour un premier essai, consultez les indications du cours sur Fighty ou demandez confirmation à l’équipe." },
   { question: "Le JJB est-il adapté aux personnes plus légères ?", answer: "Oui. Le placement et les leviers permettent de travailler sans dépendre uniquement de la force. Les partenaires et l’intensité doivent néanmoins toujours être adaptés." },
   { question: "Y a-t-il du combat dès le premier cours ?", answer: "Le coach décide selon le cours et votre aisance. Une première séance peut se limiter aux explications et exercices techniques ; rien ne doit être imposé." },

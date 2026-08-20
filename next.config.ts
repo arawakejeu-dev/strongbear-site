@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 
 const isStaticExport = process.env.STATIC_EXPORT === "1";
+const canonicalOrigin = "https://strongbearbjj.com";
 
 const legacyRedirects = [
   { source: "/jiu-jitsu-bresilien", destination: "/jiu-jitsu-bresilien-marines" },
@@ -28,11 +29,29 @@ const nextConfig: NextConfig = {
 
     // Use statusCode explicitly: Next's `permanent` shortcut returns 308,
     // whereas the existing SEO migration requires HTTP 301 responses.
-    return legacyRedirects.map(({ source, destination }) => ({
+    const canonicalLegacyRedirects = legacyRedirects.map(({ source, destination }) => ({
       source,
-      destination,
+      has: [{ type: "host" as const, value: "www.strongbearbjj.com" }],
+      destination: `${canonicalOrigin}${destination}`,
       statusCode: 301,
     }));
+
+    return [
+      // Send known legacy URLs on www directly to their final canonical URL,
+      // preventing an avoidable www -> legacy -> canonical redirect chain.
+      ...canonicalLegacyRedirects,
+      {
+        source: "/:path*",
+        has: [{ type: "host" as const, value: "www.strongbearbjj.com" }],
+        destination: `${canonicalOrigin}/:path*`,
+        statusCode: 301,
+      },
+      ...legacyRedirects.map(({ source, destination }) => ({
+        source,
+        destination,
+        statusCode: 301,
+      })),
+    ];
   },
 };
 

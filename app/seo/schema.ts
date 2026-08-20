@@ -1,29 +1,66 @@
 import type { FAQItem } from "../data/faqs";
+import { globalSchedule, practicalInfo } from "../data/practical-info";
 import type { ImageSeoRecord } from "./images";
 
 export type JsonLd = Record<string, unknown>;
 export type BreadcrumbInput = { name: string; url: string };
 
+const schemaDays: Record<string, string> = {
+  Lundi: "https://schema.org/Monday",
+  Mardi: "https://schema.org/Tuesday",
+  Mercredi: "https://schema.org/Wednesday",
+  Jeudi: "https://schema.org/Thursday",
+  Vendredi: "https://schema.org/Friday",
+  Samedi: "https://schema.org/Saturday",
+  Dimanche: "https://schema.org/Sunday",
+};
+
+function schemaTime(value: string) {
+  return value.trim().replace("h", ":");
+}
+
 export function buildOrganizationSchema(origin: string): JsonLd {
+  const openingHoursSpecification = globalSchedule.map((session) => {
+    const [opens, closes] = session.time.split("–");
+    return {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: schemaDays[session.day],
+      opens: schemaTime(opens),
+      closes: schemaTime(closes),
+    };
+  });
+
   return {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "Organization",
         "@id": `${origin}/#organization`,
-        name: "Strongbear BJJ & Grappling",
+        name: "Strongbear BJJ",
+        alternateName: "Strongbear BJJ & Grappling",
         url: origin,
-        logo: { "@type": "ImageObject", url: `${origin}/favicon.png` },
+        logo: { "@type": "ImageObject", url: `${origin}/favicon-512x512.png`, width: 512, height: 512 },
+        email: practicalInfo.contact.email,
+        sameAs: [practicalInfo.contact.instagram],
       },
       {
         "@type": ["SportsActivityLocation", "LocalBusiness"],
         "@id": `${origin}/#academy`,
-        name: "Strongbear BJJ & Grappling",
+        name: "Strongbear BJJ",
+        alternateName: "Strongbear BJJ & Grappling",
+        description: "Club de Jiu-Jitsu Brésilien, JJB, Grappling et MMA à Marines dans le Val-d’Oise.",
         url: origin,
+        email: practicalInfo.contact.email,
+        sameAs: [practicalInfo.contact.instagram],
         parentOrganization: { "@id": `${origin}/#organization` },
-        address: { "@type": "PostalAddress", addressLocality: "Marines", postalCode: "95640", addressRegion: "Val-d’Oise", addressCountry: "FR" },
-        areaServed: ["Marines", "Vexin français", "Val-d’Oise"],
-        sport: ["Brazilian Jiu-Jitsu", "Grappling", "Mixed Martial Arts"],
+        address: { "@type": "PostalAddress", streetAddress: "13 rue des Hautiers", addressLocality: "Marines", postalCode: "95640", addressRegion: "Val-d’Oise", addressCountry: "FR" },
+        areaServed: [
+          { "@type": "City", name: "Marines" },
+          { "@type": "AdministrativeArea", name: "Vexin français" },
+          { "@type": "AdministrativeArea", name: "Val-d’Oise" },
+        ],
+        sport: ["Jiu-Jitsu Brésilien", "JJB", "Grappling", "MMA"],
+        openingHoursSpecification,
       },
     ],
   };

@@ -1,4 +1,4 @@
-export const productionSiteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://strongbearbjj.com").replace(/\/$/, "");
+export const productionSiteUrl = "https://strongbearbjj.com";
 
 export async function getRequestOrigin() {
   // Canonical URLs must remain stable in every environment. Keeping this value
