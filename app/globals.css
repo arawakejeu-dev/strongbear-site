@@ -4,7 +4,7 @@
   --white:#f7f7f3;--muted:#8b8b8f;--line:rgb(255 255 255/.13);--line-dark:rgb(0 0 0/.16);
   --gold:#c6a56a;--font:"Geist",-apple-system,BlinkMacSystemFont,"Segoe UI",ui-sans-serif,system-ui,sans-serif;
   --display:"Arial Narrow","Roboto Condensed",Impact,sans-serif;
-  --gutter:clamp(1.1rem,3vw,2.25rem);--section:clamp(5rem,10vw,9rem);--section-heading-gap:clamp(2.75rem,5.5vw,4.75rem);--ease:cubic-bezier(.2,.8,.2,1);
+  --gutter:clamp(1.1rem,3vw,2.25rem);--section:clamp(3.75rem,7vw,6rem);--section-heading-gap:clamp(2rem,3.5vw,3.25rem);--ease:cubic-bezier(.2,.8,.2,1);
   --space-1:.25rem;--space-2:.5rem;--space-3:.75rem;--space-4:1rem;--space-6:1.5rem;--space-8:2rem;--space-12:3rem;--space-16:4rem;
   --radius-sm:.2rem;--radius-md:.45rem;--radius-pill:999px;
   --shadow-card:0 24px 70px rgb(0 0 0/.24);--duration-fast:180ms;--duration-base:320ms;--duration-slow:700ms
@@ -172,3 +172,81 @@ section[id],footer[id]{scroll-margin-top:6rem}
 @media(min-width:48rem){.cookie-consent{right:2rem;bottom:2rem;left:auto;flex-direction:row;align-items:center;justify-content:space-between}.cookie-consent>div{flex:none}}
 
 @media(max-width:47.99rem){.schedule-card{grid-template-columns:1fr auto;gap:.75rem 1rem}.schedule-card-day{grid-column:1/-1}.schedule-card>a{justify-self:end}}
+
+/* Balanced compact rhythm: 15–25% less vertical space without changing type or structure. */
+.eyebrow{margin-bottom:1.35rem}
+.section-intro{margin-top:1.35rem}
+.hero{min-height:84svh;padding:6.5rem 0 4rem}
+.hero-inner{padding-top:1rem}
+.hero-copy{margin:1.5rem 0}
+.about-grid{gap:clamp(3rem,6vw,6rem)}
+.about-visual{min-height:28rem}
+.about-copy blockquote{margin:2rem 0}
+.about-copy ul{margin-bottom:2rem}
+.feature-cell{min-height:10.25rem;padding:1.35rem 0}
+.discipline-image{height:18rem}
+.discipline-content{padding-top:1.25rem}
+.discipline-card h3{margin:.75rem 0 1.25rem}
+.kids-image{min-height:27.5rem}
+.kids-copy>p:not(.eyebrow){margin:1.5rem 0}
+.kids-values{margin-bottom:2rem}
+.schedule-grid{gap:2.25rem}
+.schedule-copy{padding-top:1.5rem}
+.schedule-copy>small{margin-bottom:1.5rem}
+.schedule-list{margin-top:clamp(2rem,4vw,3rem)}
+.schedule-card{padding:1.05rem 0}
+.review-card{padding-top:1.4rem}
+.review-card blockquote{min-height:6.5rem;margin:1.4rem 0}
+.faq-item summary{padding:1.1rem 0}
+.faq-answer{padding-bottom:1.25rem}
+.local-page-links{margin-top:1.35rem}
+.local-discipline-two-columns{gap:clamp(2.25rem,5vw,5.5rem)}
+.local-audience-grid{margin-top:clamp(2.25rem,4vw,4rem)}
+.local-audience-card{padding:1.4rem 0}
+.local-audience-card h3{margin-top:1.4rem}
+.local-training-steps li{padding:1.25rem 0}
+.local-discovery-grid{gap:clamp(2.5rem,5vw,5.5rem)}
+.local-discovery-grid>div>p:not(.eyebrow){margin:1.5rem 0}
+.local-discovery-grid aside{gap:1rem;padding-top:1.25rem}
+.academy-card{padding:1.5rem 0}
+.academy-card-media{margin-bottom:1.25rem}
+.academy-card h3{margin:1.35rem 3rem .85rem 0}
+.pricing-price{margin:2rem 0 .85rem}
+.pricing-card ul{margin:1.5rem 0;padding-top:1.25rem}
+.fighty-journey{padding:clamp(1.75rem,4vw,3.25rem)}
+.fighty-journey-heading{margin-bottom:clamp(2rem,4vw,3.5rem)}
+.fighty-journey ol{margin-bottom:2.25rem}
+.fighty-journey li{padding:1.1rem 0}
+.trust-testimonial{padding:1.35rem 0}
+.trust-testimonial blockquote{min-height:6.5rem;margin:2rem 0}
+.trust-indicators article{padding:1.2rem 0}
+.coach-story-role{margin-bottom:1.6rem}
+.coach-story dl{margin-top:1.6rem}
+.coach-story dl>div{padding:1.25rem 0}
+.why-strongbear-item{padding:1.2rem 0}
+.academy-story-list li{padding:1.3rem 0}
+.comparison-row{padding:1.2rem 0}
+.comparison-note{margin-top:1.5rem}
+.fighty-trust-steps li{padding:1.2rem 0}
+.fighty-trust-action{margin-top:2rem}
+.final-cta{padding-block:clamp(4.5rem,8vw,6.75rem)}
+.final-cta p:not(.eyebrow){margin:1.5rem auto}
+.footer{padding:3rem 0 1.35rem}
+.footer-top{gap:2rem;padding-bottom:2.4rem}
+.footer-top p{margin-top:1.2rem}
+.footer-grid{padding:2rem 0}
+
+@media(min-width:48rem){
+  .trust-testimonial,.why-strongbear-item,.local-audience-card,.academy-card{padding:1.35rem}
+  .trust-indicators article{padding:1.2rem}
+}
+@media(min-width:60rem){
+  .kids-image{min-height:36rem}
+  .kids-copy{padding-inline:clamp(3rem,6vw,6rem)}
+}
+@media(min-width:64rem){
+  .about-visual{min-height:36rem}
+  .hero h1 span{white-space:normal}
+  .fighty-trust-steps li{padding:1.35rem}
+  .fighty-trust-steps h3{margin-top:2.5rem}
+}

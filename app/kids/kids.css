@@ -164,3 +164,34 @@
 @media(prefers-reduced-motion:reduce){
   .kids-benefit-card:hover{transform:none}
 }
+
+/* Balanced compact rhythm shared with the adult experience. */
+.kids-page-section,.kids-parent-section{padding-block:clamp(3.75rem,6vw,5rem)}
+.kids-hero-page{min-height:88svh;padding:clamp(6rem,8vw,7rem) 0 clamp(2.25rem,3.5vw,3rem)}
+.kids-hero-grid{gap:clamp(2.25rem,4.5vw,4.5rem)}
+.kids-breadcrumb{margin-bottom:clamp(1.5rem,2.5vw,2.5rem)}
+.kids-hero-copy>p:not(.eyebrow){margin:1.5rem 0}
+.kids-trust-line{margin-top:1.5rem;padding-top:1rem}
+.kids-hero-media{min-height:23rem}
+.kids-benefits .section-title,.kids-ages .section-title,.kids-pricing .section-title{margin-bottom:clamp(2rem,4vw,3.5rem)}
+.kids-benefit-card{min-height:11.25rem}
+.kids-benefit-card h3{margin-top:2rem}
+.kids-parent-grid,.kids-philosophy-grid,.kids-schedule-layout,.kids-faq-layout{gap:clamp(2.5rem,4.5vw,4.5rem)}
+.kids-parent-grid>div:first-child>p:not(.eyebrow){margin-top:1.5rem}
+.kids-parent-grid>div:first-child>.button{margin-top:1.5rem}
+.kids-parent-points article{padding:1.15rem 0}
+.kids-philosophy-principles article{padding-block:1.25rem}
+.kids-class-flow .section-title{margin-bottom:clamp(2.25rem,4vw,3.75rem)}
+.kids-timeline li{padding:1.05rem 0}
+.kids-age-card h3{margin:clamp(2rem,3.5vw,3rem) 0 .85rem}
+.kids-age-card>p{min-height:4rem;margin-bottom:1.5rem}
+.kids-fighty{padding-block:clamp(2.75rem,4.5vw,4rem)}
+
+@media(min-width:64rem){
+  .kids-hero-media{min-height:clamp(28rem,40vw,35rem)}
+  .kids-timeline li{padding:1.1rem .8rem 0}
+  .kids-timeline li>.icon{margin:1.5rem 0 1rem}
+  .kids-fighty .fighty-journey li{padding:1.25rem}
+  .kids-fighty .fighty-journey li:first-child{padding-left:0}
+  .kids-fighty .fighty-journey li>.icon{margin:1.5rem 0 1rem}
+}
