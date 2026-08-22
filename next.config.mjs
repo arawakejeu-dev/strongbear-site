@@ -1,5 +1,3 @@
-import type { NextConfig } from "next";
-
 const isStaticExport = process.env.STATIC_EXPORT === "1";
 const canonicalOrigin = "https://strongbearbjj.com";
 
@@ -13,9 +11,10 @@ const legacyRedirects = [
   { source: "/mma", destination: "/mma-marines" },
   { source: "/a-propos", destination: "/#strongbear" },
   { source: "/contact", destination: "/#contact" },
-] as const;
+];
 
-const nextConfig: NextConfig = {
+/** @type {import("next").NextConfig} */
+const nextConfig = {
   // Hostinger's Git integration deploys the standard Next.js server output.
   // STATIC_EXPORT remains available only for the separate manual FTP fallback.
   output: isStaticExport ? "export" : undefined,
@@ -23,15 +22,13 @@ const nextConfig: NextConfig = {
   // the Sites deployment retains its existing URL behaviour.
   trailingSlash: isStaticExport,
   async redirects() {
-    if (isStaticExport) {
-      return [];
-    }
+    if (isStaticExport) return [];
 
     // Use statusCode explicitly: Next's `permanent` shortcut returns 308,
     // whereas the existing SEO migration requires HTTP 301 responses.
     const canonicalLegacyRedirects = legacyRedirects.map(({ source, destination }) => ({
       source,
-      has: [{ type: "host" as const, value: "www.strongbearbjj.com" }],
+      has: [{ type: "host", value: "www.strongbearbjj.com" }],
       destination: `${canonicalOrigin}${destination}`,
       statusCode: 301,
     }));
@@ -42,7 +39,7 @@ const nextConfig: NextConfig = {
       ...canonicalLegacyRedirects,
       {
         source: "/:path*",
-        has: [{ type: "host" as const, value: "www.strongbearbjj.com" }],
+        has: [{ type: "host", value: "www.strongbearbjj.com" }],
         destination: `${canonicalOrigin}/:path*`,
         statusCode: 301,
       },
