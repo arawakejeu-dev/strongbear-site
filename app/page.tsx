@@ -33,8 +33,8 @@ export default function Home() {
         <div className="hero-shade"></div>
         <Container className="hero-inner">
           <p className="eyebrow eyebrow-inverse">Marines · Val-d’Oise · Académie d’arts martiaux</p>
-          <h1 id="hero-title"><span>Club de Jiu-Jitsu Brésilien (JJB) </span><span>à Marines dans le Val-d’Oise</span></h1>
-          <p className="hero-copy"><strong className="hero-slogan">Trois disciplines. Un abonnement. Une équipe.</strong>Strongbear est un club de JJB du Vexin proposant du Jiu-Jitsu Brésilien à Marines, du Grappling et du MMA dans une académie conviviale, ambitieuse et profondément technique.</p>
+          <h1 id="hero-title"><span>Trois disciplines.</span><span>Un abonnement. Une équipe.</span></h1>
+          <p className="hero-copy"><strong className="hero-slogan">Club de Jiu-Jitsu Brésilien (JJB) à Marines dans le Val-d’Oise.</strong>Strongbear est un club de JJB du Vexin proposant du Jiu-Jitsu Brésilien à Marines, du Grappling et du MMA dans une académie conviviale, ambitieuse et profondément technique.</p>
           <div className="hero-actions"><FightyCTA label="Réserver mon cours d’essai" /><ButtonLink href="#disciplines">Découvrir les cours</ButtonLink></div>
         </Container>
       </section>
